@@ -1,11 +1,22 @@
-import jsonContent from './assets/hard-coded-users.json';
-const ServiceServer = {
+import users from './assets/hard-coded-users.js';
 
-    print_users: function() {
+export default class ServiceServer{
 
-        jsonContent.Users
-
+    printUsers(){
+                users.forEach(val => {
+            console.log(val.nickname)
+        });
     }
-}
 
-export default ServiceServer;
+    static checkValidUser(userName, password) {
+        let flag = false;
+        users.forEach(val => {
+            if (val.user_name === userName) {
+                flag = (val.password === password);
+            }
+        })
+        return flag;
+    }
+
+
+}
