@@ -12,7 +12,7 @@ function App() {
         <Routes>
           {/* <SignIn /> */}
           {/* <Register /> */}
-          <Route path="/" component={<SignIn/>} />
+          <Route path="/signin" element={<SignIn />} />
         </Routes>
       </BrowserRouter>
       
