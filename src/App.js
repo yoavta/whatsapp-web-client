@@ -13,9 +13,7 @@ import {useState} from "react";
 function App() {
 
     const [currentUser, setUser] = useState('');
-    function useSuccessful(){
 
-    }
 
 
 
@@ -28,7 +26,7 @@ function App() {
 
         <Routes>
 
-          <Route path="/signin" element={<SignIn  currentUser= {currentUser}  setUser = {setUser}  successful={useSuccessful}/> }   />
+          <Route path="/signin" element={<SignIn  currentUser= {currentUser}  setUser = {setUser} /> }   />
           <Route path="/register" element={<Register />} />
           <Route path="/chat" element={<Chat currentUser= {currentUser} />  }/>
         </Routes>
