@@ -1,0 +1,11 @@
+export let data =[
+    {
+        "user_name" : "yoav",
+        "nickname" : "yoav hamagniv",
+        "password" : "123456789"
+        "chat_records" 
+    }
+
+
+
+]
