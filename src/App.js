@@ -8,6 +8,7 @@ import Register from './pages/register';
 import Chat from './pages/chat';
 import NavbarMain from './components/navbar.componet';
 import {useState} from "react";
+import Home from "./pages/home";
 
 
 function App() {
@@ -15,25 +16,21 @@ function App() {
     const [currentUser, setUser] = useState('');
 
 
+    return (<div className="App">
+            <div className="App-header">
 
 
-  return (
-    <div className="App">
-
-      <BrowserRouter>
-                <NavbarMain  currentUser= {currentUser} />
-        <div className={"App-header"}>
-
-        <Routes>
-
-          <Route path="/signin" element={<SignIn  currentUser= {currentUser}  setUser = {setUser} /> }   />
-          <Route path="/register" element={<Register />} />
-          <Route path="/chat" element={<Chat currentUser= {currentUser} />  }/>
-        </Routes>
-        </div>
-      </BrowserRouter>
-    </div>
-  );
+                <BrowserRouter>
+                    <NavbarMain currentUser={currentUser}/>
+                    <Routes>
+                        <Route path="/signin" element={<SignIn currentUser={currentUser} setUser={setUser}/>}/>
+                        <Route path="/" element={<Home currentUser={currentUser} setUser={setUser}/>}/>
+                        <Route path="/register" element={<Register/>}/>
+                        <Route path="/chat" element={<Chat currentUser={currentUser}/>}/>
+                    </Routes>
+                </BrowserRouter>
+            </div>
+        </div>);
 }
 
 export default App;

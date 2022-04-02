@@ -18,5 +18,20 @@ export default class ServiceServer{
         return flag;
     }
 
+        static getUserUrl(userName) {
+        let url = null;
+        users.forEach(val => {
+            if (val.user_name === userName) {
+                url = val.picture_url;
+            }
+        })
+        return url;
+    }
 
+
+        static getUsers() {
+        let res = [];
+        users.forEach(val => res.push(val))
+        return res;
+    }
 }

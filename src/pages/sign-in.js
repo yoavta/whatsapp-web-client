@@ -1,66 +1,99 @@
 import ServiceServer from '../server-service';
 import {Alert, Button, Card, Container, Form} from "react-bootstrap";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './sign-in.css';
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import Welcome from "../components/welcome.component";
 
 
 // class SignIn extends React.Component {
 
 
 function SignIn(props) {
-      let navigate = useNavigate();
+    let navigate = useNavigate();
 
+    const [passwordVisible, setPasswordVisible] = useState(false);
     const [userName, setUserName] = useState(null);
     const [password, setPassword] = useState(null);
     const [validated, setValidated] = useState(false);
     const [alert, setAlert] = useState(false);
 
-    function handleSubmit(event) {
+
+
+    async function handleSubmit(event) {
         const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
         if (form.checkValidity() === false) {
+
             event.preventDefault();
             event.stopPropagation();
+
         } else {
             setValidated(true);
             setAlert(false);
-            setUserName(event.target[0].value);
-            setPassword(event.target[1].value);
-            const isValid = ServiceServer.checkValidUser(userName, password);
-            if (isValid) {
-                props.setUser(userName);
-                navigate("/chat", { replace: true });
-            } else {
-                showAlert();
-                // event.preventDefault();
-            }
+            // await handleChange(event).then(() => {
+                const isValid = ServiceServer.checkValidUser(userName, password);
+                if (isValid) {
+                    props.setUser(userName);
+                    navigate("/chat", {replace: true});
+                } else {
+                    showAlert();
+                    // event.preventDefault();
+                }
+            // })
+
         }
     }
 
-    function showAlert(event) {
+    function showAlert() {
         setAlert(true);
     }
 
-    function hideAlert(event) {
+    function hideAlert() {
         setAlert(false);
         window.location.reload();
     }
 
+
+    function togglePassword() {
+        setPasswordVisible(!passwordVisible);
+
+    }
+
+    async function handlePasswordChange(event) {
+        const  val = event.target.value;
+        setPassword(val);
+        console.log(password);
+    }
+
+       async function handleUserNameChange(event) {
+        const  val = event.target.value;
+        setUserName(val);
+        console.log(userName);
+    }
+
     return (
         <div className="Sign-in">
-            <Card style={{padding: "20px"}}>
+            <Card style={{padding: "20px", margin:"25px"}}>
                 <Container style={{width: "60%"}}>
 
-                    <Form noValidate validated={validated} onSubmit={event => handleSubmit(event)}>
+                    <Form validated={validated} onSubmit={event => handleSubmit(event)}>
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>User Name</Form.Label>
-                            <Form.Control required type="text" placeholder="User Name"/>
+                            <Form.Control required type="text" placeholder="User Name"
+                                onChange={event => handleUserNameChange(event)}
+                            />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control required type="password" placeholder="Password"/>
+                            <Form.Control required type={passwordVisible ? "text" : "password"} placeholder="Password"
+                                onChange={event => handlePasswordChange(event)}
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="form">
+
+                            <Form.Check type="checkbox" onClick={togglePassword} label="Show Password"/>
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Submit
@@ -73,6 +106,8 @@ function SignIn(props) {
                     </Alert>
                 </Container>
             </Card>
+                                <Welcome/>
+
         </div>
     );
 
