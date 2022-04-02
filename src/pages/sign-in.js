@@ -21,25 +21,22 @@ function SignIn(props) {
 
 
     async function handleSubmit(event) {
+        debugger;
         const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
         if (form.checkValidity() === false) {
-
             event.preventDefault();
             event.stopPropagation();
 
         } else {
             setValidated(true);
-            setAlert(false);
-            // await handleChange(event).then(() => {
                 const isValid = ServiceServer.checkValidUser(userName, password);
                 if (isValid) {
                     props.setUser(userName);
                     navigate("/chat", {replace: true});
                 } else {
                     showAlert();
-                    // event.preventDefault();
                 }
             // })
 
