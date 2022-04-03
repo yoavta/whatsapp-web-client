@@ -7,7 +7,7 @@ function PrevChat(props) {
 
         <Card id='prev-card'
               style={{ cursor: "pointer" ,marginBottom:"5px"}}
-              onClick={()=>props.onClick(props.name)}>
+              onClick={()=>props.setCurrentChat(props.name)}>
             <Card.Header>{props.name}</Card.Header>
             <Card.Body>
                 <blockquote className="blockquote mb-0">

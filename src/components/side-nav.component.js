@@ -22,10 +22,12 @@ function SideNav(props) {
             <Row>
                 <Col>
                     <Search setSearchFilter={props.setSearchFilter} searchFilter={props.searchFilter}/>
+
+
                     {ServiceServer.getUsers(props.searchFilter).map((val) => {
                         if (subsetOf(val.user_name)) {
                             return <PrevChat key={val.user_name} {...props} name={val.user_name} as={Nav.Link}
-                                             onClick={setCurrentChat}>{val.user_name}</PrevChat>}
+                                             setCurrentChat={setCurrentChat}>{val.user_name}</PrevChat>}
 
                         })}
 
