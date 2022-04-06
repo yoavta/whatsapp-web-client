@@ -17,8 +17,8 @@ function Chat(props) {
             {/*<p>chat with: {chatWith}</p>*/}
             {/*<p>search: {searchFilter}</p>*/}
             <Container>
-                <Row>
-                    <Col sm={4}>
+                <Row >
+                    <Col sm={4} >
                         <SideNav  currentUser={props.currentUser} chatWith={chatWith} setChatWith={setChatWith} searchFilter={searchFilter} setSearchFilter={setSearchFilter}/>
                     </Col>
                     <Col sm={8}>

@@ -1,10 +1,10 @@
-import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
-import React, { useState } from "react";
+import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
+import React, {useState} from "react";
 import './side.nav.style.css';
 import massage from '../components/massage'
 import DisplayMsg from '../components/displayMsg'
 import './chat-window.style.css';
-import { Alert, Button, Card, Form } from "react-bootstrap";
+import {Alert, Button, Card, Form} from "react-bootstrap";
 import ServiceServer from "../server-service";
 
 
@@ -15,33 +15,32 @@ function ChatWindow(props) {
     const [change, setChange] = useState(null);
     const time = null;
     const [ctime, setDate] = useState(time);
-    const [val , setVal] = useState("");
+    const [val, setVal] = useState("");
 
-   
 
     function handleSubmit(event) {
         debugger
-        
+
         ServiceServer.addMsg(msg, props.currentUser, props.chatWith);
-        
+
         if (change) {
             setChange(false);
         } else setChange(true);
-        event.target.reset();
+        setVal("");
         // setChange(false);
 
     }
 
 
-
     function handleNewMsg(event) {
-        
+
         let text = event.target.value;
 
         // handelTime();
         let time = new Date().toLocaleTimeString();
-      
+
         setDate(time);
+        setVal(text);
         console.log(ctime);
         let msgtime = ctime;
 
@@ -49,11 +48,9 @@ function ChatWindow(props) {
     }
 
 
-
-
-
     return (
-        <Container id='all-frame' fluid style={{ height: '140%', width: '120%'}}>
+        <Container id='all-frame' fluid
+                   style={{maxHeight: '600px', minHeight: '650px', width: '120%', overflowY: 'auto'}}>
             <Tab.Container id="tabs" defaultActiveKey="first">
                 <Row>
 
@@ -66,11 +63,13 @@ function ChatWindow(props) {
 
                             if (massage.is_it_me) {
                                 return (
-                                    <DisplayMsg key={key} massage={massage} style={{ position: 'relative', width: '40%' }} />
+                                    <DisplayMsg key={key} massage={massage}
+                                                style={{position: 'relative', width: '40%'}}/>
                                 )
                             } else {
                                 return (
-                                    <DisplayMsg key={key} massage={massage} style={{ position: 'relative', width: '40%', left: '60%' }} />
+                                    <DisplayMsg key={key} massage={massage}
+                                                style={{position: 'relative', width: '40%', left: '60%'}}/>
                                 )
                             }
                         })}
@@ -85,15 +84,21 @@ function ChatWindow(props) {
                     </Col>
 
 
-
                 </Row>
                 <Row>
 
 
-                    <div className="input-group mb-3" style={{ position: 'absolute', bottom: '10%', width: '55%' }}>
-                        <button className="btn btn-outline-secondary" type="submit" id="button-addon1" onClick={(event) => { handleSubmit(event) }} > Button</button>
-                        <input type="text" className="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"
-                            onChange={(event) => { handleNewMsg(event) }}
+                    <div className="input-group mb-3" style={{position: 'fixed', bottom: '7%', width: '53%'}}>
+                        <button className="btn btn-outline-secondary" type="submit" id="button-addon1"
+                                onClick={(event) => {
+                                    handleSubmit(event)
+                                }}> Send
+                        </button>
+                        <input value={val} type="text" className="form-control" placeholder=""
+                               aria-label="Example text with button addon" aria-describedby="button-addon1"
+                               onChange={(event) => {
+                                   handleNewMsg(event)
+                               }}
                         />
                     </div>
 
