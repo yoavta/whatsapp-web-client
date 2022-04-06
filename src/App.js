@@ -9,6 +9,7 @@ import Chat from './pages/chat';
 import NavbarMain from './components/navbar.componet';
 import {useState} from "react";
 import Home from "./pages/home";
+import ServiceServer from "./server-service";
 
 
 function App() {
@@ -20,8 +21,8 @@ function App() {
 
     
             <div className="App-header">
-    
 
+                {ServiceServer.getChats('yoav','yahel')}
                 <BrowserRouter>
                     <NavbarMain currentUser={currentUser} setUser={setUser} />
                     <Routes>

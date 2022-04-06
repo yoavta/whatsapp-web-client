@@ -17,7 +17,6 @@ function ChatWindow(props) {
         massages.push(new massage('hello', true, '14:00'));
         massages.push(new massage('hi', false, '14:15'));
         massages.push(new massage('whats up', true, '14:30'));
-
     }
 
 
