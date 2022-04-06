@@ -6,6 +6,7 @@ import DisplayMsg from '../components/displayMsg'
 import './chat-window.style.css';
 import {Alert, Button, Card, Form} from "react-bootstrap";
 import ServiceServer from "../server-service";
+import SendingOptions from "./sendingOptions";
 
 
 function ChatWindow(props) {
@@ -101,6 +102,7 @@ function ChatWindow(props) {
                                }}
                         />
                     </div>
+                    <SendingOptions/>
 
 
                 </Row>
