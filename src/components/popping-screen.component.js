@@ -17,7 +17,7 @@ function PoppingScreen(props) {
     const [mediaPrev, setMediaPrev] = useState(null);
 
     function mediaChanged(){
-        props.setMsg(new massage('',true,new Date().toLocaleTimeString(),mediaPrev))
+        props.setMsg(new massage('',true,new Date().toLocaleTimeString(),mediaPrev,props.type))
     }
 
     function handleSend(event) {

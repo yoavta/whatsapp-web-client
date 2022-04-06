@@ -47,7 +47,7 @@ function ChatWindow(props) {
         console.log(ctime);
         let msgtime = ctime;
 
-        setMsg(new massage(text, true, msgtime,null));
+        setMsg(new massage(text, true, msgtime,null,null));
     }
 
 
