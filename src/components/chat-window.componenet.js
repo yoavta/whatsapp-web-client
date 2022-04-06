@@ -6,6 +6,7 @@ import DisplayMsg from '../components/displayMsg'
 import './chat-window.style.css';
 import {Alert, Button, Card, Form} from "react-bootstrap";
 import ServiceServer from "../server-service";
+import PoppingScreen from "./popping-screen.component";
 
 
 function ChatWindow(props) {
@@ -18,7 +19,7 @@ function ChatWindow(props) {
     const [val, setVal] = useState("");
 
 
-    function handleSubmit(event) {
+    function handleSubmit() {
         debugger
 
         ServiceServer.addMsg(msg, props.currentUser, props.chatWith);
@@ -44,17 +45,20 @@ function ChatWindow(props) {
         console.log(ctime);
         let msgtime = ctime;
 
-        setMsg(new massage(text, true, msgtime));
+        setMsg(new massage(text, true, msgtime,null));
     }
 
 
     return (
         <Container id='all-frame' fluid
-                   style={{maxHeight: '600px', minHeight: '650px', width: '120%', overflowY: 'auto'}}>
+                   style={{maxHeight: '450px', minHeight: '450px', width: '100%', overflowY: 'auto'}}>
             <Tab.Container id="tabs" defaultActiveKey="first">
                 <Row>
 
                     <Col>
+                        <PoppingScreen type ='video' setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
+                        <PoppingScreen type ='image' setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
+                        <PoppingScreen type ='voice' setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
                         <h1>chat with: {props.chatWith}</h1>
                         this is my text
 

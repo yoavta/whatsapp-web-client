@@ -65,16 +65,15 @@ export default class ServiceServer {
     }
 
     static addMsg(msg, currentUser, chatWith) {
-        debugger
+        debugger;
        
         users.forEach(user => {
             if (user.user_name === currentUser && chatWith in user.chats) {
                 debugger
-                user.chats[chatWith].push({ is_it_me: msg.isItMe, text: msg.text, date: msg.date });
+                user.chats[chatWith].push({ is_it_me: msg.isItMe, text: msg.text, date: msg.date, media: msg.media });
 
             }
         })
-
 
 
     }
