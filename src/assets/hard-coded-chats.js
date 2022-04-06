@@ -2,9 +2,7 @@ let chats =[
         {
             user_name1: "yoav",
             user_name2: "yahel",
-            nickname: "yoav hamagniv",
-            password: "123456789",
-            picture_url: "https://media-exp1.licdn.com/dms/image/C5603AQE_ZKnvhgLTSQ/profile-displayphoto-shrink_800_800/0/1602488234599?e=1654128000&v=beta&t=j0NHdvjAcjhnP8uwL9mt4yrayIx9ktY9aMUtekANz0U"
+        
         },
         {
             user_name: "yahel",

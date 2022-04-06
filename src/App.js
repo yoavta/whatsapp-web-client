@@ -17,15 +17,17 @@ function App() {
 
 
     return (<div className="App">
-            <div className="App-header">
 
+    
+            <div className="App-header">
+    
 
                 <BrowserRouter>
-                    <NavbarMain currentUser={currentUser}/>
+                    <NavbarMain currentUser={currentUser} setUser={setUser} />
                     <Routes>
                         <Route path="/signin" element={<SignIn currentUser={currentUser} setUser={setUser}/>}/>
                         <Route path="/" element={<Home currentUser={currentUser} setUser={setUser}/>}/>
-                        <Route path="/register" element={<Register/>}/>
+                        <Route path="/register" element={<Register currentUser={currentUser} setUser={setUser}/>}/>
                         <Route path="/chat" element={<Chat currentUser={currentUser}/>}/>
                     </Routes>
                 </BrowserRouter>

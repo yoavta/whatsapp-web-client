@@ -4,6 +4,8 @@ import React, {useEffect, useState} from "react";
 import './sign-in.css';
 import {useNavigate} from "react-router-dom";
 import Welcome from "../components/welcome.component";
+import './card-style.css';
+
 
 
 // class SignIn extends React.Component {
@@ -21,6 +23,7 @@ function SignIn(props) {
 
 
     async function handleSubmit(event) {
+        ServiceServer.printAllUsers();
         debugger;
         const form = event.currentTarget;
         event.preventDefault();
@@ -55,7 +58,6 @@ function SignIn(props) {
 
     function togglePassword() {
         setPasswordVisible(!passwordVisible);
-
     }
 
     async function handlePasswordChange(event) {
@@ -72,7 +74,8 @@ function SignIn(props) {
 
     return (
         <div className="Sign-in">
-            <Card style={{padding: "20px", margin:"25px"}}>
+        
+            <Card id="card-style">
                 <Container style={{width: "60%"}}>
 
                     <Form validated={validated} onSubmit={event => handleSubmit(event)}>
@@ -92,7 +95,7 @@ function SignIn(props) {
 
                             <Form.Check type="checkbox" onClick={togglePassword} label="Show Password"/>
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <Button className="btn btn-secondary" type="submit">
                             Submit
                         </Button>
                     </Form>
@@ -103,7 +106,7 @@ function SignIn(props) {
                     </Alert>
                 </Container>
             </Card>
-                                <Welcome/>
+                              
 
         </div>
     );

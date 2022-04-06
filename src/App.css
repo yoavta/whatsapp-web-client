@@ -1,17 +1,37 @@
-
-
 .App {
+
+  --white: #F6F7EB;
+  --black: #393E41;
+  --brad: 5px;
+  
+
+
   text-align: center;
   padding: 3%;
+  background-color: var(--black);
+  /* color: var(--white); */
+  overflow-x: hidden;
 
-    background: linear-gradient(360deg, #e8dfd5 20%,#ECE5DD 80%, #128C7E 80%, #14a191 80%);
+  /* background: linear-gradient(360deg, #e8dfd5 20%, #ECE5DD 80%, #128C7E 80%, #d1e8e2 80%); */
   /* Set up proportionate scaling */
-    height: 100%;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
 }
+
+.emoji-container {
+  height: 40vh;
+  overflow-y: scroll;
+  background-color: var(--white);
+  width: 50%;
+  margin: 0 auto;
+  border-radius: var(--brad);
+  margin-top: 5vh;
+  padding: 25px;
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -25,10 +45,11 @@
 }
 
 .App-header {
-    box-shadow: 3px 2px 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 3px 2px 2px rgba(0, 0, 0, 0.1);
 
-  background-color: #ececec;
+  background-color: #e4d6d8;
   height: 100%;
+
   /*min-height: 100vh;*/
   /*display: flex;*/
   /*flex-direction: column;*/
@@ -46,7 +67,10 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+

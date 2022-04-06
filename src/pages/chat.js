@@ -5,7 +5,13 @@ import ChatWindow from "../components/chat-window.componenet";
 import ServiceServer from "../server-service";
 
 
+
 function Chat(props) {
+    const chat1 = [ [1, '14:00', 'hey'], [2, '15:00', 'whatsup?'], [1,'15:30', 'ok']]
+    const chats = [{participent1: 'yahel', participent2: 'yoav', chat: chat1}]
+
+
+
     const [chatWith, setChatWith] = useState('');
     const [searchFilter, setSearchFilter] = useState('');
 
@@ -20,6 +26,7 @@ function Chat(props) {
                     </Col>
                     <Col sm={8}>
                         <ChatWindow chatWith={chatWith} setChatWith={setChatWith}/>
+                        
                     </Col>
                 </Row>
             </Container>

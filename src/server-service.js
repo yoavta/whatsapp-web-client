@@ -18,6 +18,21 @@ export default class ServiceServer{
         return flag;
     }
 
+    static printAllUsers() {
+        
+        users.forEach(val => {
+            console.log(val.user_name);
+            
+        })
+        
+    }
+
+    static addUser(userName, password, photo) {
+        users.push({user_name : userName, nickname : "temp", password : password, picture_url: photo})
+        // users.push(userName,'temp',password, 'temp');
+        console.log(userName);
+    }
+
         static getUserUrl(userName) {
         let url = null;
         users.forEach(val => {
