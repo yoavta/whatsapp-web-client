@@ -14,22 +14,26 @@ function ChatWindow(props) {
 
 
     function temp() {
-        massages.push(new massage('hello', "true", '14:00'));
+        massages.push(new massage('hello', true, '14:00'));
         massages.push(new massage('hi', false, '14:15'));
         massages.push(new massage('whats up', true, '14:30'));
 
     }
 
-    
 
-    function handleSubmit() {
+
+    function handleSubmit(event) {
         debugger
+        event.preventDefault();
+        event.stopPropagation();
         massages.push(msg);
+        
 
     }
 
     function handleNewMsg(event) {
-        
+        event.preventDefault();
+        event.stopPropagation();
         let text = event.target.value;
         let time = event.time;
 
@@ -70,10 +74,10 @@ function ChatWindow(props) {
 
                 </Row>
                 <Row>
-      
+
 
                     <div className="input-group mb-3" style={{ position: 'absolute', bottom: '10%', width: '55%' }}>
-                        <button className="btn btn-outline-secondary" type="submit" id="button-addon1" onClick={handleSubmit}>Button</button>
+                        <button className="btn btn-outline-secondary" type="submit" id="button-addon1" onClick={(event) => {handleSubmit(event) }} > Button</button>
                         <input type="text" className="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"
                             onChange={(event) => { handleNewMsg(event) }}
                         />

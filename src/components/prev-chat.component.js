@@ -2,6 +2,8 @@ import React from "react";
 import {Card, Container} from "react-bootstrap";
 
 function PrevChat(props) {
+    const massages =[];
+    
     return (
 
 
