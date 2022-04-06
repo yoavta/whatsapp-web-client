@@ -28,7 +28,7 @@ export default class ServiceServer {
     }
 
     static addUser(userName, password, photo) {
-        users.push({user_name: userName, nickname: "temp", password: password, picture_url: photo})
+        users.push({ user_name: userName, nickname: "temp", password: password, picture_url: photo })
         // users.push(userName,'temp',password, 'temp');
         console.log(userName);
     }
@@ -50,18 +50,33 @@ export default class ServiceServer {
     }
 
     static getChats(currentUser, chatWith) {
+        
         let chats = [];
         users.forEach(user => {
             if (user.user_name === currentUser) {
                 chats = user.chats;
             }
         })
-        debugger
+      
         if (chatWith in chats) {
             return chats[chatWith];
         }
         return []
     }
 
+    static addMsg(msg, currentUser, chatWith) {
+        debugger
+       
+        users.forEach(user => {
+            if (user.user_name === currentUser && chatWith in user.chats) {
+                debugger
+                user.chats[chatWith].push({ is_it_me: msg.isItMe, text: msg.text, date: msg.date });
+
+            }
+        })
+
+
+
+    }
 
 }

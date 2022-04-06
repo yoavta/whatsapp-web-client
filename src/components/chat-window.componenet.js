@@ -5,38 +5,47 @@ import massage from '../components/massage'
 import DisplayMsg from '../components/displayMsg'
 import './chat-window.style.css';
 import { Alert, Button, Card, Form } from "react-bootstrap";
+import ServiceServer from "../server-service";
 
 
 function ChatWindow(props) {
 
-    const massages = []
+    // const massages = []
     const [msg, setMsg] = useState(null);
+    const [change, setChange] = useState(null);
+    const time = null;
+    const [ctime, setDate] = useState(time);
+    const [val , setVal] = useState("");
 
-
-    function temp() {
-        massages.push(new massage('hello', true, '14:00'));
-        massages.push(new massage('hi', false, '14:15'));
-        massages.push(new massage('whats up', true, '14:30'));
-    }
-
-
+   
 
     function handleSubmit(event) {
         debugger
-        event.preventDefault();
-        event.stopPropagation();
-        massages.push(msg);
         
+        ServiceServer.addMsg(msg, props.currentUser, props.chatWith);
+        
+        if (change) {
+            setChange(false);
+        } else setChange(true);
+        event.target.reset();
+        // setChange(false);
 
     }
 
-    function handleNewMsg(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        let text = event.target.value;
-        let time = event.time;
 
-        setMsg(new massage(text, true, time));
+
+    function handleNewMsg(event) {
+        
+        let text = event.target.value;
+
+        // handelTime();
+        let time = new Date().toLocaleTimeString();
+      
+        setDate(time);
+        console.log(ctime);
+        let msgtime = ctime;
+
+        setMsg(new massage(text, true, msgtime));
     }
 
 
@@ -44,28 +53,34 @@ function ChatWindow(props) {
 
 
     return (
-        <Container id='all-frame' fluid style={{ height: '100%' }}>
+        <Container id='all-frame' fluid style={{ height: '140%', width: '120%'}}>
             <Tab.Container id="tabs" defaultActiveKey="first">
                 <Row>
 
                     <Col>
                         <h1>chat with: {props.chatWith}</h1>
                         this is my text
-                        {temp()}
 
-                        {massages.map((val, key) => {
-                            console.log(val);
-                            if (val.isItMe == true) {
+
+                        {ServiceServer.getChats(props.currentUser, props.chatWith).map((massage, key) => {
+
+                            if (massage.is_it_me) {
                                 return (
-                                    <DisplayMsg key={key} massage={val} style={{ position: 'relative', width: '40%' }} />
+                                    <DisplayMsg key={key} massage={massage} style={{ position: 'relative', width: '40%' }} />
                                 )
                             } else {
                                 return (
-                                    <DisplayMsg key={key} massage={val} style={{ position: 'relative', width: '40%', left: '60%' }} />
+                                    <DisplayMsg key={key} massage={massage} style={{ position: 'relative', width: '40%', left: '60%' }} />
                                 )
                             }
-
                         })}
+
+
+                        {/* {massages.map((val, key) => {
+                            console.log(val);
+                            
+
+                        })} */}
 
                     </Col>
 
@@ -76,7 +91,7 @@ function ChatWindow(props) {
 
 
                     <div className="input-group mb-3" style={{ position: 'absolute', bottom: '10%', width: '55%' }}>
-                        <button className="btn btn-outline-secondary" type="submit" id="button-addon1" onClick={(event) => {handleSubmit(event) }} > Button</button>
+                        <button className="btn btn-outline-secondary" type="submit" id="button-addon1" onClick={(event) => { handleSubmit(event) }} > Button</button>
                         <input type="text" className="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"
                             onChange={(event) => { handleNewMsg(event) }}
                         />

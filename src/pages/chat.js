@@ -19,10 +19,10 @@ function Chat(props) {
             <Container>
                 <Row>
                     <Col sm={4}>
-                        <SideNav  chatWith={chatWith} setChatWith={setChatWith} searchFilter={searchFilter} setSearchFilter={setSearchFilter}/>
+                        <SideNav  currentUser={props.currentUser} chatWith={chatWith} setChatWith={setChatWith} searchFilter={searchFilter} setSearchFilter={setSearchFilter}/>
                     </Col>
                     <Col sm={8}>
-                        <ChatWindow chatWith={chatWith} setChatWith={setChatWith}/>
+                        <ChatWindow chatWith={chatWith} currentUser={props.currentUser}/>
                         
                     </Col>
                 </Row>

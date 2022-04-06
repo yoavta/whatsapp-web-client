@@ -14,7 +14,7 @@ import ServiceServer from "./server-service";
 
 function App() {
 
-    const [currentUser, setUser] = useState('');
+    const [currentUser, setUser] = useState('yoav');
 
 
     return (<div className="App">
@@ -22,7 +22,7 @@ function App() {
     
             <div className="App-header">
 
-                {ServiceServer.getChats('yoav','yahel')}
+                
                 <BrowserRouter>
                     <NavbarMain currentUser={currentUser} setUser={setUser} />
                     <Routes>
