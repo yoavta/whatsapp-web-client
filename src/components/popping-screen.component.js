@@ -17,11 +17,11 @@ function PoppingScreen(props) {
     const [mediaPrev, setMediaPrev] = useState(null);
 
     function mediaChanged(){
+        debugger;
         props.setMsg(new massage('',true,new Date().toLocaleTimeString(),mediaPrev,props.type))
     }
 
     function handleSend(event) {
-        debugger;
         event.preventDefault();
         event.stopPropagation();
         if (!mediaPrev) {

@@ -11,7 +11,6 @@ function NavbarMain(props) {
     let navigate = useNavigate();
 
     function handleLogOut(){
-        debugger
         props.setUser(null);
         navigate("/", { replace: true });
 

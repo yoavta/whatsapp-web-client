@@ -15,7 +15,6 @@ function Register(props) {
 
 
     async function handleSubmit(event) {
-        debugger;
         if (password === repeatPassword) {
             event.preventDefault();
             event.stopPropagation();
@@ -70,32 +69,39 @@ function Register(props) {
                                           onChange={event => handleUserNameChange(event)}
                             />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicName">
+                        <Form.Group className="mb-3" controlId="formBasiceEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control required type="email" placeholder="Email address"
                                           onChange={event => handleEmailChange(event)}
                             />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3" controlId="formBasicPassword1">
                             <Form.Label>Password</Form.Label>
                             <Form.Control required type="password" placeholder="Password"
                                           onChange={event => handlePasswordChange(event)}
                             />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3" controlId="formBasicPassword2">
                             <Form.Label>Repeat Password</Form.Label>
                             <Form.Control required type="password" placeholder="Repeat Password"
                                           onChange={event => handleReapeatPasswordChange(event)}
                             />
 
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3" controlId="formBasicImage">
 
 
-                            <Form.Label>upload photo</Form.Label>
-                            <br></br>
-                            <input type="file" accept="image/*" className="custom-file-input" id="inputGroupFile01"
-                                   onChange={event => handleAvaterChange(event)}></input>
+                            {/*<Form.Group className="mb-3" id="inputGroupFile01">*/}
+                                <Form.Label>Choose Image</Form.Label>
+                                <Form.Control  type="file" accept="image/*"
+                                               onChange={event => handleAvaterChange(event)}
+                                />
+                            {/*</Form.Group>*/}
+
+                            {/*<Form.Label>upload photo</Form.Label>*/}
+                            {/*<br></br>*/}
+                            {/*<input type="file" accept="image/*" className="custom-file-input" id="inputGroupFile01"*/}
+                            {/*       onChange={event => handleAvaterChange(event)}></input>*/}
 
 
                         </Form.Group>

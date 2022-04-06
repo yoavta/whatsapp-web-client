@@ -1,14 +1,12 @@
-import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
+import {Col, Container, Row, Tab} from "react-bootstrap";
 import React, {useState} from "react";
 import './side.nav.style.css';
 import massage from '../components/massage'
 import DisplayMsg from '../components/displayMsg'
 import './chat-window.style.css';
-import {Alert, Button, Card, Form} from "react-bootstrap";
 import ServiceServer from "../server-service";
 import SendingOptions from "./sendingOptions";
 import PoppingScreen from "./popping-screen.component";
-
 
 
 function ChatWindow(props) {
@@ -22,7 +20,6 @@ function ChatWindow(props) {
 
 
     function handleSubmit() {
-        debugger
 
         ServiceServer.addMsg(msg, props.currentUser, props.chatWith);
 
@@ -47,7 +44,7 @@ function ChatWindow(props) {
         console.log(ctime);
         let msgtime = ctime;
 
-        setMsg(new massage(text, true, msgtime,null,null));
+        setMsg(new massage(text, true, msgtime, null, null));
     }
 
 
@@ -58,16 +55,18 @@ function ChatWindow(props) {
                 <Row>
 
                     <Col>
-                        <PoppingScreen type ='video' setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
-                        <PoppingScreen type ='image' setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
-                        <PoppingScreen type ='voice' setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
-                        <h1>chat with: {props.chatWith}</h1>
-                        this is my text
+                        <PoppingScreen type='video' setMsg={setMsg} handleSubmit={handleSubmit}
+                                       currentUser={props.currentUser} chatWith={props.chatWith}/>
+                        <PoppingScreen type='image' setMsg={setMsg} handleSubmit={handleSubmit}
+                                       currentUser={props.currentUser} chatWith={props.chatWith}/>
+                        <PoppingScreen type='voice' setMsg={setMsg} handleSubmit={handleSubmit}
+                                       currentUser={props.currentUser} chatWith={props.chatWith}/>
 
 
                         {ServiceServer.getChats(props.currentUser, props.chatWith).map((massage, key) => {
 
                             if (massage.is_it_me) {
+
                                 return (
                                     <DisplayMsg key={key} massage={massage}
                                                 style={{position: 'relative', width: '40%'}}/>

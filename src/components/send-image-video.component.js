@@ -1,6 +1,5 @@
 import {Col, Container, Form, Image, Row} from "react-bootstrap";
-import React, {useState} from "react";
-import ServiceServer from "../server-service";
+import React from "react";
 
 function SendImageVideo(props) {
 
@@ -18,8 +17,10 @@ function SendImageVideo(props) {
 
             <Row className="justify-content-md-center">
                 <Col md={"auto"}>
-                    {props.type ==='image'&&(props.mediaPrev != null) && <Image className={"center-block"} src={props.mediaPrev}/>}
-                    {props.type ==='video'&&(props.mediaPrev != null) && <video width="400" controls className={"center-block"} src={props.mediaPrev}/>}
+                    {props.type === 'image' && (props.mediaPrev != null) &&
+                        <Image className={"center-block"} src={props.mediaPrev}/>}
+                    {props.type === 'video' && (props.mediaPrev != null) &&
+                        <video width="400" controls className={"center-block"} src={props.mediaPrev}/>}
                 </Col>
             </Row>
 

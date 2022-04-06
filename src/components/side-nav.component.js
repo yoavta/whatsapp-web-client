@@ -4,6 +4,7 @@ import './side.nav.style.css';
 import PrevChat from "./prev-chat.component";
 import Search from "./search.component";
 import ServiceServer from "../server-service";
+import {forEach} from "react-bootstrap/ElementChildren";
 
 
 function SideNav(props) {
@@ -17,26 +18,17 @@ function SideNav(props) {
     }
 
 
-
     return (<Tab.Container id="tabs" defaultActiveKey="first">
-            <Row>
-                <Col>
-                    <Search setSearchFilter={props.setSearchFilter} searchFilter={props.searchFilter}/>
-
-
-                    {ServiceServer.getUsers(props.searchFilter).map((val) => {
-                        if (subsetOf(val.user_name)) {
-                            return <PrevChat key={val.user_name} {...props} name={val.user_name} as={Nav.Link}
-                                             setCurrentChat={setCurrentChat}>{val.user_name}</PrevChat>}
-
-                        })}
-
-                    {/*<PrevChat {...props} name={'yahel'} as={Nav.Link} onClick={setCurrentChat}>'yahel</PrevChat>*/}
-                    {/*<PrevChat {...props} name={'yaron'} as={Nav.Link} onClick={setCurrentChat}>yaron</PrevChat>*/}
-                    {/*<PrevChat {...props} name={'yaya'} as={Nav.Link} onClick={setCurrentChat}>yaya</PrevChat>*/}
-                </Col>
-            </Row>
-        </Tab.Container>);
+        <Row>
+            <Col>
+                <Search setSearchFilter={props.setSearchFilter} searchFilter={props.searchFilter}/>
+                 {ServiceServer.getUsersNames(props.currentUser).map(user =>{
+                     if(subsetOf(user)){
+                         return <PrevChat currentUser={props.currentUser} key={user} {...props} name={user} as={Nav.Link} setCurrentChat={setCurrentChat}>{user}</PrevChat>}
+                 })}
+            </Col>
+        </Row>
+    </Tab.Container>);
 }
 
 export default SideNav;

@@ -10,16 +10,22 @@ let users = [
                     is_it_me: true,
                     text: "whats up yahel?",
                     date: "14:30",
+                    media: null,
+                    mediaType: null
                 },
                 {
                     is_it_me: false,
                     text: "all good, how are you?",
                     date: "14:35",
+                    media: null,
+                    mediaType: null
                 },
                 {
                     is_it_me: true,
                     text: "Fine, Thank you!",
                     date: "14:39",
+                    media: null,
+                    mediaType: null
                 }
             ]
             ,
@@ -28,16 +34,91 @@ let users = [
                     is_it_me: true,
                     text: "whats up dani?",
                     date: "14:30",
+                    media: null,
+                    mediaType: null
                 },
                 {
                     is_it_me: false,
                     text: "all good, how are you?",
                     date: "14:35",
+                    media: null,
+                    mediaType: null
                 },
                 {
                     is_it_me: true,
                     text: "Fine, Thank you!",
                     date: "14:39",
+                    media: null,
+                    mediaType: null
+                }
+            ],
+            "dani1": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: null
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: null
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: null
+                }
+            ],
+            "dani2": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: null
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: null
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: null
+                }
+            ],
+            "dani3": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: null
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: null
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: null
                 }
             ]
         }
@@ -48,7 +129,56 @@ let users = [
         user_name: "yahel",
         nickname: "yahel hamagniv",
         password: "123456789",
-        picture_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg/220px-Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg"
+        picture_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg/220px-Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg",
+        chats: {
+            "yahel": [
+                {
+                    is_it_me: true,
+                    text: "whats up yahel?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: null
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: null
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: null
+                }
+            ]
+            ,
+            "dani": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: null
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: null
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: null
+                }
+            ]
+        }
     },
     {
         user_name: "dani",
