@@ -69,6 +69,7 @@ export default class ServiceServer {
         users.forEach(user => {
             if (user.user_name === currentUser && chatWith in user.chats) {
                 user.chats[chatWith].push({is_it_me: msg.isItMe, text: msg.text, date: msg.date, media: msg.media, mediaType: msg.mediaType});
+
             }
         })
 

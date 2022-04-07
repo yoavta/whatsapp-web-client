@@ -1,6 +1,6 @@
-import {Container, Modal, Form, Card, Row, Col, Button} from "react-bootstrap";
+import {Container, Modal, Form, Card, Row, Col, Button, Dropdown} from "react-bootstrap";
 import './welcome.style.css';
-import {useState} from "react";
+import React, {useState} from "react";
 import SendImageVideo from "./send-image-video.component";
 import ServiceServer from "../server-service";
 import massage from "./massage";
@@ -8,17 +8,38 @@ import SendVoice from "./send-voice.component";
 
 function PoppingScreen(props) {
     const [show, setShow] = useState(false);
+    const [type, setType] = useState(null);
+
+    function start() {
+        debugger
+        console.log("gf");
+    }
 
     const handleClose = () => {
         setShow(false);
         setMediaPrev(null)
     };
     const handleShow = () => setShow(true);
+
+    function handleImgShow(){
+        setShow(true);
+        setType("image");
+    }
+    function handleVideoShow(){
+        setShow(true);
+        setType("video");
+    }
+    function handleVoiceShow(){
+        setShow(true);
+        setType("voice");
+    }
+
     const [mediaPrev, setMediaPrev] = useState(null);
 
     function mediaChanged(){
         debugger;
         props.setMsg(new massage('',true,new Date().toLocaleTimeString(),mediaPrev,props.type))
+
     }
 
     function handleSend(event) {
@@ -33,9 +54,24 @@ function PoppingScreen(props) {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                {props.type}
-            </Button>
+            {start}
+            {handleShow}
+            <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    <img src={require('./paper-clipIcon.png')} width={"20px"} height={"20px"}/>
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1"><img onClick={()=>{handleImgShow()}} src={require('./pictureImg.png')}
+                                                          width={"20px"} height={"20px"}/></Dropdown.Item>
+                    <Dropdown.Item href="#/action-2"><img onClick={() => {handleVideoShow()}} src={require('./videoIcon.png')}
+                                                          width={"20px"}
+                                                          height={"20px"}/></Dropdown.Item>
+                    <Dropdown.Item href="#/action-3"><img onClick={() => handleVoiceShow()} src={require('./micIcon.png')}
+                                                          width={"20px"}
+                                                          height={"20px"}/></Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
 
             <Modal
                 show={show}
@@ -45,15 +81,19 @@ function PoppingScreen(props) {
                 centered={true}
             >
                 <Modal.Header closeButton>
-                  <Modal.Title>Send {props.type}</Modal.Title>
+                    <Modal.Title>Send {type}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {props.type!=='voice'&&<SendImageVideo type={props.type} mediaPrev={mediaPrev} setMediaPrev={setMediaPrev} mediaChanged={mediaChanged}/>}
-                    {props.type==='voice'&&<SendVoice type={props.type} mediaPrev={mediaPrev} setMediaPrev={setMediaPrev} mediaChanged={mediaChanged}/>}
+                    {type !== 'voice' &&
+                        <SendImageVideo type={type} mediaPrev={mediaPrev} setMediaPrev={setMediaPrev}
+                                        mediaChanged={mediaChanged}/>}
+                    {type === 'voice' &&
+                        <SendVoice type={type} mediaPrev={mediaPrev} setMediaPrev={setMediaPrev}
+                                   mediaChanged={mediaChanged}/>}
                 </Modal.Body>
                 <Modal.Footer>
                     <Form onSubmit={handleSend}>
-                        <Button variant="secondary" onClick={handleClose} style={{margin:'2px'}}>
+                        <Button variant="secondary" onClick={handleClose} style={{margin: '2px'}}>
                             Close
                         </Button>
                         <Button required={mediaPrev} type="submit" variant="success">

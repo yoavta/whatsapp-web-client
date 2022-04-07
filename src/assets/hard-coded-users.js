@@ -19,6 +19,7 @@ let users = [
                     date: "14:35",
                     media: null,
                     mediaType: null
+
                 },
                 {
                     is_it_me: true,
@@ -26,6 +27,7 @@ let users = [
                     date: "14:39",
                     media: null,
                     mediaType: null
+
                 }
             ]
             ,
