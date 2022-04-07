@@ -66,7 +66,7 @@ function ChatWindow(props) {
                         {ServiceServer.getChats(props.currentUser, props.chatWith).map((massage, key) => {
 
                             if (massage.is_it_me) {
-
+                                debugger
                                 return (
                                     <DisplayMsg key={key} massage={massage}
                                                 style={{position: 'relative', width: '40%'}}/>

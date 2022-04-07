@@ -8,7 +8,6 @@ import ServiceServer from "../server-service";
 function DisplayMsg({massage, style}) {
     if (massage.mediaType==='image'){
        const  chats = ServiceServer.getUsers('yoav')
-            debugger;
     }
     return (   
         
@@ -17,9 +16,9 @@ function DisplayMsg({massage, style}) {
 
                 <h6 className="card-subtitle mb-2 text-muted" >{massage.date}</h6>
 
-                {massage.media_type == "text" && <p className="card-text" >{massage.text}</p>}
-                {massage.media_type == "image" && <Image style={{maxHeight: '50px', maxWidth: '50px'}} className={"center-block"} src={massage.media}/>}
-                {massage.media_type == "video" && <video width="400" controls className={"center-block"} src={massage.media_type}/>}
+                {massage.mediaType == "text" && <p className="card-text" >{massage.text}</p>}
+                {massage.mediaType == "image" && <Image style={{maxHeight: '100px', maxWidth: '100px'}} className={"center-block"} src={massage.media}/>}
+                {massage.mediaType == "video" && <video width="400" controls className={"center-block"} src={massage.media_type}/>}
             </div>
         </div>
     );

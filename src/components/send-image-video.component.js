@@ -1,20 +1,23 @@
 import {Col, Container, Form, Image, Row} from "react-bootstrap";
-import React from "react";
+import React ,{useState, useEffect} from "react";
 
 function SendImageVideo(props) {
 
+    useEffect(() => {
+
+        props.mediaPrev != null && props.mediaChanged()},[props.mediaPrev])
 
     return (<Container>
             <Form.Group className="mb-3" controlId="formImage">
                 <Form.Label>Choose Image</Form.Label>
                 <Form.Control required type="file" accept="image/*"
                               onChange={event => {
-                                  debugger
-                                  event.preventDefault();
-                                  event.stopPropagation();
-                                  let val = URL.createObjectURL(event.target.files[0]);
-                                  props.setMediaPrev(val)
-                                  props.mediaChanged()
+
+                                  const val = URL.createObjectURL(event.target.files[0]);
+                                  props.setMediaPrev(val);
+
+
+                                  // props.mediaChanged();
                               }}
                 />
             </Form.Group>

@@ -11,14 +11,14 @@ let users = [
                     text: "whats up yahel?",
                     date: "14:30",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: false,
                     text: "all good, how are you?",
                     date: "14:35",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
 
                 },
                 {
@@ -26,7 +26,7 @@ let users = [
                     text: "Fine, Thank you!",
                     date: "14:39",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
 
                 }
             ]
@@ -37,21 +37,21 @@ let users = [
                     text: "whats up dani?",
                     date: "14:30",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: false,
                     text: "all good, how are you?",
                     date: "14:35",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: true,
                     text: "Fine, Thank you!",
                     date: "14:39",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 }
             ],
             "dani1": [
@@ -60,21 +60,21 @@ let users = [
                     text: "whats up dani?",
                     date: "14:30",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: false,
                     text: "all good, how are you?",
                     date: "14:35",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: true,
                     text: "Fine, Thank you!",
                     date: "14:39",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 }
             ],
             "dani2": [
@@ -83,21 +83,21 @@ let users = [
                     text: "whats up dani?",
                     date: "14:30",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: false,
                     text: "all good, how are you?",
                     date: "14:35",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: true,
                     text: "Fine, Thank you!",
                     date: "14:39",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 }
             ],
             "dani3": [
@@ -106,21 +106,21 @@ let users = [
                     text: "whats up dani?",
                     date: "14:30",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: false,
                     text: "all good, how are you?",
                     date: "14:35",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: true,
                     text: "Fine, Thank you!",
                     date: "14:39",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 }
             ]
         }
@@ -139,21 +139,21 @@ let users = [
                     text: "whats up yahel?",
                     date: "14:30",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: false,
                     text: "all good, how are you?",
                     date: "14:35",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: true,
                     text: "Fine, Thank you!",
                     date: "14:39",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 }
             ]
             ,
@@ -163,21 +163,21 @@ let users = [
                     text: "whats up dani?",
                     date: "14:30",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: false,
                     text: "all good, how are you?",
                     date: "14:35",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 },
                 {
                     is_it_me: true,
                     text: "Fine, Thank you!",
                     date: "14:39",
                     media: null,
-                    mediaType: null
+                    mediaType: "text"
                 }
             ]
         }

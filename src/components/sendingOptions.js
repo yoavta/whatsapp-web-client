@@ -15,25 +15,16 @@ function sendingOption(props) {
 
     function imgClick() {
         debugger
-        return(
-            <PoppingScreen type='image' setMsg={props.setMsg} handleSubmit={props.handleSubmit} currentUser={props.currentUser}
-                           chatWith={props.chatWith}/>
-            )
+
 
     }
 
     function videoClick() {
-        return (
-            <PoppingScreen type='video' setMsg={props.setMsg} handleSubmit={props.handleSubmit} currentUser={props.currentUser}
-                           chatWith={props.chatWith}/>
-        )
+
     }
 
     function micClicke() {
-        return(
-            <PoppingScreen type='voice' setMsg={props.setMsg} handleSubmit={props.handleSubmit} currentUser={props.currentUser}
-                           chatWith={props.chatWith}/>
-        )
+
     }
 
     return (

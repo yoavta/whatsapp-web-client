@@ -10,18 +10,33 @@ function PoppingScreen(props) {
     const [show, setShow] = useState(false);
     const [type, setType] = useState(null);
 
+    const [mediaPrev, setMediaPrev] = useState(null);
+
+
+
+    function changeMediaPrev(mediaType){
+
+        console.log("changeMediaPrev",mediaType)
+        //setMediaPrev(mediaType);
+        setMediaPrev(mediaType)
+        console.log(mediaPrev);
+    }
+
     function start() {
-        debugger
+
         console.log("gf");
     }
 
     const handleClose = () => {
+
         setShow(false);
         setMediaPrev(null)
     };
+
     const handleShow = () => setShow(true);
 
     function handleImgShow(){
+
         setShow(true);
         setType("image");
     }
@@ -34,11 +49,11 @@ function PoppingScreen(props) {
         setType("voice");
     }
 
-    const [mediaPrev, setMediaPrev] = useState(null);
+
 
     function mediaChanged(){
-        debugger;
-        props.setMsg(new massage('',true,new Date().toLocaleTimeString(),mediaPrev,props.type))
+        debugger
+        props.setMsg(new massage('',true,new Date().toLocaleTimeString(),mediaPrev,type))
 
     }
 
@@ -54,8 +69,7 @@ function PoppingScreen(props) {
 
     return (
         <>
-            {start}
-            {handleShow}
+
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                     <img src={require('./paper-clipIcon.png')} width={"20px"} height={"20px"}/>
@@ -85,7 +99,7 @@ function PoppingScreen(props) {
                 </Modal.Header>
                 <Modal.Body>
                     {type !== 'voice' &&
-                        <SendImageVideo type={type} mediaPrev={mediaPrev} setMediaPrev={setMediaPrev}
+                        <SendImageVideo type={type} mediaPrev={mediaPrev} setMediaPrev={changeMediaPrev}
                                         mediaChanged={mediaChanged}/>}
                     {type === 'voice' &&
                         <SendVoice type={type} mediaPrev={mediaPrev} setMediaPrev={setMediaPrev}
