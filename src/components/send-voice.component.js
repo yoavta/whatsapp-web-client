@@ -4,20 +4,27 @@ import ServiceServer from "../server-service";
 
 function SendVoice(props) {
 
+    const [src, setSrc] = useState(null);
 
     function record() {
-        const p = navigator.mediaDevices.getUserMedia({audio: true});
-        p.then(function (mediaStream) {
-            var audio = document.querySelector('audio');
-            audio.src = window.URL.createObjectURL(mediaStream);
-            audio.onloadedmetadata = function (e) {
-                audio.play();
-            };
-        });
+        console.log("record")
+
+    }
+
+    function stop() {
+        console.log("stop")
+
+    }
+
+    function play() {
+        console.log("play")
+
     }
 
     return (<Container>
-            <Button onClick={record()}>Record</Button>
+            <Button on={record()}>Record</Button>
+            <Button onClick={stop()}>Stop</Button>
+            <Button onClick={play()}>Play</Button>
             {/*<Form.Group className="mb-3" controlId="formImage">*/}
             {/*    <Form.Label>Choose Image</Form.Label>*/}
             {/*    <input type="file" accept="audio/*" capture />*/}

@@ -1,6 +1,5 @@
 import {Col, Container, Form, Image, Row} from "react-bootstrap";
-import React, {useState} from "react";
-import ServiceServer from "../server-service";
+import React from "react";
 
 function SendImageVideo(props) {
 

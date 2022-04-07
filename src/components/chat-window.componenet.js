@@ -1,14 +1,13 @@
+
 import {Col, Container, Image, Nav, Row, Tab} from "react-bootstrap";
 import React, {useState} from "react";
 import './side.nav.style.css';
 import massage from '../components/massage'
 import DisplayMsg from '../components/displayMsg'
 import './chat-window.style.css';
-import {Alert, Button, Card, Form} from "react-bootstrap";
 import ServiceServer from "../server-service";
 import SendingOptions from "./sendingOptions";
 import PoppingScreen from "./popping-screen.component";
-
 
 
 function ChatWindow(props) {
@@ -22,7 +21,6 @@ function ChatWindow(props) {
 
 
     function handleSubmit() {
-        debugger
 
         ServiceServer.addMsg(msg, props.currentUser, props.chatWith);
 
@@ -58,6 +56,7 @@ function ChatWindow(props) {
                 <Row>
 
                     <Col>
+
 
 
                         <h1>chat with: {props.chatWith}</h1>

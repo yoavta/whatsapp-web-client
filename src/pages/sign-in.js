@@ -1,11 +1,10 @@
 import ServiceServer from '../server-service';
-import {Alert, Button, Card, Container, Form} from "react-bootstrap";
+import {Alert, Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import './sign-in.css';
 import {useNavigate} from "react-router-dom";
 import Welcome from "../components/welcome.component";
 import './card-style.css';
-
 
 
 // class SignIn extends React.Component {
@@ -21,10 +20,8 @@ function SignIn(props) {
     const [alert, setAlert] = useState(false);
 
 
-
     async function handleSubmit(event) {
         ServiceServer.printAllUsers();
-        debugger;
         const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
@@ -34,13 +31,13 @@ function SignIn(props) {
 
         } else {
             setValidated(true);
-                const isValid = ServiceServer.checkValidUser(userName, password);
-                if (isValid) {
-                    props.setUser(userName);
-                    navigate("/chat", {replace: true});
-                } else {
-                    showAlert();
-                }
+            const isValid = ServiceServer.checkValidUser(userName, password);
+            if (isValid) {
+                props.setUser(userName);
+                navigate("/chat", {replace: true});
+            } else {
+                showAlert();
+            }
             // })
 
         }
@@ -61,20 +58,20 @@ function SignIn(props) {
     }
 
     async function handlePasswordChange(event) {
-        const  val = event.target.value;
+        const val = event.target.value;
         setPassword(val);
         console.log(password);
     }
 
-       async function handleUserNameChange(event) {
-        const  val = event.target.value;
+    async function handleUserNameChange(event) {
+        const val = event.target.value;
         setUserName(val);
         console.log(userName);
     }
 
     return (
         <div className="Sign-in">
-        
+
             <Card id="card-style">
                 <Container style={{width: "60%"}}>
 
@@ -82,18 +79,19 @@ function SignIn(props) {
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>User Name</Form.Label>
                             <Form.Control required type="text" placeholder="User Name"
-                                onChange={event => handleUserNameChange(event)}
+                                          onChange={event => handleUserNameChange(event)}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control required type={passwordVisible ? "text" : "password"} placeholder="Password"
-                                onChange={event => handlePasswordChange(event)}
+                                          onChange={event => handlePasswordChange(event)}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="form">
-
-                            <Form.Check type="checkbox" onClick={togglePassword} label="Show Password"/>
+                            <Container style={{maxWidth:'40%'}} fluid>
+                                <Form.Check type="checkbox" onClick={togglePassword} label="Show Password"/>
+                            </Container>
                         </Form.Group>
                         <Button className="btn btn-secondary" type="submit">
                             Submit
@@ -106,12 +104,17 @@ function SignIn(props) {
                     </Alert>
                 </Container>
             </Card>
-                              
+
 
         </div>
     );
-
-
+      //
+      // <Row className="justify-content-md-center">
+      //           <Col md={"auto"}>
+      //               {/*{props.type ==='image'&&(props.mediaPrev != null) && <Image className={"center-block"} src={props.mediaPrev}/>}*/}
+      //               {/*{props.type ==='video'&&(props.mediaPrev != null) && <video width="400" controls className={"center-block"} src={props.mediaPrev}/>}*/}
+      //           </Col>
+      //       </Row>
 }
 
 
