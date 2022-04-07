@@ -4,7 +4,7 @@ class massage {
         this.isItMe = isItMe;
         this.date = date;
         this.media = media;
-        this.mediaType = media.mediaType
+        this.mediaType = mediaType
     }
 
     getIsItMe() {

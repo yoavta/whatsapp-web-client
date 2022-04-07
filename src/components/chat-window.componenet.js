@@ -1,4 +1,4 @@
-import {Col, Container, Nav, Row, Tab} from "react-bootstrap";
+import {Col, Container, Image, Nav, Row, Tab} from "react-bootstrap";
 import React, {useState} from "react";
 import './side.nav.style.css';
 import massage from '../components/massage'
@@ -47,7 +47,7 @@ function ChatWindow(props) {
         console.log(ctime);
         let msgtime = ctime;
 
-        setMsg(new massage(text, true, msgtime,null,null));
+        setMsg(new massage(text, true, msgtime,"null","text"));
     }
 
 
@@ -58,9 +58,8 @@ function ChatWindow(props) {
                 <Row>
 
                     <Col>
-                        <PoppingScreen type ='video' setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
-                        <PoppingScreen type ='image' setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
-                        <PoppingScreen type ='voice' setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
+
+
                         <h1>chat with: {props.chatWith}</h1>
                         this is my text
 
@@ -68,6 +67,7 @@ function ChatWindow(props) {
                         {ServiceServer.getChats(props.currentUser, props.chatWith).map((massage, key) => {
 
                             if (massage.is_it_me) {
+
                                 return (
                                     <DisplayMsg key={key} massage={massage}
                                                 style={{position: 'relative', width: '40%'}}/>
@@ -106,8 +106,9 @@ function ChatWindow(props) {
                                    handleNewMsg(event)
                                }}
                         />
+                        <PoppingScreen setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
                     </div>
-                    <SendingOptions/>
+
 
 
                 </Row>

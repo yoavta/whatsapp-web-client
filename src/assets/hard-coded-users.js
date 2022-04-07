@@ -10,16 +10,19 @@ let users = [
                     is_it_me: true,
                     text: "whats up yahel?",
                     date: "14:30",
+                    media_type: "text"
                 },
                 {
                     is_it_me: false,
                     text: "all good, how are you?",
                     date: "14:35",
+                    media_type: "text"
                 },
                 {
                     is_it_me: true,
                     text: "Fine, Thank you!",
                     date: "14:39",
+                    media_type: "text"
                 }
             ]
             ,
@@ -28,6 +31,7 @@ let users = [
                     is_it_me: true,
                     text: "whats up dani?",
                     date: "14:30",
+                    media_type: "text"
                 },
                 {
                     is_it_me: false,
