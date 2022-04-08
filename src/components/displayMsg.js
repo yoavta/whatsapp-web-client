@@ -18,7 +18,7 @@ function DisplayMsg({massage, style}) {
 
                 {massage.mediaType == "text" && <p className="card-text" >{massage.text}</p>}
                 {massage.mediaType == "image" && <Image style={{maxHeight: '100px', maxWidth: '100px'}} className={"center-block"} src={massage.media}/>}
-                {massage.mediaType == "video" && <video width="400" controls className={"center-block"} src={massage.media_type}/>}
+                {massage.mediaType == "video" && <video style={{maxHeight: '200px', maxWidth: '200px'}} controls className={"center-block"} src={massage.media}/>}
             </div>
         </div>
     );
