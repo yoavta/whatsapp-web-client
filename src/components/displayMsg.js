@@ -3,7 +3,6 @@ import React, {useState} from "react";
 
 
 function DisplayMsg({massage, style}) {
-    const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
 
 
