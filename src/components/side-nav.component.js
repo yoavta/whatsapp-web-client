@@ -23,7 +23,7 @@ function SideNav(props) {
 
 
     return (<Tab.Container id="tabs" defaultActiveKey="first">
-        <Row>
+        <Row style={{overflow: 'auto' ,maxHeight: '450px', minHeight: '450px'}}>
             <Col>
                 <Search setSearchFilter={props.setSearchFilter} searchFilter={props.searchFilter}/>
                 {ServiceServer.getUsersNames(props.currentUser).map(user => {

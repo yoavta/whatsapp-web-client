@@ -122,6 +122,29 @@ let users = [
                     media: null,
                     mediaType: "text"
                 }
+            ],
+            "dani4": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
             ]
         }
 

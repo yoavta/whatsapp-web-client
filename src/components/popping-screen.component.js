@@ -1,4 +1,4 @@
-import {Container, Modal, Form, Card, Row, Col, Button, Dropdown} from "react-bootstrap";
+import {Container, Modal, Form, Card, Row, Col, Button, Dropdown, DropdownButton, ButtonGroup} from "react-bootstrap";
 import './welcome.style.css';
 import React, {useState} from "react";
 import SendImageVideo from "./send-image-video.component";
@@ -13,10 +13,9 @@ function PoppingScreen(props) {
     const [mediaPrev, setMediaPrev] = useState(null);
 
 
+    function changeMediaPrev(mediaType) {
 
-    function changeMediaPrev(mediaType){
-
-        console.log("changeMediaPrev",mediaType)
+        console.log("changeMediaPrev", mediaType)
         //setMediaPrev(mediaType);
         setMediaPrev(mediaType)
         console.log(mediaPrev);
@@ -35,25 +34,26 @@ function PoppingScreen(props) {
 
     const handleShow = () => setShow(true);
 
-    function handleImgShow(){
+    function handleImgShow() {
 
         setShow(true);
         setType("image");
     }
-    function handleVideoShow(){
+
+    function handleVideoShow() {
         setShow(true);
         setType("video");
     }
-    function handleVoiceShow(){
+
+    function handleVoiceShow() {
         setShow(true);
         setType("voice");
     }
 
 
-
-    function mediaChanged(){
+    function mediaChanged() {
         debugger
-        props.setMsg(new massage('',true,new Date().toLocaleTimeString(),mediaPrev,type))
+        props.setMsg(new massage('', true, new Date().toLocaleTimeString(), mediaPrev, type))
 
     }
 
@@ -70,18 +70,50 @@ function PoppingScreen(props) {
     return (
         <>
 
+            <div className="mb-2">
+                <DropdownButton
+                    as={ButtonGroup}
+                    key={'up'}
+                    id={`dropdown-button-drop-up`}
+                    drop={'up'}
+                    variant="secondary"
+                    title={<img src={require('./paper-clipIcon.png')} width={"20px"} height={"20px"}/>}
+                >
+                    <Dropdown.Item eventKey="1" onClick={() => {
+                        handleImgShow()
+                    }}><img src={require('./pictureImg.png')} width={"20px"} height={"20px"}/></Dropdown.Item>
+                    <Dropdown.Item eventKey="2" onClick={() => {
+                        handleVideoShow()
+                    }}><img src={require('./videoIcon.png')}
+                            width={"20px"}
+                            height={"20px"}/></Dropdown.Item>
+                    <Dropdown.Item eventKey="3"  onClick={() => handleVoiceShow()} ><img
+                                                          src={require('./micIcon.png')}
+                                                          width={"20px"}
+                                                          height={"20px"}/></Dropdown.Item>
+                    <Dropdown.Divider/>
+                    <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+                </DropdownButton>
+            </div>
+
+
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                     <img src={require('./paper-clipIcon.png')} width={"20px"} height={"20px"}/>
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1"><img onClick={()=>{handleImgShow()}} src={require('./pictureImg.png')}
+                <Dropdown.Menu flip={true}>
+                    <Dropdown.Item href="#/action-1"><img onClick={() => {
+                        handleImgShow()
+                    }} src={require('./pictureImg.png')}
                                                           width={"20px"} height={"20px"}/></Dropdown.Item>
-                    <Dropdown.Item href="#/action-2"><img onClick={() => {handleVideoShow()}} src={require('./videoIcon.png')}
+                    <Dropdown.Item href="#/action-2"><img onClick={() => {
+                        handleVideoShow()
+                    }} src={require('./videoIcon.png')}
                                                           width={"20px"}
                                                           height={"20px"}/></Dropdown.Item>
-                    <Dropdown.Item href="#/action-3"><img onClick={() => handleVoiceShow()} src={require('./micIcon.png')}
+                    <Dropdown.Item href="#/action-3"><img onClick={() => handleVoiceShow()}
+                                                          src={require('./micIcon.png')}
                                                           width={"20px"}
                                                           height={"20px"}/></Dropdown.Item>
                 </Dropdown.Menu>
