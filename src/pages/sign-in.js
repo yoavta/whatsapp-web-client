@@ -1,9 +1,8 @@
 import ServiceServer from '../server-service';
 import {Alert, Button, Card, Col, Container, Form, Row} from "react-bootstrap";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import './sign-in.css';
-import {useNavigate} from "react-router-dom";
-import Welcome from "../components/welcome.component";
+import {Link, useNavigate} from "react-router-dom";
 import './card-style.css';
 
 
@@ -73,29 +72,53 @@ function SignIn(props) {
         <div className="Sign-in">
 
             <Card id="card-style">
-                <Container style={{width: "60%"}}>
+                <Container style={{width: "fluid%"}}>
 
                     <Form validated={validated} onSubmit={event => handleSubmit(event)}>
                         <Form.Group className="mb-3" controlId="formBasicName">
-                            <Form.Label>User Name</Form.Label>
-                            <Form.Control required type="text" placeholder="User Name"
-                                          onChange={event => handleUserNameChange(event)}
-                            />
+                            <Row className="justify-content-md-center">
+
+                                <Col sm xs lg="8" md={"auto"}>
+
+                                    <Form.Label>User Name</Form.Label>
+                                    <Form.Control required type="text" placeholder="User Name"
+                                                  onChange={event => handleUserNameChange(event)}
+                                    />
+                                </Col>
+                            </Row>
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control required type={passwordVisible ? "text" : "password"} placeholder="Password"
-                                          onChange={event => handlePasswordChange(event)}
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="form">
-                            <Container style={{maxWidth:'40%'}} fluid>
-                                <Form.Check type="checkbox" onClick={togglePassword} label="Show Password"/>
-                            </Container>
-                        </Form.Group>
+                        <Row className="justify-content-md-center">
+                              <Col sm xs lg="1">
+                            </Col>
+                            <Col sm xs lg="8" md={"auto"}>
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                    <Form.Label>Password</Form.Label>
+                                    <Form.Control style={{width: '100%'}} required
+                                                  type={passwordVisible ? "text" : "password"}
+                                                  placeholder="Password"
+                                                  onChange={event => handlePasswordChange(event)}
+                                    />
+                                </Form.Group>
+
+                            </Col>
+                            <Col sm xs lg="1">
+
+                                {/*<Container style={{maxWidth: '40%'}}>*/}
+                                <Form.Group controlId="formBasicPasswordShow">
+                                    <Form.Label></Form.Label>
+
+                                    <Form.Check type="checkbox" onClick={togglePassword} label={"show password"}/>
+                                </Form.Group>
+                                {/*</Container>*/}
+                            </Col>
+                        </Row>
                         <Button className="btn btn-secondary" type="submit">
                             Submit
                         </Button>
+                        <Form.Group>
+
+                                 <Form.Text>still dont have a user? </Form.Text>     <Form.Text style={{color:"blue"}}  as={Link} to="/register"> Create an account.</Form.Text>
+                        </Form.Group>
                     </Form>
                     <Alert id={'special-alert'} variant="danger" onClose={() => {
                         hideAlert()
@@ -108,13 +131,9 @@ function SignIn(props) {
 
         </div>
     );
-      //
-      // <Row className="justify-content-md-center">
-      //           <Col md={"auto"}>
-      //               {/*{props.type ==='image'&&(props.mediaPrev != null) && <Image className={"center-block"} src={props.mediaPrev}/>}*/}
-      //               {/*{props.type ==='video'&&(props.mediaPrev != null) && <video width="400" controls className={"center-block"} src={props.mediaPrev}/>}*/}
-      //           </Col>
-      //       </Row>
+//
+//
+
 }
 
 
