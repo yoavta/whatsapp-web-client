@@ -84,12 +84,25 @@ export default class ServiceServer {
         if (chats){
             return chats.slice(-1)[0];
         }
+
         return null;
     }
+
     printUsers() {
         users.forEach(val => {
             console.log(val.nickname)
         });
+    }
+
+    static addConversation(currentUser, chatWith){
+        debugger
+         users.forEach(user => {
+            if (user.user_name === currentUser) {
+                user.chats[chatWith] = [];
+
+
+            }
+        })
     }
 
 }

@@ -1,6 +1,6 @@
 
 import {Col, Container, Image, Nav, Row, Tab} from "react-bootstrap";
-import React, {useState} from "react";
+import React, {useState , useEffect} from "react";
 import './side.nav.style.css';
 import massage from '../components/massage'
 import DisplayMsg from '../components/displayMsg'
@@ -8,6 +8,7 @@ import './chat-window.style.css';
 import ServiceServer from "../server-service";
 import SendingOptions from "./sendingOptions";
 import PoppingScreen from "./popping-screen.component";
+
 
 
 function ChatWindow(props) {
@@ -32,9 +33,25 @@ function ChatWindow(props) {
 
     }
 
+  //   useEffect(() => {
+  //   const listener = event => {
+  //     if (event.code === "Enter" || event.code === "NumpadEnter") {
+  //       console.log("Enter key was pressed. Run your function.");
+  //       debugger
+  //       handleSubmit();
+  //       event.preventDefault();
+  //
+  //     }
+  //   };
+  //   document.addEventListener("keydown", listener);
+  //   return () => {
+  //     document.removeEventListener("keydown", listener);
+  //   };
+  // }, []);
+
 
     function handleNewMsg(event) {
-
+        debugger
         let text = event.target.value;
 
         // handelTime();

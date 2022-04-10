@@ -25,16 +25,16 @@ function PrevChat(props) {
                     <Card.Title style={{marginBottom: 0}}>
                         {props.name}
                     </Card.Title>
-                    <Card.Text>
+                    {massage != null &&<Card.Text>
                         {massage.text}
-                    </Card.Text>
+                    </Card.Text>}
                 </Col>
 
 
                 <Col xs={6} md={4}>
-                    <p className="time">
+                    {massage != null && <p className="time">
                         {massage.date}
-                    </p>
+                    </p>}
                 </Col>
             </Row>
 

@@ -21,12 +21,7 @@ function PoppingScreen(props) {
         console.log(mediaPrev);
     }
 
-    function start() {
-
-        console.log("gf");
-    }
-
-    const handleClose = () => {
+      const handleClose = () => {
 
         setShow(false);
         setMediaPrev(null)
