@@ -2,7 +2,7 @@ import ServiceServer from '../server-service';
 import {Alert, Button, Card, Container, Form} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import './card-style.css';
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 
 function Register(props) {
@@ -109,6 +109,11 @@ function Register(props) {
                         <Button className="btn btn-secondary" type="submit">
                             Submit
                         </Button>
+                                    <Form.Group>
+
+                            <Form.Text>
+                                Already registered?    </Form.Text> <Form.Text style={{color:"blue"}}  as={Link} to="/signin"> click here</Form.Text> <Form.Text> to login.</Form.Text>
+                        </Form.Group>
                     </Form>
 
                 </Container>
