@@ -9,7 +9,7 @@ function PrevChat(props) {
 
 
         <Card id='prev-card'
-              style={{cursor: "pointer"}}
+              style={props.style}
               onClick={() => props.setCurrentChat(props.name)}
         >
 

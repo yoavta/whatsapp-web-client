@@ -51,7 +51,7 @@ function ChatWindow(props) {
 
     return (
         <Container id='all-frame' fluid
-                   style={{maxHeight: '450px', minHeight: '450px', width: '100%', overflowY: 'auto'}}>
+                   style={{maxHeight: '450px', minHeight: '450px', width: '100%', overflowY: 'auto', display: "flex" , flexDirection: "column-reverse"}}>
             <Tab.Container id="tabs" defaultActiveKey="first">
                 <Row>
 
@@ -59,14 +59,14 @@ function ChatWindow(props) {
 
 
 
-                        <h1>chat with: {props.chatWith}</h1>
-                        this is my text
+                        {/*<h1 style={{top: '10%'}}>chat with: {props.chatWith}</h1>*/}
+                        {/*this is my text*/}
 
 
                         {ServiceServer.getChats(props.currentUser, props.chatWith).map((massage, key) => {
 
                             if (massage.is_it_me) {
-                                debugger
+
                                 return (
                                     <DisplayMsg key={key} massage={massage}
                                                 style={{position: 'relative', width: '40%'}}/>
