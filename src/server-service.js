@@ -29,7 +29,8 @@ export default class ServiceServer {
     }
 
     static getUserUrl(userName) {
-        let url = null;
+        let url = "https://cdn-icons.flaticon.com/png/512/2102/premium/2102647.png?token=exp=1649580878~hmac=0b7dfdb65a1a911aeb173696948d554e";
+
         users.forEach(val => {
             if (val.user_name === userName) {
                 url = val.picture_url;
