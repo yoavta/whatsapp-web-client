@@ -5,6 +5,8 @@ import PrevChat from "./prev-chat.component";
 import Search from "./search.component";
 import ServiceServer from "../server-service";
 import {forEach} from "react-bootstrap/ElementChildren";
+import users from "../assets/hard-coded-users";
+import serverService from "../server-service";
 
 
 
@@ -26,16 +28,17 @@ function SideNav(props) {
                 <Search setSearchFilter={props.setSearchFilter} searchFilter={props.searchFilter}/>
                 {ServiceServer.getUsersNames(props.currentUser).map(user => {
                     if (subsetOf(user)) {
-                        console.log(user)
+
+                        console.log(serverService.getUserUrl(user))
                         if (user === props.chatWith) {
-                            debugger
+
                             return <PrevChat currentUser={props.currentUser}
                                              style={{cursor: 'pointer' ,backgroundColor: '#DCDCDC'}}
                                              key={user} {...props} name={user} as={Nav.Link}
-                                             setCurrentChat={setCurrentChat}>{user}</PrevChat>
+                                             setCurrentChat={setCurrentChat} picture={serverService.getUserUrl(user)} >{user}</PrevChat>
                         } else return <PrevChat currentUser={props.currentUser} style={{cursor: 'pointer'}}
                                                 key={user} {...props} name={user} as={Nav.Link}
-                                                setCurrentChat={setCurrentChat}>{user}</PrevChat>
+                                                setCurrentChat={setCurrentChat} picture={serverService.getUserUrl(user)}>{user}</PrevChat>
                     }
                 })}
 

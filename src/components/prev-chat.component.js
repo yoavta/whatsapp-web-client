@@ -16,7 +16,7 @@ function PrevChat(props) {
             <Row>
                 <Col xs={6} md={4}  >
                     <Image className="rounded-circle"
-                    src={'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Smiley_icon.svg/240px-Smiley_icon.svg.png'}
+                    src={props.picture}
                     width="40"
                     height="40"
                 />
