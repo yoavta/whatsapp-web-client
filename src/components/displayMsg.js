@@ -1,6 +1,6 @@
 import {Col, Image, Modal, Row} from 'react-bootstrap';
 import React, {useState} from "react";
-
+import "./displat-msg.style.css"
 
 function DisplayMsg({massage, style}) {
     const [show, setShow] = useState(false);
@@ -18,8 +18,8 @@ function DisplayMsg({massage, style}) {
 
     return (
 
-        <div className="card" style={style}>
-            <div className="card-body" style={{position: 'relative', textAlign: 'left'}}>
+        <div className="card" style={style} id='msg-card'>
+            <div className="card-body" id ='msg-text'>
 
                 <h6 className="card-subtitle mb-2 text-muted">{massage.date}</h6>
                 {massage.mediaType === "text" && <p className="card-text">{massage.text}</p>}

@@ -36,8 +36,9 @@ function SideNav(props) {
     return (<Tab.Container id="tabs" defaultActiveKey="first">
         <Row style={{overflow: 'auto', maxHeight: '450px', minHeight: '450px'}}>
             <Col>
-                <Search setSearchFilter={props.setSearchFilter} searchFilter={props.searchFilter}/>
 
+                <Search setSearchFilter={props.setSearchFilter} searchFilter={props.searchFilter}/>
+                <NewConversation refresh={handleRefresh} currentUser={props.currentUser}/>
                 {ServiceServer.getUsersNames(props.currentUser).map(user => {
                     if (subsetOf(user)) {
 
@@ -57,7 +58,7 @@ function SideNav(props) {
                 })}
 
             </Col>
-            <NewConversation refresh= {handleRefresh} currentUser={props.currentUser}/>
+
         </Row>
     </Tab.Container>);
 }

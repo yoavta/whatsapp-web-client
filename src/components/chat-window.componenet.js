@@ -67,8 +67,7 @@ function ChatWindow(props) {
 
 
     return (
-        <Container id='all-frame' fluid
-                   style={{maxHeight: '450px', minHeight: '450px', width: '100%', overflowY: 'auto', display: "flex" , flexDirection: "column-reverse"}}>
+        <Container id='all-frame' fluid>
             <Tab.Container id="tabs" defaultActiveKey="first">
                 <Row>
 

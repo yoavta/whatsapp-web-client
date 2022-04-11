@@ -1,3 +1,16 @@
+#prev-card{
+    margin: 1%;
+    height: 15%;
 
+}
 
+#row{
+    height: 100%;
+    width: 100%;
 
+}
+
+#col{
+    height: 100%;
+    padding: 5%;
+}

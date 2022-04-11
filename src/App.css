@@ -9,6 +9,7 @@
   text-align: center;
   padding: 3%;
   background-color: var(--black);
+  background-image: url("./assets/geometric-leaves.png");
   /* color: var(--white); */
   overflow-x: hidden;
 
@@ -19,6 +20,8 @@
   left: 0;
   width: 100%;
   overflow: hidden;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .emoji-container {
@@ -46,8 +49,9 @@
 
 .App-header {
   box-shadow: 4px 3px 2px 2px rgba(0, 0, 0, 0.1);
-
-  background-color: #e4d6d8;
+  max-height: 100%;
+  max-width: 100%;
+  background-color: #ACCBCA;
   height: 100%;
 
   /*min-height: 100vh;*/

@@ -69,12 +69,12 @@ function Register(props) {
                                           onChange={event => handleUserNameChange(event)}
                             />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasiceEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control required type="email" placeholder="Email address"
-                                          onChange={event => handleEmailChange(event)}
-                            />
-                        </Form.Group>
+                        {/*<Form.Group className="mb-3" controlId="formBasiceEmail">*/}
+                        {/*    <Form.Label>Email address</Form.Label>*/}
+                        {/*    <Form.Control required type="email" placeholder="Email address"*/}
+                        {/*                  onChange={event => handleEmailChange(event)}*/}
+                        {/*    />*/}
+                        {/*</Form.Group>*/}
                         <Form.Group className="mb-3" controlId="formBasicPassword1">
                             <Form.Label>Password</Form.Label>
                             <Form.Control required type="password" placeholder="Password"

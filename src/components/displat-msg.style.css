@@ -1,0 +1,10 @@
+#msg-text{
+    position: relative;
+    text-align: left;
+    padding: 5%;
+}
+
+#msg-card{
+    margin: 1%;
+    border-radius: 15px;
+}
