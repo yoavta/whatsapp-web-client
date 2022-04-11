@@ -12,20 +12,40 @@ function Register(props) {
     const [userName, setName] = useState(null);
     const [email, setEmail] = useState(null);
     const [avatar, setAvater] = useState(null);
+    const [validated, setValidated] = useState(false);
+    const [alert, setAlert] = useState(false);
 
 
     async function handleSubmit(event) {
-        if (password === repeatPassword) {
+        if (event.currentTarget.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-            ServiceServer.addUser(userName, password, avatar);
-            ServiceServer.printAllUsers();
-            props.setUser(userName);
+        } else {
+            if (password === repeatPassword) {
+                event.preventDefault();
+                event.stopPropagation();
+                ServiceServer.addUser(userName, password, avatar);
+                ServiceServer.printAllUsers();
+                props.setUser(userName);
 
-            navigate("/chat", {replace: true});
+                navigate("/chat", {replace: true});
+            } else{
+                event.preventDefault();
+                event.stopPropagation();
+                showAlert();
+            }
         }
 
 
+    }
+
+    function showAlert() {
+        setAlert(true);
+    }
+
+    function hideAlert() {
+        setAlert(false);
+        window.location.reload();
     }
 
     function handlePasswordChange(event) {
@@ -92,10 +112,10 @@ function Register(props) {
 
 
                             {/*<Form.Group className="mb-3" id="inputGroupFile01">*/}
-                                <Form.Label>Choose Image</Form.Label>
-                                <Form.Control  type="file" accept="image/*"
-                                               onChange={event => handleAvaterChange(event)}
-                                />
+                            <Form.Label>Choose Image</Form.Label>
+                            <Form.Control type="file" accept="image/*"
+                                          onChange={event => handleAvaterChange(event)}
+                            />
                             {/*</Form.Group>*/}
 
                             {/*<Form.Label>upload photo</Form.Label>*/}
@@ -109,13 +129,17 @@ function Register(props) {
                         <Button className="btn btn-secondary" type="submit">
                             Submit
                         </Button>
-                                    <Form.Group>
+                        <Form.Group>
 
                             <Form.Text>
-                                Already registered?    </Form.Text> <Form.Text style={{color:"blue"}}  as={Link} to="/signin"> click here</Form.Text> <Form.Text> to login.</Form.Text>
+                                Already registered? </Form.Text> <Form.Text style={{color: "blue"}} as={Link}
+                                                                            to="/signin"> click here</Form.Text>
+                            <Form.Text> to login.</Form.Text>
                         </Form.Group>
                     </Form>
-
+                    <Alert style={{width : '100%'}} id={'special-alert'} variant="danger" onClose={() => {hideAlert()}} show={alert} dismissible>
+                        The passwords are not the same
+                    </Alert>
                 </Container>
 
             </Card>
