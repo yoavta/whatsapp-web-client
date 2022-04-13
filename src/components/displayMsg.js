@@ -28,6 +28,10 @@ function DisplayMsg({massage, style}) {
                 {massage.mediaType === "video" &&
                     <video style={{maxHeight: '200px', maxWidth: '200px'}} controls className={"center-block"}
                            src={massage.media}/>}
+
+                {massage.mediaType === "voice" &&
+                    <audio controls src={massage.media} />}
+
                 <div is={'button'} style={{border: 'none', background: 'none', margin: 'none', cursor: 'zoom-in'}}
                      onClick={() => handleShow()}>
 

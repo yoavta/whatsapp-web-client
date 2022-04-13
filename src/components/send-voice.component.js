@@ -1,53 +1,107 @@
 import {Button, Col, Container, Form, Image, Row} from "react-bootstrap";
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import ServiceServer from "../server-service";
 
 function SendVoice(props) {
 
-    const [src, setSrc] = useState(null);
 
-    function record() {
-        console.log("record")
+    useEffect(() => {
 
-    }
+        props.mediaPrev != null && props.mediaChanged()},[props.mediaPrev])
 
-    function stop() {
-        console.log("stop")
+    const [stream, setStream] = useState({
+    access: false,
+    recorder: null,
+    error: ""
+  });
 
-    }
+  const [recording, setRecording] = useState({
+    active: false,
+    available: false,
+    url: ""
+  });
 
-    function play() {
-        console.log("play")
+  const chunks = useRef([]);
 
-    }
+  function getAccess() {
+    navigator.mediaDevices
+      .getUserMedia({ audio: true })
+      .then((mic) => {
+        let mediaRecorder;
 
-    return (<Container>
-            <Button on={record()}>Record</Button>
-            <Button onClick={stop()}>Stop</Button>
-            <Button onClick={play()}>Play</Button>
-            {/*<Form.Group className="mb-3" controlId="formImage">*/}
-            {/*    <Form.Label>Choose Image</Form.Label>*/}
-            {/*    <input type="file" accept="audio/*" capture />*/}
+        try {
+          mediaRecorder = new MediaRecorder(mic, {
+            mimeType: "audio/webm"
+          });
+        } catch (err) {
+          console.log(err);
+        }
 
-            {/*    <Form.Control required type="file"*/}
-            {/*                  onChange={event => {*/}
-            {/*                      props.setMediaPrev(URL.createObjectURL(event.target.files[0]))*/}
-            {/*                      props.mediaChanged()*/}
-            {/*                  }}*/}
-            {/*    />*/}
-            {/*</Form.Group>*/}
+        const track = mediaRecorder.stream.getTracks()[0];
+        track.onended = () => console.log("ended");
 
-            <Row className="justify-content-md-center">
-                <Col md={"auto"}>
-                    {/*{props.type ==='image'&&(props.mediaPrev != null) && <Image className={"center-block"} src={props.mediaPrev}/>}*/}
-                    {/*{props.type ==='video'&&(props.mediaPrev != null) && <video width="400" controls className={"center-block"} src={props.mediaPrev}/>}*/}
-                </Col>
-            </Row>
+        mediaRecorder.onstart = function () {
+          setRecording({
+            active: true,
+            available: false,
+            url: ""
+          });
+        };
 
-        </Container>
+        mediaRecorder.ondataavailable = function (e) {
+          console.log("data available");
+          chunks.current.push(e.data);
+        };
+
+        mediaRecorder.onstop = async function () {
+          console.log("stopped");
+
+          const url = URL.createObjectURL(chunks.current[0]);
+          props.setMediaPrev(url);
+          chunks.current = [];
+
+          setRecording({
+            active: false,
+            available: true,
+            url
+          });
+        };
+
+        setStream({
+          ...stream,
+          access: true,
+          recorder: mediaRecorder
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        setStream({ ...stream, error });
+      });
+  }
+
+  return (
+
+    <Container >
+      {stream.access ? (
+        <div className="audio-container">
+          <Button
+            className={recording.active ? "active" : null}
+            onClick={() => !recording.active && stream.recorder.start()}
+          >
+            Start Recording
+          </Button>
+
+          <Button onClick={() => {stream.recorder.stop(); }}>Stop Recording</Button>
 
 
-    );
+          {recording.available && <audio controls src={recording.url} />}
+        </div>
+      ) : (
+        <Button onClick={getAccess}>Get Mic Access</Button>
+      )}
+    </Container>
+  );
+
 
 
 }
