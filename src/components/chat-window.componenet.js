@@ -67,9 +67,9 @@ function ChatWindow(props) {
 
 
     return (
-        <Container id='all-frame' fluid>
+        <Container fluid>
             <Tab.Container id="tabs" defaultActiveKey="first">
-                <Row>
+                <Row id='all-frame' >
 
                     <Col>
 
@@ -96,20 +96,14 @@ function ChatWindow(props) {
                         })}
 
 
-                        {/* {massages.map((val, key) => {
-                            console.log(val);
-
-
-                        })} */}
-
                     </Col>
 
 
                 </Row>
-                <Row>
+                <Row style={{width : '55vw'}}>
 
 
-                    <div className="input-group mb-3" style={{position: 'fixed', bottom: '7%', width: '53%'}}>
+                    <div className="input-group mb-3" >
                         <button className="btn btn-outline-secondary" type="submit" id="button-addon1"
                                 onClick={(event) => {
                                     handleSubmit(event)
@@ -121,7 +115,7 @@ function ChatWindow(props) {
                                    handleNewMsg(event)
                                }}
                         />
-                        <PoppingScreen setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
+                        <PoppingScreen style={{position: "absolute"}} setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
                     </div>
 
 

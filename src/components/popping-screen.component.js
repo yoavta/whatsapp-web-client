@@ -73,10 +73,11 @@ function PoppingScreen(props) {
                     drop={'up'}
                     variant="secondary"
                     title={<img src={require('./paper-clipIcon.png')} width={"20px"} height={"20px"}/>}
+
                 >
                     <Dropdown.Item eventKey="1" onClick={() => {
                         handleImgShow()
-                    }}><img src={require('./pictureImg.png')} width={"20px"} height={"20px"}/></Dropdown.Item>
+                    }}  ><img src={require('./pictureImg.png')} width={"20px"} height={"20px"}/></Dropdown.Item>
                     <Dropdown.Item eventKey="2" onClick={() => {
                         handleVideoShow()
                     }}><img src={require('./videoIcon.png')}
@@ -86,8 +87,8 @@ function PoppingScreen(props) {
                                                           src={require('./micIcon.png')}
                                                           width={"20px"}
                                                           height={"20px"}/></Dropdown.Item>
-                    <Dropdown.Divider/>
-                    <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+
+
                 </DropdownButton>
             </div>
 
