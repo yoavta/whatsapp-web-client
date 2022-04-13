@@ -1,6 +1,6 @@
 
 import {Col, Container, Image, Nav, Row, Tab} from "react-bootstrap";
-import React, {useState} from "react";
+import React, {useState , useEffect} from "react";
 import './side.nav.style.css';
 import massage from '../components/massage'
 import DisplayMsg from '../components/displayMsg'
@@ -8,6 +8,7 @@ import './chat-window.style.css';
 import ServiceServer from "../server-service";
 import SendingOptions from "./sendingOptions";
 import PoppingScreen from "./popping-screen.component";
+
 
 
 function ChatWindow(props) {
@@ -32,9 +33,25 @@ function ChatWindow(props) {
 
     }
 
+  //   useEffect(() => {
+  //   const listener = event => {
+  //     if (event.code === "Enter" || event.code === "NumpadEnter") {
+  //       console.log("Enter key was pressed. Run your function.");
+  //       debugger
+  //       handleSubmit();
+  //       event.preventDefault();
+  //
+  //     }
+  //   };
+  //   document.addEventListener("keydown", listener);
+  //   return () => {
+  //     document.removeEventListener("keydown", listener);
+  //   };
+  // }, []);
+
 
     function handleNewMsg(event) {
-
+        debugger
         let text = event.target.value;
 
         // handelTime();
@@ -50,10 +67,9 @@ function ChatWindow(props) {
 
 
     return (
-        <Container id='all-frame' fluid
-                   style={{maxHeight: '450px', minHeight: '450px', width: '100%', overflowY: 'auto', display: "flex" , flexDirection: "column-reverse"}}>
+        <Container fluid>
             <Tab.Container id="tabs" defaultActiveKey="first">
-                <Row>
+                <Row id='all-frame' >
 
                     <Col>
 
@@ -80,20 +96,14 @@ function ChatWindow(props) {
                         })}
 
 
-                        {/* {massages.map((val, key) => {
-                            console.log(val);
-
-
-                        })} */}
-
                     </Col>
 
 
                 </Row>
-                <Row>
+                <Row style={{width : '55vw'}}>
 
 
-                    <div className="input-group mb-3" style={{position: 'fixed', bottom: '7%', width: '53%'}}>
+                    <div className="input-group mb-3" >
                         <button className="btn btn-outline-secondary" type="submit" id="button-addon1"
                                 onClick={(event) => {
                                     handleSubmit(event)
@@ -105,7 +115,7 @@ function ChatWindow(props) {
                                    handleNewMsg(event)
                                }}
                         />
-                        <PoppingScreen setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
+                        <PoppingScreen style={{position: "absolute"}} setMsg={setMsg} handleSubmit={handleSubmit} currentUser={props.currentUser} chatWith={props.chatWith}/>
                     </div>
 
 
