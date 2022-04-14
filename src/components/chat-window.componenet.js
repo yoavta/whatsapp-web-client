@@ -29,6 +29,7 @@ function ChatWindow(props) {
             setChange(false);
         } else setChange(true);
         setVal("");
+        setMsg(null)
         // setChange(false);
 
     }

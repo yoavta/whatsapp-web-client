@@ -72,19 +72,19 @@ function PoppingScreen(props) {
                     id={`dropdown-button-drop-up`}
                     drop={'up'}
                     variant="secondary"
-                    title={<img src={require('./paper-clipIcon.png')} width={"20px"} height={"20px"}/>}
-
+                    title={<img src={require('../assets/paper-clipIcon.png')} width={"20px"} height={"20px"}/>}
+                    style={{position: "absolute"}}
                 >
                     <Dropdown.Item eventKey="1" onClick={() => {
                         handleImgShow()
-                    }}  ><img src={require('./pictureImg.png')} width={"20px"} height={"20px"}/></Dropdown.Item>
+                    }}><img src={require('../assets/pictureImg.png')} width={"20px"} height={"20px"}/></Dropdown.Item>
                     <Dropdown.Item eventKey="2" onClick={() => {
                         handleVideoShow()
-                    }}><img src={require('./videoIcon.png')}
+                    }}><img src={require('../assets/videoIcon.png')}
                             width={"20px"}
                             height={"20px"}/></Dropdown.Item>
                     <Dropdown.Item eventKey="3"  onClick={() => handleVoiceShow()} ><img
-                                                          src={require('./micIcon.png')}
+                                                          src={require('../assets/micIcon.png')}
                                                           width={"20px"}
                                                           height={"20px"}/></Dropdown.Item>
 
@@ -93,27 +93,27 @@ function PoppingScreen(props) {
             </div>
 
 
-            <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    <img src={require('./paper-clipIcon.png')} width={"20px"} height={"20px"}/>
-                </Dropdown.Toggle>
+            {/*<Dropdown>*/}
+            {/*    <Dropdown.Toggle variant="success" id="dropdown-basic">*/}
+            {/*        <img src={require('./paper-clipIcon.png')} width={"20px"} height={"20px"}/>*/}
+            {/*    </Dropdown.Toggle>*/}
 
-                <Dropdown.Menu flip={true}>
-                    <Dropdown.Item href="#/action-1"><img onClick={() => {
-                        handleImgShow()
-                    }} src={require('./pictureImg.png')}
-                                                          width={"20px"} height={"20px"}/></Dropdown.Item>
-                    <Dropdown.Item href="#/action-2"><img onClick={() => {
-                        handleVideoShow()
-                    }} src={require('./videoIcon.png')}
-                                                          width={"20px"}
-                                                          height={"20px"}/></Dropdown.Item>
-                    <Dropdown.Item href="#/action-3"><img onClick={() => handleVoiceShow()}
-                                                          src={require('./micIcon.png')}
-                                                          width={"20px"}
-                                                          height={"20px"}/></Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+            {/*    <Dropdown.Menu flip={true}>*/}
+            {/*        <Dropdown.Item href="#/action-1"><img onClick={() => {*/}
+            {/*            handleImgShow()*/}
+            {/*        }} src={require('./pictureImg.png')}*/}
+            {/*                                              width={"20px"} height={"20px"}/></Dropdown.Item>*/}
+            {/*        <Dropdown.Item href="#/action-2"><img onClick={() => {*/}
+            {/*            handleVideoShow()*/}
+            {/*        }} src={require('./videoIcon.png')}*/}
+            {/*                                              width={"20px"}*/}
+            {/*                                              height={"20px"}/></Dropdown.Item>*/}
+            {/*        <Dropdown.Item href="#/action-3"><img onClick={() => handleVoiceShow()}*/}
+            {/*                                              src={require('./micIcon.png')}*/}
+            {/*                                              width={"20px"}*/}
+            {/*                                              height={"20px"}/></Dropdown.Item>*/}
+            {/*    </Dropdown.Menu>*/}
+            {/*</Dropdown>*/}
 
             <Modal
                 show={show}

@@ -25,7 +25,7 @@ function PrevChat(props) {
                 </Col>
                 <Col xs={6} md={4}  >
                     <Card.Title style={{marginBottom: 0}}>
-                        {props.name}
+                        {ServiceServer.getUserNickname(props.name)}
                     </Card.Title>
                     {massage != null &&<Card.Text>
                         {massage.text}

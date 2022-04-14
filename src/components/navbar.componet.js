@@ -45,7 +45,7 @@ function NavbarMain(props) {
 
 
 
-                        Hello {props.currentUser} ! {' '}
+                        Hello {ServiceServer.getUserNickname(props.currentUser)} ! {' '}
 
                     </Navbar.Text>}
 

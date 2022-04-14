@@ -27,7 +27,7 @@ function NewConversation(props) {
 
     return (
         <div>
-            <img id="icon_img" src={require('./addChat.png')} onClick={handleShow}/>
+            <img id="icon_img" src={require('../assets/addChat.png')} onClick={handleShow}/>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

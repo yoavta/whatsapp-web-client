@@ -22,14 +22,15 @@ export default class ServiceServer {
 
     }
 
-    static addUser(userName, password, photo) {
-        users.push({user_name: userName, nickname: "temp", password: password, picture_url: photo, chats: []})
+    static addUser(userName, nickname, password, photo) {
+        users.push({user_name: userName, nickname: nickname, password: password, picture_url: photo, chats: []})
         // users.push(userName,'temp',password, 'temp');
         console.log(userName);
     }
 
     static getUserUrl(userName) {
         debugger
+
         let url = "https://cdn-icons.flaticon.com/png/512/2102/premium/2102647.png?token=exp=1649580878~hmac=0b7dfdb65a1a911aeb173696948d554e";
 
         users.forEach(val => {
@@ -41,6 +42,19 @@ export default class ServiceServer {
             }
         })
         return url;
+    }
+
+    static getUserNickname(userName) {
+        debugger
+        let nickname = null
+
+        users.forEach(val => {
+            if (val.user_name === userName) {
+                nickname = val.nickname;
+
+            }
+        })
+        return nickname;
     }
 
     static getUsers(currentUser) {

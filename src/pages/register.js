@@ -14,6 +14,9 @@ function Register(props) {
     const [avatar, setAvater] = useState(null);
     const [validated, setValidated] = useState(false);
     const [alert, setAlert] = useState(false);
+    const [nickname, setNickname] = useState(null)
+
+
 
 
     async function handleSubmit(event) {
@@ -24,7 +27,7 @@ function Register(props) {
             if (password === repeatPassword) {
                 event.preventDefault();
                 event.stopPropagation();
-                ServiceServer.addUser(userName, password, avatar);
+                ServiceServer.addUser(userName, nickname, password, avatar );
                 ServiceServer.printAllUsers();
                 props.setUser(userName);
 
@@ -76,6 +79,11 @@ function Register(props) {
     }
 
 
+    function handleNicknameChange(event) {
+        const val = event.target.value;
+        setNickname(val);
+    }
+
     return (
         <div className="Register">
             <Card id="card-style">
@@ -87,6 +95,12 @@ function Register(props) {
                             <Form.Label>User Name</Form.Label>
                             <Form.Control required type="text" placeholder="User Name"
                                           onChange={event => handleUserNameChange(event)}
+                            />
+                        </Form.Group>
+                         <Form.Group className="mb-3" controlId="formBasicName">
+                            <Form.Label>Nickname</Form.Label>
+                            <Form.Control required type="text" placeholder="Nickname"
+                                          onChange={event => handleNicknameChange(event)}
                             />
                         </Form.Group>
                         {/*<Form.Group className="mb-3" controlId="formBasiceEmail">*/}
