@@ -130,12 +130,6 @@ function Register(props) {
                             <Form.Control type="file" accept="image/*"
                                           onChange={event => handleAvaterChange(event)}
                             />
-                            {/*</Form.Group>*/}
-
-                            {/*<Form.Label>upload photo</Form.Label>*/}
-                            {/*<br></br>*/}
-                            {/*<input type="file" accept="image/*" className="custom-file-input" id="inputGroupFile01"*/}
-                            {/*       onChange={event => handleAvaterChange(event)}></input>*/}
 
 
                         </Form.Group>

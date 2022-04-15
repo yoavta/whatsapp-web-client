@@ -1,8 +1,7 @@
-import {Container, Modal, Form, Card, Row, Col, Button, Dropdown, DropdownButton, ButtonGroup} from "react-bootstrap";
+import {Button, Dropdown, DropdownButton, Form, Modal} from "react-bootstrap";
 import './welcome.style.css';
 import React, {useState} from "react";
 import SendImageVideo from "./send-image-video.component";
-import ServiceServer from "../server-service";
 import massage from "./massage";
 import SendVoice from "./send-voice.component";
 
@@ -21,7 +20,7 @@ function PoppingScreen(props) {
         console.log(mediaPrev);
     }
 
-      const handleClose = () => {
+    const handleClose = () => {
 
         setShow(false);
         setMediaPrev(null)
@@ -65,32 +64,32 @@ function PoppingScreen(props) {
     return (
         <>
 
-            <div className="mb-2">
-                <DropdownButton
-                    as={ButtonGroup}
-                    key={'up'}
-                    id={`dropdown-button-drop-up`}
-                    drop={'up'}
-                    variant="secondary"
-                    title={<img src={require('../assets/paper-clipIcon.png')} width={"20px"} height={"20px"}/>}
-                    style={{position: "absolute"}}
-                >
-                    <Dropdown.Item eventKey="1" onClick={() => {
-                        handleImgShow()
-                    }}><img src={require('../assets/pictureImg.png')} width={"20px"} height={"20px"}/></Dropdown.Item>
-                    <Dropdown.Item eventKey="2" onClick={() => {
-                        handleVideoShow()
-                    }}><img src={require('../assets/videoIcon.png')}
-                            width={"20px"}
-                            height={"20px"}/></Dropdown.Item>
-                    <Dropdown.Item eventKey="3"  onClick={() => handleVoiceShow()} ><img
-                                                          src={require('../assets/micIcon.png')}
-                                                          width={"20px"}
-                                                          height={"20px"}/></Dropdown.Item>
+            <DropdownButton
+                key={'up'}
+                id={`dropdown-button-drop-up`}
+                drop={'up'}
+                variant="secondary"
+                title={<img src={require('../assets/paper-clipIcon.png')} width={"20px"} height={"20px"}/>}
+                style={{position: "absolute", minWidth:0}}
+                align={{lg: 'end'}}
+
+            >
+
+                <Dropdown.Item eventKey="1" onClick={() => {
+                    handleImgShow()
+                }}><img src={require('../assets/pictureImg.png')} width={"20px"} height={"20px"}/></Dropdown.Item>
+                <Dropdown.Item eventKey="2" onClick={() => {
+                    handleVideoShow()
+                }}><img src={require('../assets/videoIcon.png')}
+                        width={"20px"}
+                        height={"20px"}/></Dropdown.Item>
+                <Dropdown.Item eventKey="3" onClick={() => handleVoiceShow()}><img
+                    src={require('../assets/micIcon.png')}
+                    width={"20px"}
+                    height={"20px"}/></Dropdown.Item>
 
 
-                </DropdownButton>
-            </div>
+            </DropdownButton>
 
 
             {/*<Dropdown>*/}

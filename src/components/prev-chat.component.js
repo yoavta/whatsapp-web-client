@@ -1,5 +1,5 @@
 import React from "react";
-import {Card, Col, Image, Row} from "react-bootstrap";
+import {Card, Col, Container, Image, Row} from "react-bootstrap";
 import ServiceServer from "../server-service";
 import "./prev-chat.style.css"
 
@@ -9,21 +9,24 @@ function PrevChat(props) {
     return (
 
 
-        <Card id='prev-card'
+   <Card id='prev-card'
               style={props.style}
               onClick={() => props.setCurrentChat(props.name)}
         >
 
+            <Container style={{padding:0}}>
+
+
+
             <Row id='row'>
-                <Col xs={6} md={4} id='col' >
-                    <Image className="rounded-circle"
+                <Col  sm={4} md={4} lg={4} xl={4} xs={4}  >
+                    <img
+                         style={ {objectFit: 'cover', width:50,height: 50 , borderRadius:'50%'}}
                     src={props.picture}
-                    width="60%"
-                    height="90%"
-                    style={{margin: 'auto'}}
+
                 />
                 </Col>
-                <Col xs={6} md={4}  >
+                <Col   >
                     <Card.Title style={{marginBottom: 0}}>
                         {ServiceServer.getUserNickname(props.name)}
                     </Card.Title>
@@ -33,13 +36,14 @@ function PrevChat(props) {
                 </Col>
 
 
-                <Col xs={6} md={4}  >
+                <Col sm={2} md={2} lg={2} xl={2} xs={2} >
                     {massage != null && <p className="time">
                         {massage.date}
                     </p>}
                 </Col>
             </Row>
 
+            </Container>
 
         </Card>
 

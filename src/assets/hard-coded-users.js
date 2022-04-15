@@ -5,32 +5,8 @@ let users = [
         password: "12345",
         picture_url: "https://media-exp1.licdn.com/dms/image/C5603AQE_ZKnvhgLTSQ/profile-displayphoto-shrink_800_800/0/1602488234599?e=1654128000&v=beta&t=j0NHdvjAcjhnP8uwL9mt4yrayIx9ktY9aMUtekANz0U",
         chats: {
-            "yahel": [
-                {
-                    is_it_me: true,
-                    text: "whats up yahel?",
-                    date: "14:30",
-                    media: null,
-                    mediaType: "text"
-                },
-                {
-                    is_it_me: false,
-                    text: "all good, how are you?",
-                    date: "14:35",
-                    media: null,
-                    mediaType: "text"
 
-                },
-                {
-                    is_it_me: true,
-                    text: "Fine, Thank you!",
-                    date: "14:39",
-                    media: null,
-                    mediaType: "text"
 
-                }
-            ]
-            ,
             "dani": [
                 {
                     is_it_me: true,
@@ -54,10 +30,35 @@ let users = [
                     mediaType: "text"
                 }
             ],
+                      "yahel": [
+                {
+                    is_it_me: true,
+                    text: "whats up yahel?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+
+                }
+            ],
             "dani1": [
                 {
                     is_it_me: true,
-                    text: "whats up dani?",
+                    text: "whats up daniw?",
                     date: "14:30",
                     media: null,
                     mediaType: "text"
@@ -145,6 +146,213 @@ let users = [
                     media: null,
                     mediaType: "text"
                 }
+            ],
+            "dasdni2": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
+            ],
+            "danisd3": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
+            ],
+            "dansdi4": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
+            ],
+            "dansdi2": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
+            ],
+            "dasdni3": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
+            ],
+            "danei4": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
+            ],
+            "dani2sdfsdf": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
+            ],
+            "dasdfsdfni3": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
+            ],
+            "danisdf4": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
             ]
         }
 
@@ -154,7 +362,7 @@ let users = [
         user_name: "yahel",
         nickname: "yahel hamagniv",
         password: "123456789",
-        picture_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg/220px-Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg",
+        picture_url: "https://static.scientificamerican.com/sciam/cache/file/F16F988F-B16C-45D6-B6F6AD6734363BEA_source.jpg?w=590&h=800&D061FB02-A703-4A52-8D7BF1C9B520F544",
         chats: {
             "yahel": [
                 {
@@ -181,6 +389,75 @@ let users = [
             ]
             ,
             "dani": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
+            ] ,
+            "dani6": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
+            ] ,
+            "dani44": [
+                {
+                    is_it_me: true,
+                    text: "whats up dani?",
+                    date: "14:30",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "14:35",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "14:39",
+                    media: null,
+                    mediaType: "text"
+                }
+            ] ,
+            "dan33ßi": [
                 {
                     is_it_me: true,
                     text: "whats up dani?",

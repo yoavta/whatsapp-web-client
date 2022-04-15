@@ -2,21 +2,26 @@
         background-color: #b7b7b7;
         overflow: auto;
 
-        display: flex;
+        /*display: flex;*/
         flex-direction: column-reverse;
         min-height: 70vh;
         max-height: 70vh;
-        width: 55vw;
+        /*width: 55vw;*/
         background-image: url("../assets/6876287.jpg");
-        position: relative;
+
         box-shadow: 4px 3px 2px 2px rgba(0, 0, 0, 0.1);
 
 
 }
 
-#chat-frame{
-        /*style={{maxHeight: '450px', minHeight: '450px', width: '100%', overflowY: 'auto', display: "flex" , flexDirection: "column-reverse"}}>*/
 
 
-
+#root > div > div > div > div > div.col > div > div:nth-child(2) > div > div
+{
+        top: -120px;
+        min-width:0;
 }
+
+
+
+

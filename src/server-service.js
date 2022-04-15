@@ -29,10 +29,8 @@ export default class ServiceServer {
     }
 
     static getUserUrl(userName) {
-        debugger
 
-        let url = "https://cdn-icons.flaticon.com/png/512/2102/premium/2102647.png?token=exp=1649580878~hmac=0b7dfdb65a1a911aeb173696948d554e";
-
+        let url = "https://cdn-icons-png.flaticon.com/512/149/149071.png?w=826&t=st=1650031400~exp=1650032000~hmac=c12c919506b5941e345f8213a45d0d57f85c73cf7dfcecf3c026471fcf04159e";
         users.forEach(val => {
             if (val.user_name === userName) {
                 if(val.picture_url != null){
@@ -45,7 +43,6 @@ export default class ServiceServer {
     }
 
     static getUserNickname(userName) {
-        debugger
         let nickname = null
 
         users.forEach(val => {
@@ -113,7 +110,6 @@ export default class ServiceServer {
     }
 
     static addConversation(currentUser, chatWith){
-        debugger
          users.forEach(user => {
             if (user.user_name === currentUser) {
                 user.chats[chatWith] = [];

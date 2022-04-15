@@ -33,8 +33,12 @@ function SideNav(props) {
         }else setRefresh(true);
     }
 
-    return (<Tab.Container id="tabs" defaultActiveKey="first">
-        <Row style={{overflow: 'auto', maxHeight: '80vh', minHeight: '80vh'}}>
+    return (
+
+
+        <Tab.Container id="tabs" defaultActiveKey="first">
+
+        <Row style={{overflow: 'auto', maxHeight: '74vh', minHeight: '74vvh'}}>
             <Col>
 
                 <Search setSearchFilter={props.setSearchFilter} searchFilter={props.searchFilter}/>
