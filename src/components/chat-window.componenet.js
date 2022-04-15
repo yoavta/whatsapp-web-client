@@ -67,6 +67,12 @@ function ChatWindow(props) {
     }
 
 
+    const handleEnter = (event) => {
+        if (event.key === "Enter") {
+            handleSubmit();
+        }
+
+    }
     return (
         <Container fluid>
             <Tab.Container id="tabs" defaultActiveKey="first">
@@ -110,7 +116,7 @@ function ChatWindow(props) {
                                     handleSubmit(event)
                                 }}> Send
                         </button>
-                        <input value={val} type="text" className="form-control" placeholder=""
+                        <input onKeyDown={handleEnter} value={val} type="text" className="form-control" placeholder=""
                                aria-label="Example text with button addon" aria-describedby="button-addon1"
                                onChange={(event) => {
                                    handleNewMsg(event)
