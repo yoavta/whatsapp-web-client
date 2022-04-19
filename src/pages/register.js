@@ -16,21 +16,25 @@ function Register(props) {
     const [alert, setAlert] = useState(false);
     const [nickname, setNickname] = useState(null)
 
-
+    function strongPassword(password) {
+        debugger;
+            return (/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/.test(password));
+        }
 
 
     async function handleSubmit(event) {
+
+
         if (event.currentTarget.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         } else {
-            if (password === repeatPassword) {
+            if (password === repeatPassword && strongPassword(password)) {
                 event.preventDefault();
                 event.stopPropagation();
                 ServiceServer.addUser(userName, nickname, password, avatar );
                 ServiceServer.printAllUsers();
                 props.setUser(userName);
-
                 navigate("/chat", {replace: true});
             } else{
                 event.preventDefault();
@@ -146,7 +150,7 @@ function Register(props) {
                         </Form.Group>
                     </Form>
                     <Alert style={{width : '100%'}} id={'special-alert'} variant="danger" onClose={() => {hideAlert()}} show={alert} dismissible>
-                        The passwords are not the same
+                        The two passwords are not the same Or you dont have at least one letter and one number in the password.
                     </Alert>
                 </Container>
 

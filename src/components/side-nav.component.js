@@ -22,6 +22,12 @@ function SideNav(props) {
     }
 
     function subsetOf(name) {
+        if (!props.searchFilter){
+            return true;
+        }
+        if (! name){
+            return false;
+        }
         return name.includes(props.searchFilter);
     }
 
@@ -44,7 +50,7 @@ function SideNav(props) {
                 <Search setSearchFilter={props.setSearchFilter} searchFilter={props.searchFilter}/>
                 <NewConversation refresh={handleRefresh} currentUser={props.currentUser}/>
                 {ServiceServer.getUsersNames(props.currentUser).map(user => {
-                    if (subsetOf(user)) {
+                    if (subsetOf(serverService.getUserNickname(user))) {
 
                         console.log(serverService.getUserUrl(user))
                         if (user === props.chatWith) {
