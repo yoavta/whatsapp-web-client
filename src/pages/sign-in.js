@@ -76,7 +76,7 @@ function SignIn(props) {
             </h1>
 <br/>
 <br/>
-            <Card id="card-style">
+            <Card id="card-style-sign-in">
                 <Container style={{width: "fluid%"}}>
 
                     <Form  validated={validated} onSubmit={event => handleSubmit(event)}>

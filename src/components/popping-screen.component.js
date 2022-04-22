@@ -47,7 +47,7 @@ function PoppingScreen(props) {
 
     function mediaChanged() {
         debugger
-        props.setMsg(new massage('', true, new Date().toLocaleTimeString(), mediaPrev, type))
+        props.setMsg(new massage(type, true, new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), mediaPrev, type))
 
     }
 

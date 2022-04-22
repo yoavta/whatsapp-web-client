@@ -15,11 +15,12 @@ function Register(props) {
     const [validated, setValidated] = useState(false);
     const [alert, setAlert] = useState(false);
     const [nickname, setNickname] = useState(null)
+    const [alertName, setAlertName] = useState(false);
 
     function strongPassword(password) {
-        debugger;
-            return (/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/.test(password));
-        }
+
+        return (/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/.test(password));
+    }
 
 
     async function handleSubmit(event) {
@@ -29,14 +30,16 @@ function Register(props) {
             event.preventDefault();
             event.stopPropagation();
         } else {
-            if (password === repeatPassword && strongPassword(password)) {
+
+            if (password === repeatPassword && strongPassword(password) && !ServiceServer.userExists(userName)) {
+
                 event.preventDefault();
                 event.stopPropagation();
-                ServiceServer.addUser(userName, nickname, password, avatar );
+                ServiceServer.addUser(userName, nickname, password, avatar);
                 ServiceServer.printAllUsers();
                 props.setUser(userName);
                 navigate("/chat", {replace: true});
-            } else{
+            } else {
                 event.preventDefault();
                 event.stopPropagation();
                 showAlert();
@@ -69,6 +72,13 @@ function Register(props) {
         const val = event.target.value;
         setName(val);
 
+        if (ServiceServer.userExists(val)){
+            debugger
+            showAlertName()
+        }else{
+            hideAlertName()
+        }
+
     }
 
     function handleEmailChange(event) {
@@ -88,16 +98,23 @@ function Register(props) {
         setNickname(val);
     }
 
+    function hideAlertName() {
+        setAlertName(false);
+        // window.location.reload();
+    }
+
+    function showAlertName() {
+        setAlertName(true);
+    }
+
     return (
 
         <div className="Register">
-                        <h1>
-                Register page
-            </h1>
-<br/>
+
+            <br/>
             <Card id="card-style">
 
-                <Container style={{width: "60%"}}>
+                <Container id="container-style">
 
                     <Form onSubmit={event => handleSubmit(event)}>
                         <Form.Group className="mb-3" controlId="formBasicName">
@@ -106,7 +123,12 @@ function Register(props) {
                                           onChange={event => handleUserNameChange(event)}
                             />
                         </Form.Group>
-                         <Form.Group className="mb-3" controlId="formBasicName">
+                        <Alert style={{width: '100%'}} id={'special-alert'} variant="danger" onClose={() => {
+                            hideAlertName()
+                        }} show={alertName} dismissible>
+                            The user name is exists! choose another one
+                        </Alert>
+                        <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>Nickname</Form.Label>
                             <Form.Control required type="text" placeholder="Nickname"
                                           onChange={event => handleNicknameChange(event)}
@@ -154,8 +176,11 @@ function Register(props) {
                             <Form.Text> to login.</Form.Text>
                         </Form.Group>
                     </Form>
-                    <Alert style={{width : '100%'}} id={'special-alert'} variant="danger" onClose={() => {hideAlert()}} show={alert} dismissible>
-                        The two passwords are not the same Or you dont have at least one letter and one number in the password.
+                    <Alert style={{width: '100%'}} id={'special-alert'} variant="danger" onClose={() => {
+                        hideAlert()
+                    }} show={alert} dismissible>
+                        The two passwords are not the same Or you dont have at least one letter and one number in the
+                        password Or the user name is already exist.
                     </Alert>
                 </Container>
 

@@ -28,6 +28,18 @@ export default class ServiceServer {
         console.log(userName);
     }
 
+    static userExists(userName){
+        let bool = false
+        users.forEach(val => {
+
+            if (val.user_name === userName) {
+                bool= true
+
+            }
+        })
+        return bool;
+    }
+
     static getUserUrl(userName) {
 
         let url = "https://cdn-icons-png.flaticon.com/512/149/149071.png?w=826&t=st=1650031400~exp=1650032000~hmac=c12c919506b5941e345f8213a45d0d57f85c73cf7dfcecf3c026471fcf04159e";
@@ -43,7 +55,7 @@ export default class ServiceServer {
     }
 
     static getUserNickname(userName) {
-        let nickname = null
+        let nickname = userName
 
         users.forEach(val => {
             if (val.user_name === userName) {

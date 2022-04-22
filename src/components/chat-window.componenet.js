@@ -55,7 +55,7 @@ function ChatWindow(props) {
         let text = event.target.value;
 
         // handelTime();
-        let time = new Date().toLocaleTimeString();
+        let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
         setDate(time);
         setVal(text);

@@ -7,7 +7,9 @@ function Home() {
           <h1 className={"big"}>
               Welcome
           </h1>
-               <h1 className={"small"}>to our Whatsapp application!!!
+          <br/>
+
+               <h1 className={"small"}>to our Chat application!!!
           </h1>
 
           <br/>
