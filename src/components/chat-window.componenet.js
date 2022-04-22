@@ -66,7 +66,7 @@ function ChatWindow(props) {
     }
 
 
-    const handleEnter = (event) => {
+    const handleEnterKey = (event) => {
         if (event.key === "Enter") {
             handleSubmit();
         }
@@ -107,7 +107,7 @@ function ChatWindow(props) {
                         </Button>
 
                         <Form.Control
-                            onKeyDown={handleEnter} value={val} type="text" className="form-control1"
+                            onKeyDown={handleEnterKey} value={val} type="text" className="form-control1"
                             placeholder=""
                             onChange={(event) => {
                                 handleNewMsg(event)
@@ -156,7 +156,7 @@ function ChatWindow(props) {
                 {/*           </Button>*/}
 
 
-                                  {/*<Form.Control  style={{display: 'flex'}} onKeyDown={handleEnter} value={val} type="text" className="form-control"*/}
+                                  {/*<Form.Control  style={{display: 'flex'}} onKeyDown={handleEnterKey} value={val} type="text" className="form-control"*/}
                                   {/*               placeholder=""*/}
                                   {/*               onChange={(event) => {*/}
                                   {/*                   handleNewMsg(event)*/}
