@@ -17,7 +17,7 @@ function Welcome(props) {
                         Made by Yahel Jacoby and Yoav Tamir.
                     </h2>
 
-                    Feel free to sign in to your account and enjoy chatting with you friends.
+                    Feel free to sign in to your account and enjoy chatting with your friends.
                     <br/>
                     If you still dont have an account you can register in the registration page.
 

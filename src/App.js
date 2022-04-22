@@ -14,7 +14,7 @@ import ServiceServer from "./server-service";
 
 function App() {
 
-    const [currentUser, setUser] = useState("yoav");
+    const [currentUser, setUser] = useState("");
     return (<div className="App">
             <div className="App-header">
                 <BrowserRouter>
