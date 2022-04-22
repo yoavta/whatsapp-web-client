@@ -11,7 +11,7 @@ function Chat(props) {
     const [searchFilter, setSearchFilter] = useState('');
 
     return (
-        <Container style={{position:'absolute', overflow:'hidden',boxSizing: 'border-box'}}  >
+        <Container style={{ overflow:'hidden',boxSizing: 'border-box'}}  >
             <Row className="justify-content-md-center" >
                 <Col sm={4} md={4} lg={4} xl={4} xs={4} >
                     <SideNav currentUser={props.currentUser} chatWith={chatWith} setChatWith={setChatWith}
