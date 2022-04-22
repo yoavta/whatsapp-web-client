@@ -460,7 +460,6 @@ function ChatWindow(props) {
     let time = new Date().toLocaleTimeString();
     setDate(time);
     setVal(text);
-    console.log(ctime);
     let msgtime = ctime;
     setMsg(new _components_massage__WEBPACK_IMPORTED_MODULE_2__["default"](text, true, msgtime, null, null));
   }
@@ -2480,7 +2479,6 @@ function Register(props) {
 
   function handleAvaterChange(event) {
     const val = URL.createObjectURL(event.target.files[0]);
-    console.log(val);
     setAvater(val);
   }
 
@@ -2774,13 +2772,11 @@ function SignIn(props) {
   async function handlePasswordChange(event) {
     const val = event.target.value;
     setPassword(val);
-    console.log(password);
   }
 
   async function handleUserNameChange(event) {
     const val = event.target.value;
     setUserName(val);
-    console.log(userName);
   }
 
   return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxDEV)("div", {
