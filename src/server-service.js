@@ -28,12 +28,12 @@ export default class ServiceServer {
         console.log(userName);
     }
 
-    static userExists(userName){
+    static userExists(userName) {
         let bool = false
         users.forEach(val => {
 
             if (val.user_name === userName) {
-                bool= true
+                bool = true
 
             }
         })
@@ -45,8 +45,8 @@ export default class ServiceServer {
         let url = "https://cdn-icons-png.flaticon.com/512/149/149071.png?w=826&t=st=1650031400~exp=1650032000~hmac=c12c919506b5941e345f8213a45d0d57f85c73cf7dfcecf3c026471fcf04159e";
         users.forEach(val => {
             if (val.user_name === userName) {
-                if(val.picture_url != null){
-                     url = val.picture_url;
+                if (val.picture_url != null) {
+                    url = val.picture_url;
                 }
 
             }
@@ -84,6 +84,42 @@ export default class ServiceServer {
 
     }
 
+    static toDate(str){
+        return parseInt(str[0]+str[1]+str[3]+str[4]);
+    }
+
+    static getUsersNamesSortedByLastMassage(currentUser, lastMassageCount) {
+        let chats = ServiceServer.getUsers(currentUser);
+        let map = new Map();
+        for (let k in chats) {
+            map.set(k,chats[k][chats[k].length - 1]);
+        }
+
+        let result = [];
+                    debugger;
+            const mapSize = map.size;
+            for (let i=0; i< mapSize; i++) {
+            let minDate = this.toDate('99:99');
+            let minUser = null;
+
+            for (const [key, value] of map.entries()) {
+                if (this.toDate(value.date) <= minDate){
+                    minUser=key;
+                    minDate=this.toDate(value.date) ;
+                }
+            }
+
+            result.push(minUser);
+                map.delete(minUser);
+        }
+        // let keys = [];
+        // for (let k in chats) keys.push(k);
+        // return keys;
+
+        return result.reverse();
+
+    }
+
     static getChats(currentUser, chatWith) {
         let chats = ServiceServer.getUsers(currentUser);
         if (chatWith in chats) {
@@ -96,7 +132,13 @@ export default class ServiceServer {
 
         users.forEach(user => {
             if (user.user_name === currentUser && chatWith in user.chats) {
-                user.chats[chatWith].push({is_it_me: msg.isItMe, text: msg.text, date: msg.date, media: msg.media, mediaType: msg.mediaType});
+                user.chats[chatWith].push({
+                    is_it_me: msg.isItMe,
+                    text: msg.text,
+                    date: msg.date,
+                    media: msg.media,
+                    mediaType: msg.mediaType
+                });
 
             }
         })
@@ -104,31 +146,31 @@ export default class ServiceServer {
     }
 
 
-    static getLastMessage(currentUser, chatWith){
+    static getLastMessage(currentUser, chatWith) {
 
-        const chats = ServiceServer.getChats(currentUser,chatWith);
+        const chats = ServiceServer.getChats(currentUser, chatWith);
 
-        if (chats){
+        if (chats) {
             return chats.slice(-1)[0];
         }
 
         return null;
     }
 
-    printUsers() {
-        users.forEach(val => {
-            console.log(val.nickname)
-        });
-    }
-
-    static addConversation(currentUser, chatWith){
-         users.forEach(user => {
+    static addConversation(currentUser, chatWith) {
+        users.forEach(user => {
             if (user.user_name === currentUser) {
                 user.chats[chatWith] = [];
 
 
             }
         })
+    }
+
+    printUsers() {
+        users.forEach(val => {
+            console.log(val.nickname)
+        });
     }
 
 }

@@ -39,14 +39,14 @@ let users = [
                 {
                     is_it_me: true,
                     text: "video",
-                    date: "14:39",
+                    date: "14:42",
                     media: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
                     mediaType: "video"
                 },
                 {
                     is_it_me: true,
                     text: "voice",
-                    date: "14:39",
+                    date: "14:46",
                     media: "https://firebasestorage.googleapis.com/v0/b/whatsapp-c2140.appspot.com/o/Kalimba.mp3?alt=media&token=acd5e972-04f4-44d5-ad67-c9b02dff3b5e",
                     mediaType: "voice"
                 }
@@ -95,7 +95,7 @@ let users = [
                 {
                     is_it_me: true,
                     text: "Fine, Thank you!",
-                    date: "14:39",
+                    date: "14:53",
                     media: null,
                     mediaType: "text"
 
