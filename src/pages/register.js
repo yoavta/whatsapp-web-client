@@ -89,7 +89,12 @@ function Register(props) {
     }
 
     return (
+
         <div className="Register">
+                        <h1>
+                Register page
+            </h1>
+<br/>
             <Card id="card-style">
 
                 <Container style={{width: "60%"}}>

@@ -4,26 +4,23 @@ import './welcome.style.css';
 function Welcome(props) {
     return (<Container>
         <Row>
-            <Col>
 
+            <Col>
 
                 <Card className='main' style={{
                     display: "inline-block",
                     minWidth: '40%',padding:20,maxWidth:'60%'}}>
-
-
                     <h1>
-                        Welcome!!
                     </h1>
 
                     <h2>
-                        blablablablal blablablabla blablala !
+                        Made by Yahel Jacoby and Yoav Tamir.
                     </h2>
 
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque fugit minus quos reiciendis! Culpa
-                    natus necessitatibus obcaecati quis vitae! Atque dolorem eaque fuga fugiat pariatur quasi quisquam
-                    quos
-                    unde? Facilis.
+                    Feel free to sign in to your account and enjoy chatting with you friends.
+                    <br/>
+                    If you still dont have an account you can register in the registration page.
+
                 </Card>
 
 

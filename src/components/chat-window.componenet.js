@@ -27,7 +27,9 @@ function ChatWindow(props) {
         } else setChange(true);
         setVal("");
         setMsg(null)
-        // setChange(false);
+
+        const snd = new Audio('https://bigsoundbank.com/UPLOAD/wav/1313.wav');
+        snd.play();
 
     }
 
@@ -71,10 +73,9 @@ function ChatWindow(props) {
 
     }
     return (
-        <Container fluid >
-            {/*<Tab.Container id="tabs" defaultActiveKey="first">*/}
-            <Row id='all-frame'>
-                <Col>
+        <Container style={{margin:0}} >
+            <Row id='all-frame' fluid>
+                <Col style={{width:'100%'}}>
                     {ServiceServer.getChats(props.currentUser, props.chatWith).map((massage, key) => {
                         if (massage.is_it_me) {
                             return (
