@@ -1,107 +1,130 @@
-import {Button, Col, Container, Form, Image, Row} from "react-bootstrap";
+import {Button, Container, Row, Spinner} from "react-bootstrap";
 import React, {useEffect, useRef, useState} from "react";
-import ServiceServer from "../server-service";
 
 function SendVoice(props) {
 
 
     useEffect(() => {
 
-        props.mediaPrev != null && props.mediaChanged()},[props.mediaPrev])
+        props.mediaPrev != null && props.mediaChanged()
+    }, [props.mediaPrev])
 
     const [stream, setStream] = useState({
-    access: false,
-    recorder: null,
-    error: ""
-  });
+        isAccess: false,
+        recorder: null,
+        error: ""
+    });
 
-  const [recording, setRecording] = useState({
-    active: false,
-    available: false,
-    url: ""
-  });
+    const [recording, setRecording] = useState({
+        active: false,
+        available: false,
+        url: ""
+    });
 
-  const chunks = useRef([]);
+    const chunks = useRef([]);
 
-  function getAccess() {
-    navigator.mediaDevices
-      .getUserMedia({ audio: true })
-      .then((mic) => {
-        let mediaRecorder;
+    function getAccess() {
+        navigator.mediaDevices
+            .getUserMedia({audio: true})
+            .then((mic) => {
+                let mediaRecorder;
 
-        try {
-          mediaRecorder = new MediaRecorder(mic, {
-            mimeType: "audio/webm"
-          });
-        } catch (err) {
-          console.log(err);
-        }
+                try {
+                    mediaRecorder = new MediaRecorder(mic, {
+                        mimeType: "audio/webm"
+                    });
+                } catch (err) {
+                    console.log(err);
+                }
 
-        const track = mediaRecorder.stream.getTracks()[0];
-        track.onended = () => console.log("ended");
+                const track = mediaRecorder.stream.getTracks()[0];
+                track.onended = () => console.log("ended");
 
-        mediaRecorder.onstart = function () {
-          setRecording({
-            active: true,
-            available: false,
-            url: ""
-          });
-        };
+                mediaRecorder.onstart = function () {
+                    setRecording({
+                        active: true,
+                        available: false,
+                        url: ""
+                    });
+                };
 
-        mediaRecorder.ondataavailable = function (e) {
-          console.log("data available");
-          chunks.current.push(e.data);
-        };
+                mediaRecorder.ondataavailable = function (e) {
+                    console.log("data available");
+                    chunks.current.push(e.data);
+                };
 
-        mediaRecorder.onstop = async function () {
-          console.log("stopped");
+                mediaRecorder.onstop = async function () {
+                    console.log("stopped");
 
-          const url = URL.createObjectURL(chunks.current[0]);
-          props.setMediaPrev(url);
-          chunks.current = [];
+                    const url = URL.createObjectURL(chunks.current[0]);
+                    props.setMediaPrev(url);
+                    chunks.current = [];
 
-          setRecording({
-            active: false,
-            available: true,
-            url
-          });
-        };
+                    setRecording({
+                        active: false,
+                        available: true,
+                        url
+                    });
+                };
 
-        setStream({
-          ...stream,
-          access: true,
-          recorder: mediaRecorder
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        setStream({ ...stream, error });
-      });
-  }
+                setStream({
+                    ...stream,
+                    isAccess: true,
+                    recorder: mediaRecorder
+                });
+            })
+        ;
+    }
 
-  return (
+    return (
 
-    <Container >
-      {stream.access ? (
-        <div className="audio-container">
-          <Button
-            className={recording.active ? "active" : null}
-            onClick={() => !recording.active && stream.recorder.start()}
-          >
-            Start Recording
-          </Button>
+        <Container>
 
-          <Button onClick={() => {stream.recorder.stop(); }}>Stop Recording</Button>
+            {stream.isAccess ? (
+                <div className="audio-container">
+                    <Row>
+                        {!recording.active && <Button
+                            // variant={recording.active ? 'danger' : 'primary'}
+                            className={recording.active ? "active" : null}
+                            onClick={() => !recording.active && stream.recorder.start()}
+                        >
+                            Start Recording
+
+                        </Button>}
+
+                        {recording.active && <Button
+                            variant={'danger'}
+                            onClick={() => {
+                                stream.recorder.stop();
+                            }}>
 
 
-          {recording.available && <audio controls src={recording.url} />}
-        </div>
-      ) : (
-        <Button onClick={getAccess}>Get Mic Access</Button>
-      )}
-    </Container>
-  );
+                            {<Spinner
+                                as="span"
+                                animation="border"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                            />}
+                            Stop Recording</Button>}
+                    </Row>
 
+
+                    {recording.available &&
+                        <Row style={{marginTop: '2vh'}}>
+                            <audio controls src={recording.url}/>
+
+                        </Row>
+                    }
+                </div>
+            ) : (
+                <Row>
+                    <Button onClick={getAccess}>Get Mic Access</Button>
+
+                </Row>
+            )}
+        </Container>
+    );
 
 
 }

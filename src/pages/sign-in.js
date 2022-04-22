@@ -71,13 +71,11 @@ function SignIn(props) {
 
     return (
         <div className="Sign-in">
-            <h1>
-                Sign-In page
-            </h1>
-<br/>
-<br/>
+
+                            <Card.Title>SIGN-IN</Card.Title>
+
             <Card id="card-style-sign-in">
-                <Container style={{width: "fluid%"}}>
+                <Container>
 
                     <Form  validated={validated} onSubmit={event => handleSubmit(event)}>
                         <Form.Group className="mb-3" controlId="formBasicName">

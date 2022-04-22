@@ -111,7 +111,8 @@ function Register(props) {
 
         <div className="Register">
 
-            <br/>
+                                        <Card.Title>REGISTRATION</Card.Title>
+
             <Card id="card-style">
 
                 <Container id="container-style">
