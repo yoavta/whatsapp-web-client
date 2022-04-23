@@ -27,6 +27,7 @@
 - sounds one sending messages.
 - chats are sorted by the last massage sent.
 - previews popups for media in chats.
+- sending masege with Enter key
 
 ## Live Demo
 ### Feel free to visit the live demo [HERE](https://whatsapp.yoavtamir.com).
