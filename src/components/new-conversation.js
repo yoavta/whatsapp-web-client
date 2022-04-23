@@ -11,7 +11,7 @@ function NewConversation(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    function handleNameChange(event){
+    function handleNameChange(event) {
         setChatWith(event.target.value);
     }
 
@@ -22,7 +22,6 @@ function NewConversation(props) {
         props.refresh();
 
     }
-
 
 
     return (

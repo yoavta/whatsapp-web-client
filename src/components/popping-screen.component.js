@@ -14,10 +14,10 @@ function PoppingScreen(props) {
 
     function changeMediaPrev(mediaType) {
 
-        console.log("changeMediaPrev", mediaType)
+
         //setMediaPrev(mediaType);
         setMediaPrev(mediaType)
-        console.log(mediaPrev);
+
     }
 
     const handleClose = () => {
@@ -46,8 +46,11 @@ function PoppingScreen(props) {
 
 
     function mediaChanged() {
-        debugger
-        props.setMsg(new massage(type, true, new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), mediaPrev, type))
+
+        props.setMsg(new massage(type, true, new Date().toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit'
+        }), mediaPrev, type))
 
     }
 
@@ -70,7 +73,7 @@ function PoppingScreen(props) {
                 drop={'up'}
                 variant="secondary"
                 title={<img src={require('../assets/paper-clipIcon.png')} width={"20px"} height={"20px"}/>}
-                style={{position: "absolute", minWidth:0}}
+                style={{position: "absolute", minWidth: 0}}
                 align={{lg: 'end'}}
 
             >
@@ -91,28 +94,6 @@ function PoppingScreen(props) {
 
             </DropdownButton>
 
-
-            {/*<Dropdown>*/}
-            {/*    <Dropdown.Toggle variant="success" id="dropdown-basic">*/}
-            {/*        <img src={require('./paper-clipIcon.png')} width={"20px"} height={"20px"}/>*/}
-            {/*    </Dropdown.Toggle>*/}
-
-            {/*    <Dropdown.Menu flip={true}>*/}
-            {/*        <Dropdown.Item href="#/action-1"><img onClick={() => {*/}
-            {/*            handleImgShow()*/}
-            {/*        }} src={require('./pictureImg.png')}*/}
-            {/*                                              width={"20px"} height={"20px"}/></Dropdown.Item>*/}
-            {/*        <Dropdown.Item href="#/action-2"><img onClick={() => {*/}
-            {/*            handleVideoShow()*/}
-            {/*        }} src={require('./videoIcon.png')}*/}
-            {/*                                              width={"20px"}*/}
-            {/*                                              height={"20px"}/></Dropdown.Item>*/}
-            {/*        <Dropdown.Item href="#/action-3"><img onClick={() => handleVoiceShow()}*/}
-            {/*                                              src={require('./micIcon.png')}*/}
-            {/*                                              width={"20px"}*/}
-            {/*                                              height={"20px"}/></Dropdown.Item>*/}
-            {/*    </Dropdown.Menu>*/}
-            {/*</Dropdown>*/}
 
             <Modal
                 show={show}
@@ -143,7 +124,6 @@ function PoppingScreen(props) {
                     </Form>
 
 
-                    {/*<Form.control  controlId="send" as='button' onClick={handleSend()} variant="success">Send</Form.control>*/}
                 </Modal.Footer>
             </Modal>
         </>

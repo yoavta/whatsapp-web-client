@@ -1,19 +1,17 @@
-#card-style{
+#card-style {
     padding: 3%;
     width: 40%;
     height: 100%;
     margin: auto;
     position: relative;
-    min-height:70vh;
-    max-height:70vh;
+    min-height: 70vh;
+    max-height: 70vh;
     overflow: auto;
     box-shadow: 4px 3px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
-#container-style{
-    /*min-height: 50vh;*/
-    /*max-height: 50vh;*/
-    /*overflow: auto;*/
+#container-style {
+
     width: 70%;
 
 }

@@ -1,6 +1,6 @@
 import ServiceServer from '../server-service';
 import {Alert, Button, Card, Container, Form} from "react-bootstrap";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import './card-style.css';
 import {Link, useNavigate} from "react-router-dom";
 
@@ -10,9 +10,7 @@ function Register(props) {
     const [password, setPassword] = useState(null);
     const [repeatPassword, setRepeatPassword] = useState(null);
     const [userName, setName] = useState(null);
-    const [email, setEmail] = useState(null);
     const [avatar, setAvater] = useState(null);
-    const [validated, setValidated] = useState(false);
     const [alert, setAlert] = useState(false);
     const [nickname, setNickname] = useState(null)
     const [alertName, setAlertName] = useState(false);
@@ -36,7 +34,7 @@ function Register(props) {
                 event.preventDefault();
                 event.stopPropagation();
                 ServiceServer.addUser(userName, nickname, password, avatar);
-                ServiceServer.printAllUsers();
+
                 props.setUser(userName);
                 navigate("/chat", {replace: true});
             } else {
@@ -72,23 +70,19 @@ function Register(props) {
         const val = event.target.value;
         setName(val);
 
-        if (ServiceServer.userExists(val)){
-            debugger
+        if (ServiceServer.userExists(val)) {
+
             showAlertName()
-        }else{
+        } else {
             hideAlertName()
         }
 
     }
 
-    function handleEmailChange(event) {
-        const val = event.target.value;
-        setEmail(val);
-    }
 
     function handleAvaterChange(event) {
         const val = URL.createObjectURL(event.target.files[0]);
-        console.log(val);
+
         setAvater(val);
     }
 
@@ -111,7 +105,7 @@ function Register(props) {
 
         <div className="Register">
 
-                                        <Card.Title>REGISTRATION</Card.Title>
+            <Card.Title>REGISTRATION</Card.Title>
 
             <Card id="card-style">
 
@@ -129,18 +123,13 @@ function Register(props) {
                         }} show={alertName} dismissible>
                             The user name is exists! choose another one
                         </Alert>
-                        <Form.Group className="mb-3" controlId="formBasicName">
+                        <Form.Group className="mb-3" controlId="formBasicNickname">
                             <Form.Label>Nickname</Form.Label>
                             <Form.Control required type="text" placeholder="Nickname"
                                           onChange={event => handleNicknameChange(event)}
                             />
                         </Form.Group>
-                        {/*<Form.Group className="mb-3" controlId="formBasiceEmail">*/}
-                        {/*    <Form.Label>Email address</Form.Label>*/}
-                        {/*    <Form.Control required type="email" placeholder="Email address"*/}
-                        {/*                  onChange={event => handleEmailChange(event)}*/}
-                        {/*    />*/}
-                        {/*</Form.Group>*/}
+
                         <Form.Group className="mb-3" controlId="formBasicPassword1">
                             <Form.Label>Password</Form.Label>
                             <Form.Control required type="password" placeholder="Password"

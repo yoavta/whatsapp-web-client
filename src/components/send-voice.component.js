@@ -49,12 +49,12 @@ function SendVoice(props) {
                 };
 
                 mediaRecorder.ondataavailable = function (e) {
-                    console.log("data available");
+
                     chunks.current.push(e.data);
                 };
 
                 mediaRecorder.onstop = async function () {
-                    console.log("stopped");
+
 
                     const url = URL.createObjectURL(chunks.current[0]);
                     props.setMediaPrev(url);

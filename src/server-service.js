@@ -24,8 +24,7 @@ export default class ServiceServer {
 
     static addUser(userName, nickname, password, photo) {
         users.push({user_name: userName, nickname: nickname, password: password, picture_url: photo, chats: []})
-        // users.push(userName,'temp',password, 'temp');
-        console.log(userName);
+
     }
 
     static userExists(userName) {
@@ -84,33 +83,33 @@ export default class ServiceServer {
 
     }
 
-    static toDate(str){
-        return parseInt(str[0]+str[1]+str[3]+str[4]);
+    static toDate(str) {
+        return parseInt(str[0] + str[1] + str[3] + str[4]);
     }
 
     static getUsersNamesSortedByLastMassage(currentUser, lastMassageCount) {
         let chats = ServiceServer.getUsers(currentUser);
         let map = new Map();
         for (let k in chats) {
-            map.set(k,chats[k][chats[k].length - 1]);
+            map.set(k, chats[k][chats[k].length - 1]);
         }
 
         let result = [];
-                    debugger;
-            const mapSize = map.size;
-            for (let i=0; i< mapSize; i++) {
+
+        const mapSize = map.size;
+        for (let i = 0; i < mapSize; i++) {
             let minDate = this.toDate('99:99');
             let minUser = null;
 
             for (const [key, value] of map.entries()) {
-                if (this.toDate(value.date) <= minDate){
-                    minUser=key;
-                    minDate=this.toDate(value.date) ;
+                if (this.toDate(value.date) <= minDate) {
+                    minUser = key;
+                    minDate = this.toDate(value.date);
                 }
             }
 
             result.push(minUser);
-                map.delete(minUser);
+            map.delete(minUser);
         }
         // let keys = [];
         // for (let k in chats) keys.push(k);

@@ -9,7 +9,8 @@ function Welcome(props) {
 
                 <Card className='main' style={{
                     display: "inline-block",
-                    minWidth: '40%',padding:20,maxWidth:'60%'}}>
+                    minWidth: '40%', padding: 20, maxWidth: '60%'
+                }}>
                     <h1>
                     </h1>
 

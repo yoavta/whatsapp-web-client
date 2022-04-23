@@ -6,9 +6,6 @@ import {Link, useNavigate} from "react-router-dom";
 import './card-style.css';
 
 
-// class SignIn extends React.Component {
-
-
 function SignIn(props) {
     let navigate = useNavigate();
 
@@ -20,7 +17,7 @@ function SignIn(props) {
 
 
     async function handleSubmit(event) {
-        ServiceServer.printAllUsers();
+
         const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
@@ -59,25 +56,25 @@ function SignIn(props) {
     async function handlePasswordChange(event) {
         const val = event.target.value;
         setPassword(val);
-        console.log(password);
+
     }
 
     async function handleUserNameChange(event) {
         const val = event.target.value;
         setUserName(val);
-        console.log(userName);
+
     }
 
 
     return (
         <div className="Sign-in">
 
-                            <Card.Title>SIGN-IN</Card.Title>
+            <Card.Title>SIGN-IN</Card.Title>
 
             <Card id="card-style-sign-in">
                 <Container>
 
-                    <Form  validated={validated} onSubmit={event => handleSubmit(event)}>
+                    <Form validated={validated} onSubmit={event => handleSubmit(event)}>
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Row className="justify-content-md-center">
 
@@ -91,7 +88,7 @@ function SignIn(props) {
                             </Row>
                         </Form.Group>
                         <Row className="justify-content-md-center">
-                              <Col sm xs lg="1">
+                            <Col sm xs lg="1">
                             </Col>
                             <Col sm xs lg="8" md={"auto"}>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -120,7 +117,9 @@ function SignIn(props) {
                         </Button>
                         <Form.Group>
 
-                                 <Form.Text>still dont have a user? </Form.Text>     <Form.Text style={{color:"blue"}}  as={Link} to="/register"> Create an account.</Form.Text>
+                            <Form.Text>still dont have a user? </Form.Text> <Form.Text style={{color: "blue"}} as={Link}
+                                                                                       to="/register"> Create an
+                            account.</Form.Text>
                         </Form.Group>
                     </Form>
                     <Alert id={'special-alert'} variant="danger" onClose={() => {

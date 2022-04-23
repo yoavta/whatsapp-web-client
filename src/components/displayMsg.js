@@ -8,11 +8,11 @@ function DisplayMsg({massage, style}) {
 
     const handleClose = () => {
         setShow(false);
-        console.log('close')
+
     }
     const handleShow = () => {
         setShow(true);
-        console.log('show')
+
     }
 
 
