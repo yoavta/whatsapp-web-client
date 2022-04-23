@@ -19,7 +19,7 @@ function DisplayMsg({massage, style}) {
     return (
 
         <div className="card" style={style} id='msg-card'>
-            <div className="card-body" id ='msg-text'>
+            <div className="card-body" id='msg-text'>
 
                 <h6 className="card-subtitle mb-2 text-muted">{massage.date}</h6>
                 {massage.mediaType === "text" && <p className="card-text">{massage.text}</p>}
@@ -30,7 +30,7 @@ function DisplayMsg({massage, style}) {
                            src={massage.media}/>}
 
                 {massage.mediaType === "voice" &&
-                    <audio controls src={massage.media} />}
+                    <audio controls src={massage.media}/>}
 
                 <div is={'button'} style={{border: 'none', background: 'none', margin: 'none', cursor: 'zoom-in'}}
                      onClick={() => handleShow()}>
@@ -51,11 +51,19 @@ function DisplayMsg({massage, style}) {
                 <Modal.Header closeButton>
                     <Modal.Title>Preview</Modal.Title>
                 </Modal.Header>
-                <Modal.Body >
-                            {massage.mediaType === "image" &&
-                                <Image style={{ width:'100%', maxWidth:'60vh',marginLeft: 'auto', marginRight: 'auto'}}
-                                       src={massage.media}/>  }
+                <Modal.Body>
+
+                    <Row className="justify-content-md-center">
+                        <Col>
+                            {massage.mediaType === "image" &עו
+                                <Image style={{maxWidth: '100%', marginLeft: 'auto', marginRight: 'auto'}}
+                                       src={massage.media}/>}
+
+
+                        </Col>
+                    </Row>
                 </Modal.Body>
+
 
             </Modal>
         </div>
