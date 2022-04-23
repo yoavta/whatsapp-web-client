@@ -17,6 +17,11 @@
 - JavaScript
 - Firebase hosting service and storage service
 
+## Packeges
+- react-bootstrap
+- react
+- react-router-dom
+
 ## Spacial features
 - Very welcoming Welcome page.
 - sounds one sending messages.
@@ -37,4 +42,8 @@ In the project directory, you need the install dependencies by run: `npm install
 
 Then start by:`npm start`
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+To sign in with exist user -
+user name : yoav
+password : 123abc
 
