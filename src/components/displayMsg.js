@@ -52,15 +52,9 @@ function DisplayMsg({massage, style}) {
                     <Modal.Title>Preview</Modal.Title>
                 </Modal.Header>
                 <Modal.Body >
-                    <Row className="justify-content-md-center">
-                        <Col>
                             {massage.mediaType === "image" &&
-                                <Image width='100%'
-                                    className={"center-block"}
+                                <Image style={{ width:'100%', maxWidth:'60vh',marginLeft: 'auto', marginRight: 'auto'}}
                                        src={massage.media}/>  }
-                        </Col>
-                    </Row>
-
                 </Modal.Body>
 
             </Modal>
