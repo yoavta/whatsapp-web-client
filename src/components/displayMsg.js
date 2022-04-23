@@ -55,7 +55,7 @@ function DisplayMsg({massage, style}) {
 
                     <Row className="justify-content-md-center">
                         <Col>
-                            {massage.mediaType === "image" &עו
+                            {massage.mediaType === "image" &&
                                 <Image style={{maxWidth: '100%', marginLeft: 'auto', marginRight: 'auto'}}
                                        src={massage.media}/>}
 

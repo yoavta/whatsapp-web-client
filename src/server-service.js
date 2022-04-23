@@ -102,7 +102,7 @@ export default class ServiceServer {
             let minUser = null;
 
             for (const [key, value] of map.entries()) {
-                debugger;
+
                 if (!value){
                     minUser = key;
                     continue;
