@@ -102,6 +102,12 @@ export default class ServiceServer {
             let minUser = null;
 
             for (const [key, value] of map.entries()) {
+                debugger;
+                if (!value){
+                    minUser = key;
+                    continue;
+
+                }
                 if (this.toDate(value.date) <= minDate) {
                     minUser = key;
                     minDate = this.toDate(value.date);

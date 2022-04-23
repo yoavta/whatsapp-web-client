@@ -13,7 +13,7 @@ import Home from "./pages/home";
 
 function App() {
 
-    const [currentUser, setUser] = useState("");
+    const [currentUser, setUser] = useState("yoav");
     return (<div className="App">
         <div className="App-header">
             <BrowserRouter>
