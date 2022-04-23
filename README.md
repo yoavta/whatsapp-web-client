@@ -17,11 +17,17 @@
 - JavaScript
 - Firebase hosting service and storage service
 
+## Packeges
+- react-bootstrap
+- react
+- react-router-dom
+
 ## Spacial features
 - Very welcoming Welcome page.
 - sounds one sending messages.
 - chats are sorted by the last massage sent.
 - previews popups for media in chats.
+- sending masege with Enter key
 
 ## Live Demo
 ### Feel free to visit the live demo [HERE](https://whatsapp.yoavtamir.com).
@@ -37,4 +43,8 @@ In the project directory, you need the install dependencies by run: `npm install
 
 Then start by:`npm start`
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+To sign in with exist user -
+user name : yoav
+password : 123abc
 
