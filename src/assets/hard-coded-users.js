@@ -101,6 +101,56 @@ let users = [
 
                 }
             ],
+            "shoham": [
+                {
+                    is_it_me: true,
+                    text: "whats up shoham?",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+
+                }
+            ],
+            "stav": [
+                {
+                    is_it_me: true,
+                    text: "whats up stav?",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+
+                }
+            ],
 
         }
 
@@ -205,6 +255,56 @@ let users = [
 
                 }
             ],
+            "shoham": [
+                {
+                    is_it_me: true,
+                    text: "whats up shoham?",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+
+                }
+            ],
+            "stav": [
+                {
+                    is_it_me: true,
+                    text: "whats up stav?",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+                },
+                {
+                    is_it_me: false,
+                    text: "all good, how are you?",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+
+                },
+                {
+                    is_it_me: true,
+                    text: "Fine, Thank you!",
+                    date: "00:01",
+                    media: null,
+                    mediaType: "text"
+
+                }
+            ],
 
         }
     },
@@ -216,6 +316,18 @@ let users = [
 
     },
 
+    {
+        user_name: "shoham",
+        nickname: "Shoham Jacoby",
+        password: "123abc",
+        picture_url: "https://firebasestorage.googleapis.com/v0/b/whatsapp-c2140.appspot.com/o/%D7%94%D7%95%D7%A8%D7%93%D7%94%20(1).png?alt=media&token=42f371ac-ad64-4bfe-9777-0671c40c57d4"
+    },
+    {
+        user_name: "stav",
+        nickname: "Stav Medina",
+        password: "123abc",
+        picture_url: "https://firebasestorage.googleapis.com/v0/b/whatsapp-c2140.appspot.com/o/%D7%94%D7%95%D7%A8%D7%93%D7%94.png?alt=media&token=4ca9e456-173a-48aa-88a5-4c5cb0b1c634"
+    },
     {
         user_name: "liad",
         nickname: "Liad Mor",
