@@ -1,5 +1,5 @@
 import {Dropdown, Button, Col, Container, DropdownButton, Form, InputGroup, Row, SplitButton} from "react-bootstrap";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './side.nav.style.css';
 import massage from '../components/massage'
 import DisplayMsg from '../components/displayMsg'
@@ -16,6 +16,15 @@ function ChatWindow(props) {
     const time = null;
     const [ctime, setDate] = useState(time);
     const [val, setVal] = useState("");
+
+
+    const [chats, setChats] = useState([]);
+
+    useEffect(() => {
+        if(props.chatWith){
+        ServiceServer.getChat(props.chatWith).then(fetchedChats  => setChats(fetchedChats))
+        }
+    },[props.chatWith])
 
 
     function handleSubmit() {
@@ -60,15 +69,15 @@ function ChatWindow(props) {
         <Container style={{margin: 0}}>
             <Row id='all-frame' fluid="true">
                 <Col style={{width: '100%'}}>
-                    {ServiceServer.getChats(props.currentUser, props.chatWith).map((massage, key) => {
+                    {chats.map((massage, key) => {
                         if (massage.is_it_me) {
                             return (
-                                <DisplayMsg key={key} massage={massage}
+                                <DisplayMsg key={key} partMessage={massage} chatWith={props.chatWith}
                                             style={{position: 'relative', width: '40%'}}/>
                             )
                         } else {
                             return (
-                                <DisplayMsg key={key} massage={massage}
+                                <DisplayMsg key={key} partMessage={massage} chatWith={props.chatWith}
                                             style={{position: 'relative', width: '40%', left: '60%'}}/>
                             )
                         }

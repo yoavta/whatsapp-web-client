@@ -1,4 +1,4 @@
-class massage {
+class Message {
     constructor(text, isItMe, date, media, mediaType) {
         this.text = text;
         this.isItMe = isItMe;
@@ -13,4 +13,4 @@ class massage {
 
 } 
 
- export default massage;
+ export default Message;

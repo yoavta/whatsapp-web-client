@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
@@ -7,13 +6,19 @@ import SignIn from './pages/sign-in';
 import Register from './pages/register';
 import Chat from './pages/chat';
 import NavbarMain from './components/navbar.componet';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Home from "./pages/home";
+import ServiceServer from "./server-service";
 
 
 function App() {
 
+
     const [currentUser, setUser] = useState(null);
+    useEffect(  ()=>{
+        ServiceServer.getUser("YoavTamir").then(data=> setUser(data)
+        )},[])
+
     return (<div className="App">
         <div className="App-header">
             <BrowserRouter>

@@ -9,7 +9,7 @@ function SendImageVideo(props) {
     useEffect(() => {
 
         props.mediaPrev != null && props.mediaChanged()
-    }, [props.mediaPrev])
+    }, [props])
 
     return (<Container>
             <Form.Group className="mb-3" controlId="formImage">

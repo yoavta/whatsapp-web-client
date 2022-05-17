@@ -1,17 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import {Card, Col, Container, Image, Row} from "react-bootstrap";
 import ServiceServer from "../server-service";
 import "./prev-chat.style.css"
 
 function PrevChat(props) {
 
-    const massage = ServiceServer.getLastMessage(props.currentUser, props.name);
+
+    function datePipe(date){
+        return date.slice(-8).slice(0,5);
+    }
     return (
 
 
    <Card id='prev-card'
               style={props.style}
-              onClick={() => props.setCurrentChat(props.name)}
+              onClick={() => props.setCurrentChat(props.user['id'])}
         >
 
             <Container style={{padding:0}}>
@@ -28,17 +31,17 @@ function PrevChat(props) {
                 </Col>
                 <Col   >
                     <Card.Title style={{marginBottom: 0}}>
-                        {ServiceServer.getUserNickname(props.name)}
+                        {props.user['name']}
                     </Card.Title>
-                    {massage != null &&<Card.Text>
-                        {massage.text}
+                    {props.user['last'] != null &&<Card.Text>
+                        {props.user['last']}
                     </Card.Text>}
                 </Col>
 
 
                 <Col sm={2} md={2} lg={2} xl={2} xs={2} >
-                    {massage != null && <p className="time">
-                        {massage.date}
+                    {props.user['lastdate'] != null && <p className="time">
+                        {datePipe(props.user['lastdate'])}
                     </p>}
                 </Col>
             </Row>

@@ -1,9 +1,15 @@
 import {Col, Image, Modal, Row} from 'react-bootstrap';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./displat-msg.style.css"
+import ServiceServer from "../server-service";
+import Message from "./massage";
 
-function DisplayMsg({massage, style}) {
+function DisplayMsg({partMessage, style,chatWith}) {
     const [show, setShow] = useState(false);
+    const [massage, setFullMessage] = useState(new Message('loading..',true,'00:00',null,'text'));
+    useEffect(() => {
+        ServiceServer.getFullMessage(partMessage,chatWith).then(fullMessage=>setFullMessage(fullMessage))
+    },[partMessage,chatWith])
 
 
     const handleClose = () => {
@@ -58,8 +64,6 @@ function DisplayMsg({massage, style}) {
                             {massage.mediaType === "image" &&
                                 <Image style={{maxWidth: '100%', marginLeft: 'auto', marginRight: 'auto'}}
                                        src={massage.media}/>}
-
-
                         </Col>
                     </Row>
                 </Modal.Body>

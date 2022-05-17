@@ -21,7 +21,7 @@ function NavbarMain(props) {
         <Navbar bg="light" variant="light">
             <Container>
                 {props.currentUser && <Image className="rounded-circle"
-                                             src={ServiceServer.getUserUrl(props.currentUser)}
+                                             src={props.currentUser.pictureUrl}
                                              width="50"
                                              height="50"
                 />}
@@ -42,10 +42,7 @@ function NavbarMain(props) {
 
 
                     {props.currentUser && <Navbar.Text>
-
-
-                        Hello {ServiceServer.getUserNickname(props.currentUser)} ! {' '}
-
+                        Hello {props.currentUser.nickName} ! {' '}
                     </Navbar.Text>}
 
 
