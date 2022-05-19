@@ -17,20 +17,20 @@ function ChatWindow(props) {
     const [ctime, setDate] = useState(time);
     const [val, setVal] = useState("");
 
-
     const [chats, setChats] = useState([]);
 
+    const [counter, changeCounter] = useState(1);
     useEffect(() => {
         if(props.chatWith){
-        ServiceServer.getChat(props.chatWith).then(fetchedChats  => setChats(fetchedChats))
+        ServiceServer.getChat(props.chatWith).then(fetchedChats  => setChats(fetchedChats));
+        console.log('fetching messages')
         }
-    },[props.chatWith])
+    },[props.chatWith,counter])
 
 
     function handleSubmit() {
 
-        ServiceServer.addMsg(msg, props.currentUser, props.chatWith);
-
+        ServiceServer.addMsg(msg, props.currentUser, props.chatWith).then(()=>changeCounter(counter + 1))
         if (change) {
             setChange(false);
         } else setChange(true);
@@ -39,7 +39,6 @@ function ChatWindow(props) {
         props.render();
         const snd = new Audio('https://bigsoundbank.com/UPLOAD/wav/1313.wav');
         snd.play();
-
     }
 
 
@@ -69,15 +68,15 @@ function ChatWindow(props) {
         <Container style={{margin: 0}}>
             <Row id='all-frame' fluid="true">
                 <Col style={{width: '100%'}}>
-                    {chats.map((massage, key) => {
-                        if (massage.is_it_me) {
+                    {chats.map((message, key) => {
+                        if (message.sender === props.chatWith) {
                             return (
-                                <DisplayMsg key={key} partMessage={massage} chatWith={props.chatWith}
+                                <DisplayMsg key={key} message={message} chatWith={props.chatWith}
                                             style={{position: 'relative', width: '40%'}}/>
                             )
                         } else {
                             return (
-                                <DisplayMsg key={key} partMessage={massage} chatWith={props.chatWith}
+                                <DisplayMsg key={key} message={message} chatWith={props.chatWith}
                                             style={{position: 'relative', width: '40%', left: '60%'}}/>
                             )
                         }

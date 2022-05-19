@@ -4,13 +4,12 @@ import "./displat-msg.style.css"
 import ServiceServer from "../server-service";
 import Message from "./massage";
 
-function DisplayMsg({partMessage, style,chatWith}) {
+function DisplayMsg({message, style,chatWith}) {
     const [show, setShow] = useState(false);
-    const [massage, setFullMessage] = useState(new Message('loading..',true,'00:00',null,'text'));
-    useEffect(() => {
-        ServiceServer.getFullMessage(partMessage,chatWith).then(fullMessage=>setFullMessage(fullMessage))
-    },[partMessage,chatWith])
-
+    // const [massage, setFullMessage] = useState(new Message('loading..',true,'00:00',null,'text'));
+    // useEffect(() => {
+    //     ServiceServer.getFullMessage(partMessage,chatWith).then(fullMessage=>setFullMessage(fullMessage))
+    // },[partMessage,chatWith])
 
     const handleClose = () => {
         setShow(false);
@@ -18,7 +17,10 @@ function DisplayMsg({partMessage, style,chatWith}) {
     }
     const handleShow = () => {
         setShow(true);
+    }
 
+        function datePipe(date){
+        return date.slice(11,16);
     }
 
 
@@ -27,23 +29,23 @@ function DisplayMsg({partMessage, style,chatWith}) {
         <div className="card" style={style} id='msg-card'>
             <div className="card-body" id='msg-text'>
 
-                <h6 className="card-subtitle mb-2 text-muted">{massage.date}</h6>
-                {massage.mediaType === "text" && <p className="card-text">{massage.text}</p>}
+                <h6 className="card-subtitle mb-2 text-muted">{datePipe(message.created)}</h6>
+                {message.mediaType === "text" && <p className="card-text">{message.content}</p>}
 
 
-                {massage.mediaType === "video" &&
+                {message.mediaType === "video" &&
                     <video style={{maxHeight: '200px', maxWidth: '200px'}} controls className={"center-block"}
-                           src={massage.media}/>}
+                           src={message.content}/>}
 
-                {massage.mediaType === "voice" &&
-                    <audio controls src={massage.media}/>}
+                {message.mediaType === "voice" &&
+                    <audio controls src={message.content}/>}
 
                 <div is={'button'} style={{border: 'none', background: 'none', margin: 'none', cursor: 'zoom-in'}}
                      onClick={() => handleShow()}>
 
-                    {massage.mediaType === "image" &&
+                    {message.mediaType === "image" &&
                         <Image style={{maxHeight: '100px', maxWidth: '100px'}} className={"center-block"}
-                               src={massage.media}/>}
+                               src={message.content}/>}
 
 
                 </div>
@@ -61,9 +63,9 @@ function DisplayMsg({partMessage, style,chatWith}) {
 
                     <Row className="justify-content-md-center">
                         <Col>
-                            {massage.mediaType === "image" &&
+                            {message.mediaType === "image" &&
                                 <Image style={{maxWidth: '100%', marginLeft: 'auto', marginRight: 'auto'}}
-                                       src={massage.media}/>}
+                                       src={message.content}/>}
                         </Col>
                     </Row>
                 </Modal.Body>

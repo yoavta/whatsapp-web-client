@@ -27,13 +27,18 @@ function SignIn(props) {
 
         } else {
             setValidated(true);
-            const isValid = ServiceServer.checkValidUser(userName, password);
-            if (isValid) {
-                props.setUser(userName);
-                navigate("/chat", {replace: true});
-            } else {
-                showAlert();
-            }
+            ServiceServer.checkValidUser(userName, password).then(isValid => {
+                if (Boolean(isValid)) {
+                    ServiceServer.signIn(userName).then(() => {
+                        ServiceServer.getUser(userName).then(fetchedUser => props.setUser(fetchedUser)).then(() => {
+                            navigate("/chat", {replace: true});
+                        })
+                    })
+                } else {
+                    showAlert();
+                }
+            });
+
             // })
 
         }

@@ -1,6 +1,4 @@
 import users from './assets/hard-coded-users.js';
-import data from "bootstrap/js/src/dom/data";
-import Massage  from '../src/components/massage';
 
 export default class ServiceServer {
     static baseUrl = 'https://localhost:7093/'
@@ -39,24 +37,6 @@ export default class ServiceServer {
     // }
     //
 
-
-         static async getFullMessage(partMessage, chatWith) {
-             let messageType = "";
-             await fetch(ServiceServer.baseUrl + 'Message/' + chatWith + '/messages/' + partMessage['id'] + '/type').then(data => data).then(data => messageType = data);
-            debugger;
-
-             if (messageType === 'text') {
-                 return new Massage(partMessage.contant, partMessage.sent, partMessage.created, null, 'text');
-             } else if (messageType === 'image') {
-                 return new Massage('image', partMessage.sent, partMessage.created, partMessage.contant, 'image');
-             } else if (messageType === 'video') {
-                 return new Massage('video', partMessage.sent, partMessage.created, partMessage.contant, 'video');
-             } else if (messageType === 'voice') {
-                 return new Massage('voice', partMessage.sent, partMessage.created, partMessage.contant, 'voice');
-             }
-         }
-
-
      static async getUser(userName) {
         let res ;
         await fetch(ServiceServer.baseUrl+ 'user/' + userName).then(data => data.json()).then(data=> res = data);
@@ -74,11 +54,17 @@ static async getUsers() {
          return  users;
     }
     static async  getChat(chatWith) {
+
         let chats = [];
-        await fetch(ServiceServer.baseUrl+  "Message/" + chatWith +"/messages" ).then(data => data.json()).then(data=> chats = data);
+        await fetch(ServiceServer.baseUrl+  "Message/" + chatWith +"/messagesType" ).then(data => data.json()).then(data=> chats = data);
         return  chats;
     }
 
+
+        static async checkValidUser(userName, password) {
+           return  await fetch(ServiceServer.baseUrl+  "User/" + userName +"/" + password ).then(data => data.json());
+
+    }
     //
     // static getUserNickname(userName) {
     //     let nickname = userName
@@ -205,15 +191,15 @@ static async getUsers() {
     //     });
     // }
 
-    static checkValidUser(userName, password) {
-        let flag = false;
-        users.forEach(val => {
-            if (val.user_name === userName) {
-                flag = (val.password === password);
-            }
-        })
-        return flag;
-    }
+    // static checkValidUser(userName, password) {
+    //     let flag = false;
+    //     users.forEach(val => {
+    //         if (val.user_name === userName) {
+    //             flag = (val.password === password);
+    //         }
+    //     })
+    //     return flag;
+    // }
 
     static printAllUsers() {
 
@@ -224,10 +210,54 @@ static async getUsers() {
 
     }
 
-    static addUser(userName, nickname, password, photo) {
-        users.push({user_name: userName, nickname: nickname, password: password, picture_url: photo, chats: []})
+    static async addUser(userName, nickname, password, photo) {
+
+        const defaultPicture = "https://cdn-icons-png.flaticon.com/512/149/149071.png?w=826&t=st=1650031400~exp=1650032000~hmac=c12c919506b5941e345f8213a45d0d57f85c73cf7dfcecf3c026471fcf04159e";
+        const newUser = {
+  "userName": userName,
+  "nickName": nickname,
+  "password": password,
+  "pictureUrl": photo ? photo : defaultPicture
+        }
+        return await fetch(ServiceServer.baseUrl + 'User/',
+            {
+                method: 'POST',
+                body: JSON.stringify(newUser),
+                headers: {
+                    'Accept': 'application/json, text/plain',
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
 
     }
+
+
+
+
+    static async addMsg(msg, currentUser, chatWith) {
+        let content;
+        if (msg.mediaType === 'text') {
+            content = msg.text;
+        } else {
+            content = msg.media;
+        }
+
+        const message = {
+            // "created":  new Date(),
+            "sender": currentUser.userName.toString(),
+            "reciver": chatWith.toString(),
+            "content": content.toString(),
+            "mediaType": msg.mediaType.toString()
+        }
+         return await fetch(ServiceServer.baseUrl + 'Message/' + chatWith + '/messagesType',
+             {method: 'POST',
+                 body:JSON.stringify(message),
+                        headers: {
+                'Accept': 'application/json, text/plain',
+                'Content-Type': 'application/json;charset=UTF-8'
+            }});
+    }
+
 
     static userExists(userName) {
         let bool = false
@@ -235,37 +265,36 @@ static async getUsers() {
 
             if (val.user_name === userName) {
                 bool = true
-
             }
         })
         return bool;
     }
 
-    static getUserUrl(userName) {
+    // static getUserUrl(userName) {
+    //
+    //     let url = "https://cdn-icons-png.flaticon.com/512/149/149071.png?w=826&t=st=1650031400~exp=1650032000~hmac=c12c919506b5941e345f8213a45d0d57f85c73cf7dfcecf3c026471fcf04159e";
+    //     users.forEach(val => {
+    //         if (val.user_name === userName) {
+    //             if (val.picture_url != null) {
+    //                 url = val.picture_url;
+    //             }
+    //
+    //         }
+    //     })
+    //     return url;
+    // }
 
-        let url = "https://cdn-icons-png.flaticon.com/512/149/149071.png?w=826&t=st=1650031400~exp=1650032000~hmac=c12c919506b5941e345f8213a45d0d57f85c73cf7dfcecf3c026471fcf04159e";
-        users.forEach(val => {
-            if (val.user_name === userName) {
-                if (val.picture_url != null) {
-                    url = val.picture_url;
-                }
-
-            }
-        })
-        return url;
-    }
-
-    static getUserNickname(userName) {
-        let nickname = userName
-
-        users.forEach(val => {
-            if (val.user_name === userName) {
-                nickname = val.nickname;
-
-            }
-        })
-        return nickname;
-    }
+    // static getUserNickname(userName) {
+    //     let nickname = userName
+    //
+    //     users.forEach(val => {
+    //         if (val.user_name === userName) {
+    //             nickname = val.nickname;
+    //
+    //         }
+    //     })
+    //     return nickname;
+    // }
     //
     // static getUsers(currentUser) {
     //     let chats = [];
@@ -335,36 +364,38 @@ static async getUsers() {
     //     return []
     // }
 
-    static addMsg(msg, currentUser, chatWith) {
+    // static addMsg(msg, currentUser, chatWith) {
+    //
+    //
+    //     users.forEach(user => {
+    //         if (user.user_name === currentUser && chatWith in user.chats) {
+    //             user.chats[chatWith].push({
+    //                 is_it_me: msg.isItMe,
+    //                 text: msg.text,
+    //                 date: msg.date,
+    //                 media: msg.media,
+    //                 mediaType: msg.mediaType
+    //             });
+    //
+    //         }
+    //     })
+    //
+    // }
 
-        users.forEach(user => {
-            if (user.user_name === currentUser && chatWith in user.chats) {
-                user.chats[chatWith].push({
-                    is_it_me: msg.isItMe,
-                    text: msg.text,
-                    date: msg.date,
-                    media: msg.media,
-                    mediaType: msg.mediaType
-                });
 
-            }
-        })
-
-    }
-
-
-    static getLastMessage(currentUser, chatWith) {
-
-        const chats = ServiceServer.getChats(currentUser, chatWith);
-
-        if (chats) {
-            return chats.slice(-1)[0];
-        }
-
-        return null;
-    }
+    // static getLastMessage(currentUser, chatWith) {
+    //
+    //     const chats = ServiceServer.getChats(currentUser, chatWith);
+    //
+    //     if (chats) {
+    //         return chats.slice(-1)[0];
+    //     }
+    //
+    //     return null;
+    // }
 
     static addConversation(currentUser, chatWith) {
+
         users.forEach(user => {
             if (user.user_name === currentUser) {
                 user.chats[chatWith] = [];
@@ -374,15 +405,18 @@ static async getUsers() {
         })
     }
 
-    printUsers() {
-        users.forEach(val => {
-            console.log(val.nickname)
-        });
+    // printUsers() {
+    //     users.forEach(val => {
+    //         console.log(val.nickname)
+    //     });
+    // }
+
+
+    static async logOut() {
+        return await fetch(ServiceServer.baseUrl+ "ConnectedUser", {method: "DELETE"} );
     }
 
-
-
-
-
-
+    static async signIn(userName) {
+        return await fetch(ServiceServer.baseUrl+ "ConnectedUser?userName=" + userName, {method: "GET"} );
+    }
 }

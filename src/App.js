@@ -15,9 +15,9 @@ function App() {
 
 
     const [currentUser, setUser] = useState(null);
-    useEffect(  ()=>{
-        ServiceServer.getUser("YoavTamir").then(data=> setUser(data)
-        )},[])
+    // useEffect(  ()=>{
+    //     ServiceServer.getUser("YoavTamir").then(data=> setUser(data)
+    //     )},[])
 
     return (<div className="App">
         <div className="App-header">
