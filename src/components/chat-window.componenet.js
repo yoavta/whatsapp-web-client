@@ -12,7 +12,6 @@ function ChatWindow(props) {
 
     // const massages = []
     const [msg, setMsg] = useState(null);
-    const [change, setChange] = useState(null);
     const time = null;
     const [ctime, setDate] = useState(time);
     const [val, setVal] = useState("");
@@ -25,18 +24,16 @@ function ChatWindow(props) {
         ServiceServer.getChat(props.chatWith).then(fetchedChats  => setChats(fetchedChats));
         console.log('fetching messages')
         }
-    },[props.chatWith,counter])
+    },[props.chatWith,props.refresh])
 
 
     function handleSubmit() {
-
-        ServiceServer.addMsg(msg, props.currentUser, props.chatWith).then(()=>changeCounter(counter + 1))
-        if (change) {
-            setChange(false);
-        } else setChange(true);
+        ServiceServer.addMsg(msg, props.currentUser, props.chatWith).then(()=>{
+            changeCounter(counter + 1);
+            props.render();
+        })
         setVal("");
         setMsg(null)
-        props.render();
         const snd = new Audio('https://bigsoundbank.com/UPLOAD/wav/1313.wav');
         snd.play();
     }
@@ -87,14 +84,12 @@ function ChatWindow(props) {
 
 
             >
-
                 <InputGroup size="sm" className="mb-3" style={{padding: 0}}>
                     <Button type="submit"
                             onClick={(event) => {
                                 handleSubmit(event)
                             }}> Send
                     </Button>
-
                     <Form.Control
                         onKeyDown={handleEnterKey} value={val} type="text" className="form-control1"
                         placeholder=""
@@ -102,15 +97,10 @@ function ChatWindow(props) {
                             handleNewMsg(event)
                         }}
                     />
-
-
                     <PoppingScreen style={{position: "absolute"}} setMsg={setMsg} handleSubmit={handleSubmit}
                                    currentUser={props.currentUser} chatWith={props.chatWith}/>
                 </InputGroup>
-
-
             </Row>
-
         </Container>
     );
 }

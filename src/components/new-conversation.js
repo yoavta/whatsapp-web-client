@@ -5,21 +5,30 @@ import {Button, Form, Modal} from "react-bootstrap";
 
 function NewConversation(props) {
 
-    const [chatWith, setChatWith] = useState(null);
+    const [userName, setUserName] = useState(null);
+    const [serverName, setServerName] = useState(null);
+    const [nickname, setNickname] = useState(null);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    function handleNameChange(event) {
-        setChatWith(event.target.value);
+    function handleServerNameChange(event) {
+        setServerName(event.target.value);
+    }
+        function handleNicknameChange(event) {
+        setNickname(event.target.value);
+    }
+        function handleUserNameChange(event) {
+        setUserName(event.target.value);
     }
 
     function handleAddConversation() {
+        ServiceServer.addConversation(nickname,userName,serverName).then(()=>{
+            handleClose();
+            props.refresh();
+        })
 
-        ServiceServer.addConversation(props.currentUser, chatWith);
-        handleClose();
-        props.refresh();
 
     }
 
@@ -34,11 +43,23 @@ function NewConversation(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>User Name</Form.Label>
+                        <Form.Label>Nickname</Form.Label>
+                        <Form.Control style={{width: '100%'}} required
+                                      type="text"
+                                      placeholder="Nickname"
+                                      onChange={event => handleNicknameChange(event)}
+                        />
+                                             <Form.Label>User Name</Form.Label>
                         <Form.Control style={{width: '100%'}} required
                                       type="text"
                                       placeholder="user name"
-                                      onChange={event => handleNameChange(event)}
+                                      onChange={event => handleUserNameChange(event)}
+                        />
+                                             <Form.Label>Server Name</Form.Label>
+                        <Form.Control style={{width: '100%'}} required
+                                      type="text"
+                                      placeholder="serverName"
+                                      onChange={event => handleServerNameChange(event)}
                         />
                     </Form.Group>
                 </Modal.Body>

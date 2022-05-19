@@ -9,14 +9,10 @@ function Chat(props) {
 
     const [chatWith, setChatWith] = useState('');
     const [searchFilter, setSearchFilter] = useState('');
-    const [refresh, setRefresh] = useState(false);
+    const [refresh, setRefresh] = useState(1);
 
     function render() {
-        if (refresh === false) {
-            setRefresh(true)
-        } else {
-            setRefresh(false);
-        }
+        setRefresh(refresh  +  1)
     }
 
     return (
@@ -24,10 +20,10 @@ function Chat(props) {
             <Row className="justify-content-md-center">
                 <Col sm={4} md={4} lg={4} xl={4} xs={4}>
                     <SideNav currentUser={props.currentUser} chatWith={chatWith} setChatWith={setChatWith}
-                             searchFilter={searchFilter} setSearchFilter={setSearchFilter}/>
+                             searchFilter={searchFilter} setSearchFilter={setSearchFilter} render={render} refresh={refresh}/>
                 </Col>
                 <Col>
-                    <ChatWindow render={render} chatWith={chatWith} currentUser={props.currentUser}/>
+                    <ChatWindow render={render} refresh={refresh}  chatWith={chatWith} currentUser={props.currentUser}/>
                 </Col>
             </Row>
         </Container>

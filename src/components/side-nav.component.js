@@ -4,25 +4,23 @@ import './side.nav.style.css';
 import PrevChat from "./prev-chat.component";
 import Search from "./search.component";
 import ServiceServer from "../server-service";
-import serverService from "../server-service";
 import NewConversation from "./new-conversation";
-import {f} from "../assets/React App_files/bundle";
 
 
 function SideNav(props) {
 
-    const [refresh, setRefresh] = useState(false);
-    const [massagesWith, setMassagesWith] = useState([]);
+    // const [refresh, setRefresh] = useState(1);
+    const [users, setUsers] = useState([]);
     const [contacts, setContacts] = useState([]);
 
     useEffect(   () => {
-         ServiceServer.getUsers().then(data => setMassagesWith(data)
+         ServiceServer.getUsers().then(data => setUsers(data)
         )
-    },[])
+    },[props.refresh])
 
        useEffect(() => {
      ServiceServer.getContacts().then(data=> setContacts(data)
-        )},[])
+        )},[props.refresh])
 
     function setCurrentChat(name) {
         props.setChatWith(name);
@@ -38,22 +36,26 @@ function SideNav(props) {
         return name.includes(props.searchFilter);
     }
 
-    function handleRefresh() {
-        // re-renders the component
-        if (refresh) {
-            setRefresh(false);
+    // function handleRefresh() {
+    //     setRefresh(refresh +1 );
+    // }
 
-        } else setRefresh(true);
+    // function inContacts(userName) {
+    //     if (!contacts || !users)
+    //         return false;
+    //     else if (contacts.find(contact=> contact['id'] === userName)){
+    //             return true;
+    //         }
+    //     return false;
+    // }
+    function uniqKey(text) {
+        let res = "";
+        for (let i =0; i< text.length; i++) {
+            res = res + text.charCodeAt(i)
+        }
+        return res;
     }
 
-    function inContacts(userName) {
-        if (!contacts || !massagesWith)
-            return false;
-        else if (contacts.find(contact=> contact['id'] === userName)){
-                return true;
-            }
-        return false;
-    }
 
     return (
 
@@ -64,23 +66,26 @@ function SideNav(props) {
             <Row style={{overflow: 'auto', maxHeight: '74vh', minHeight: '74vvh'}}>
                 <Col>
                     <Search setSearchFilter={props.setSearchFilter} searchFilter={props.searchFilter}/>
-                    <NewConversation refresh={handleRefresh} currentUser={props.currentUser}/>
-                    {massagesWith.map(user => {
-                        if (subsetOf(contacts['name']) && inContacts(user.userName)) {
-                            const contact = contacts.find(contact=>contact['id']===user.userName)
-                            if (user.userName === props.chatWith) {
+                    <NewConversation refresh={props.render} currentUser={props.currentUser}/>
+                    {contacts.map(( contact,idx) => {
+                        const user = users.find(user=>user.userName === contact.id);
+                        if (!user){
+                            return <div/>;
+                        }
+                        if (subsetOf(contact.name)) {
+                            if (contact.id === props.chatWith) {
                                 return <PrevChat currentUser={props.currentUser}
                                                  style={{cursor: 'pointer', backgroundColor: '#DCDCDC'}}
-                                                 key={user.userName} {...props} user={contact} as={Nav.Link}
+                                                 key={idx} {...props} user={contact} as={Nav.Link}
                                                  setCurrentChat={setCurrentChat}
                                                  picture={user.pictureUrl}>{user.userName}</PrevChat>
                             } else{
 
                                 return <PrevChat currentUser={props.currentUser} style={{cursor: 'pointer'}}
-                                                    key={user.userName} {...props} user={contact} as={Nav.Link}
+                                                    key={idx+"off"} {...props} user={contact} as={Nav.Link}
                                                     setCurrentChat={setCurrentChat}
                                                     picture={user.pictureUrl}>{user.userName}</PrevChat>
-                        }}
+                        }}return<div/>
                     })}
 
                 </Col>

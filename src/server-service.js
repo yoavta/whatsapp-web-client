@@ -232,9 +232,12 @@ static async getUsers() {
     }
 
 
-
+    return
+    result;
 
     static async addMsg(msg, currentUser, chatWith) {
+        let result = 0;
+
         let content;
         if (msg.mediaType === 'text') {
             content = msg.text;
@@ -249,17 +252,85 @@ static async getUsers() {
             "content": content.toString(),
             "mediaType": msg.mediaType.toString()
         }
-         return await fetch(ServiceServer.baseUrl + 'Message/' + chatWith + '/messagesType',
-             {method: 'POST',
-                 body:JSON.stringify(message),
-                        headers: {
-                'Accept': 'application/json, text/plain',
-                'Content-Type': 'application/json;charset=UTF-8'
-            }});
+        await fetch(ServiceServer.baseUrl + 'Message/' + chatWith + '/messagesType',
+            {
+                method: 'POST',
+                body: JSON.stringify(message),
+                headers: {
+                    'Accept': 'application/json, text/plain',
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            }).then(() => result = result + 1);
+
+        const transfer = {
+            "from": currentUser.userName.toString(),
+            "to": chatWith.toString(),
+            "content": content.toString(),
+        }
+
+        let contactData;
+        await fetch(ServiceServer.baseUrl + 'contacts/' + chatWith).then(data => data.json()).then(json => contactData = json);
+        const url = 'https://'  + contactData.server + '/transfer/';
+        debugger;
+        await fetch(url,
+            {
+                method: 'POST',
+                body: JSON.stringify(transfer),
+                headers: {
+                    'Accept': 'application/json, text/plain',
+                    'Content-Type': 'application/json;charset=UTF-8'
+                },
+                mode:'no-cors'
+            }).then(() => result = result + 1)
+
+        return result;
+
     }
 
 
-    static userExists(userName) {
+
+
+static async addConversation(nickname, userName, serverName)
+{
+
+    let result = 0;
+
+    const newUser = {
+        "id": userName,
+        "name": nickname,
+        "server": serverName
+    }
+    await fetch(ServiceServer.baseUrl + 'Contacts',
+        {
+            method: 'POST',
+            body: JSON.stringify(newUser),
+            headers: {
+                'Accept': 'application/json, text/plain',
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        }).then(() => result = result + 1)
+
+    const invitations = {
+        "from": userName,
+        "to": nickname,
+        "server": ServiceServer.baseUrl
+    }
+
+    await fetch(serverName + 'invitations',
+        {
+            method: 'POST',
+            body: JSON.stringify(invitations),
+            headers: {
+                'Accept': 'application/json, text/plain',
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        }).then(() => result = result + 1);
+
+    return result;
+}
+
+
+static userExists(userName) {
         let bool = false
         users.forEach(val => {
 
@@ -394,16 +465,7 @@ static async getUsers() {
     //     return null;
     // }
 
-    static addConversation(currentUser, chatWith) {
 
-        users.forEach(user => {
-            if (user.user_name === currentUser) {
-                user.chats[chatWith] = [];
-
-
-            }
-        })
-    }
 
     // printUsers() {
     //     users.forEach(val => {
@@ -417,6 +479,11 @@ static async getUsers() {
     }
 
     static async signIn(userName) {
-        return await fetch(ServiceServer.baseUrl+ "ConnectedUser?userName=" + userName, {method: "GET"} );
+        return await fetch(ServiceServer.baseUrl+ "ConnectedUser?userName=" + userName, {method: "POST"} );
+    }
+
+     static async getCurrentUser() {
+        return await fetch(ServiceServer.baseUrl+ "ConnectedUser", {method: "GET"}).then(data => data.json());
+
     }
 }
