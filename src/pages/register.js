@@ -34,12 +34,15 @@ function Register(props) {
                 event.preventDefault();
                 event.stopPropagation();
                 ServiceServer.addUser(userName, nickname, password, avatar).then(() => {
-                    ServiceServer.signIn(userName).then(() => {
-                        ServiceServer.getUser(userName).then(fetchedUser => props.setUser(fetchedUser)).then(() => {
+                    // ServiceServer.signIn(userName).then(() => {
+                        ServiceServer.getUser(userName).then(fetchedUser =>{
+                            props.setUser(fetchedUser)
+                            ServiceServer.currentUser = fetchedUser;
+                        }).then(() => {
                             navigate("/chat", {replace: true});
                         })
                     })
-                })
+                // })
             } else {
                 event.preventDefault();
                 event.stopPropagation();
