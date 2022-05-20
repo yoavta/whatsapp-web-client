@@ -1,15 +1,39 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Col, Container, Row,} from 'react-bootstrap';
 import SideNav from "../components/side-nav.component";
 import ChatWindow from "../components/chat-window.componenet";
+import { HubConnectionBuilder } from '@microsoft/signalr';
+import ServiceServer from "../server-service";
 
 
 function Chat(props) {
 
-
+    const [ connection, setConnection ] = useState(null);
     const [chatWith, setChatWith] = useState('');
     const [searchFilter, setSearchFilter] = useState('');
     const [refresh, setRefresh] = useState(1);
+
+      useEffect(() => {
+        const newConnection = new HubConnectionBuilder()
+            .withUrl(ServiceServer.baseUrl+ "hub")
+            .withAutomaticReconnect()
+            .build();
+
+        setConnection(newConnection);
+    }, []);
+
+    useEffect(() => {
+        if (connection) {
+            connection.start()
+                .then(result => {
+                    console.log('Connected!');
+                    connection.on('RenderPage', () => {
+                        setRefresh(refresh + 1)
+                    });
+                })
+                .catch(e => console.log('Connection failed: ', e));
+        }
+    }, [connection]);
 
     function render() {
         setRefresh(refresh  +  1)

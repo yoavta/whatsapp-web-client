@@ -82,7 +82,7 @@ function SideNav(props) {
                             } else{
 
                                 return <PrevChat currentUser={props.currentUser} style={{cursor: 'pointer'}}
-                                                    key={idx+"off"} {...props} user={contact} as={Nav.Link}
+                                                    key={idx} {...props} user={contact} as={Nav.Link}
                                                     setCurrentChat={setCurrentChat}
                                                     picture={user.pictureUrl}>{user.userName}</PrevChat>
                         }}return<div/>

@@ -1,7 +1,7 @@
 import users from './assets/hard-coded-users.js';
 
 export default class ServiceServer {
-    static baseUrl = 'https://localhost:7093/'
+    static baseUrl = 'https://localhost:7093/api/'
 
 
 
@@ -37,6 +37,8 @@ export default class ServiceServer {
     // }
     //
 
+
+
      static async getUser(userName) {
         let res ;
         await fetch(ServiceServer.baseUrl+ 'user/' + userName).then(data => data.json()).then(data=> res = data);
@@ -56,7 +58,7 @@ static async getUsers() {
     static async  getChat(chatWith) {
 
         let chats = [];
-        await fetch(ServiceServer.baseUrl+  "Message/" + chatWith +"/messagesType" ).then(data => data.json()).then(data=> chats = data);
+        await fetch(ServiceServer.baseUrl+  "messages/" + chatWith +"/messagesType" ).then(data => data.json()).then(data=> chats = data);
         return  chats;
     }
 
@@ -252,12 +254,12 @@ static async getUsers() {
             "content": content.toString(),
             "mediaType": msg.mediaType.toString()
         }
-        await fetch(ServiceServer.baseUrl + 'Message/' + chatWith + '/messagesType',
+        await fetch(ServiceServer.baseUrl + 'messages/' + chatWith + '/messagesType',
             {
                 method: 'POST',
                 body: JSON.stringify(message),
                 headers: {
-                    'Accept': 'application/json, text/plain',
+                    'Accept': '*/*',
                     'Content-Type': 'application/json;charset=UTF-8'
                 }
             }).then(() => result = result + 1);
@@ -270,17 +272,16 @@ static async getUsers() {
 
         let contactData;
         await fetch(ServiceServer.baseUrl + 'contacts/' + chatWith).then(data => data.json()).then(json => contactData = json);
-        const url = 'https://'  + contactData.server + '/transfer/';
+        const url = 'https://'  + contactData.server + '/api/transfer/';
         debugger;
         await fetch(url,
             {
                 method: 'POST',
                 body: JSON.stringify(transfer),
-                headers: {
-                    'Accept': 'application/json, text/plain',
+                                            headers: {
+                    'Accept': '*/*',
                     'Content-Type': 'application/json;charset=UTF-8'
                 },
-                mode:'no-cors'
             }).then(() => result = result + 1)
 
         return result;
