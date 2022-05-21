@@ -93,7 +93,9 @@ export default class ServiceServer {
                     'Content-Type': 'application/json;charset=UTF-8',
                     'connectedUser' : ServiceServer.currentUser?.userName
                 }
-            }).then(() => result = result + 1);
+            }).then(() => {
+                result = result + 1
+        });
 
         const transfer = {
             "from": currentUser.userName.toString(),
@@ -145,8 +147,9 @@ export default class ServiceServer {
             "to": nickname,
             "server": ServiceServer.baseUrl
         }
+        const sendUrl = 'https://' + serverName + '/api/invitations/';
 
-        await fetch(serverName + 'invitations',
+        await fetch(sendUrl,
             {
                 method: 'POST',
                 body: JSON.stringify(invitations),

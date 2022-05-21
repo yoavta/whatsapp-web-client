@@ -42,7 +42,7 @@ function Chat(props) {
     }, [connection]);
 
 
-    function render(userName) {
+    function notifyAll(userName) {
         setRefresh(Date.now())
         if (userName){
             connection.invoke("ChangedAll", ServiceServer.currentUser.userName)
@@ -56,10 +56,10 @@ function Chat(props) {
             <Row className="justify-content-md-center">
                 <Col sm={4} md={4} lg={4} xl={4} xs={4}>
                     <SideNav currentUser={props.currentUser} chatWith={chatWith} setChatWith={setChatWith}
-                             searchFilter={searchFilter} setSearchFilter={setSearchFilter} render={render} refresh={refresh}/>
+                             searchFilter={searchFilter} setSearchFilter={setSearchFilter} render={notifyAll} refresh={refresh}/>
                 </Col>
                 <Col>
-                    <ChatWindow   render={render} refresh={refresh}  chatWith={chatWith} currentUser={props.currentUser}/>
+                    <ChatWindow notifyAll={notifyAll} refresh={refresh} chatWith={chatWith} currentUser={props.currentUser}/>
                 </Col>
             </Row>
         </Container>

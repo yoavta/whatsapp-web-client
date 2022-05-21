@@ -35,29 +35,10 @@ function SideNav(props) {
         return name.includes(props.searchFilter);
     }
 
-    // function handleRefresh() {
-    //     setRefresh(refresh +1 );
-    // }
 
-    // function inContacts(userName) {
-    //     if (!contacts || !users)
-    //         return false;
-    //     else if (contacts.find(contact=> contact['id'] === userName)){
-    //             return true;
-    //         }
-    //     return false;
-    // }
-    function uniqKey(text) {
-        let res = "";
-        for (let i =0; i< text.length; i++) {
-            res = res + text.charCodeAt(i)
-        }
-        return res;
-    }
 
 
     return (
-
 
         <Tab.Container id="tabs" defaultActiveKey="first">
 

@@ -30,7 +30,7 @@ function ChatWindow(props) {
 
     function handleSubmit() {
         ServiceServer.addMsg(msg, props.currentUser, props.chatWith).then(()=>{
-            props.render(props.chatWith);
+            props.notifyAll(props.chatWith);
         })
         setVal("");
         setMsg(null)
