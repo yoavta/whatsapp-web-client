@@ -1,7 +1,8 @@
 import users from './assets/hard-coded-users.js';
 
 export default class ServiceServer {
-    static baseUrl = 'https://localhost:7093/api/'
+    static splitUrl = 'localhost:7093'
+    static baseUrl = 'https://'+ServiceServer.splitUrl+'/api/'
      static currentUser;
 
 
@@ -78,7 +79,6 @@ export default class ServiceServer {
         }
 
         const message = {
-            // "created":  new Date(),
             "sender": currentUser.userName.toString(),
             "reciver": chatWith.toString(),
             "content": content.toString(),
@@ -143,9 +143,9 @@ export default class ServiceServer {
             }).then(() => result = result + 1)
 
         const invitations = {
-            "from": userName,
-            "to": nickname,
-            "server": ServiceServer.baseUrl
+            "from": ServiceServer.currentUser?.userName,
+            "to": userName,
+            "server": ServiceServer.splitUrl
         }
         const sendUrl = 'https://' + serverName + '/api/invitations/';
 
