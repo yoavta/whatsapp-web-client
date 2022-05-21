@@ -40,6 +40,7 @@ function NavbarMain(props) {
                     {!props.currentUser && <Nav.Link as={Link} to="/">Home</Nav.Link>}
                     {!props.currentUser && <Nav.Link as={Link} to="/signin">Sign-In</Nav.Link>}
                     {!props.currentUser && <Nav.Link as={Link} to="/register">Registration</Nav.Link>}
+                    {!props.currentUser && <Nav.Link href="https://localhost:7129/Rankings">Rating</Nav.Link>}
                 </Nav>
                 <Navbar.Collapse className="justify-content-end">
 
