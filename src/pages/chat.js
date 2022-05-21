@@ -8,10 +8,14 @@ import ServiceServer from "../server-service";
 
 function Chat(props) {
 
-    const [ connection, setConnection ] = useState(null);
     const [chatWith, setChatWith] = useState('');
     const [searchFilter, setSearchFilter] = useState('');
-    const [refresh, setRefresh] = useState(1);
+    const [refresh, setRefresh] = useState(Date.now());
+
+        const [ connection, setConnection ] = useState(null);
+
+
+
 
       useEffect(() => {
         const newConnection = new HubConnectionBuilder()
@@ -25,18 +29,26 @@ function Chat(props) {
     useEffect(() => {
         if (connection) {
             connection.start()
-                .then(result => {
-                    console.log('Connected!');
-                    connection.on('RenderPage', () => {
-                        setRefresh(refresh + 1)
+                .then(() => {
+                    connection.on('RenderPage', (userName) => {
+                        if (userName !== ServiceServer.currentUser.userName){
+                        console.log('chat changed')
+                        setRefresh(Date.now())}
                     });
                 })
                 .catch(e => console.log('Connection failed: ', e));
         }
+
     }, [connection]);
 
-    function render() {
-        setRefresh(refresh  +  1)
+
+    function render(userName) {
+        setRefresh(Date.now())
+        if (userName){
+            connection.invoke("ChangedAll", ServiceServer.currentUser.userName)
+        }else {
+            connection.invoke("ChangedAll", ServiceServer.currentUser.userName)
+        }
     }
 
     return (
@@ -47,7 +59,7 @@ function Chat(props) {
                              searchFilter={searchFilter} setSearchFilter={setSearchFilter} render={render} refresh={refresh}/>
                 </Col>
                 <Col>
-                    <ChatWindow render={render} refresh={refresh}  chatWith={chatWith} currentUser={props.currentUser}/>
+                    <ChatWindow   render={render} refresh={refresh}  chatWith={chatWith} currentUser={props.currentUser}/>
                 </Col>
             </Row>
         </Container>

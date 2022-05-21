@@ -10,6 +10,7 @@ import PoppingScreen from "./popping-screen.component";
 
 function ChatWindow(props) {
 
+
     // const massages = []
     const [msg, setMsg] = useState(null);
     const time = null;
@@ -18,8 +19,8 @@ function ChatWindow(props) {
 
     const [chats, setChats] = useState([]);
 
-    const [counter, changeCounter] = useState(1);
     useEffect(() => {
+        console.log('trying fetch')
         if(props.chatWith){
         ServiceServer.getChat(props.chatWith).then(fetchedChats  => setChats(fetchedChats));
         console.log('fetching messages')
@@ -29,8 +30,7 @@ function ChatWindow(props) {
 
     function handleSubmit() {
         ServiceServer.addMsg(msg, props.currentUser, props.chatWith).then(()=>{
-            changeCounter(counter + 1);
-            props.render();
+            props.render(props.chatWith);
         })
         setVal("");
         setMsg(null)

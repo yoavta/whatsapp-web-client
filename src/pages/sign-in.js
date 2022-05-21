@@ -28,11 +28,9 @@ function SignIn(props) {
         } else {
             setValidated(true);
             ServiceServer.checkValidUser(userName, password).then(isValid => {
-                debugger;
                 if (Boolean(isValid)) {
                     // ServiceServer.signIn(userName).then(() => {
                         ServiceServer.getUser(userName).then(fetchedUser => {
-                            debugger;
                             ServiceServer.setCurrentUser(fetchedUser);
                             props.setUser(fetchedUser)
                         }).then(() => {
