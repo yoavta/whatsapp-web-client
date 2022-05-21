@@ -26,7 +26,7 @@ function NewConversation(props) {
     function handleAddConversation() {
         ServiceServer.addConversation(nickname,userName,serverName).then(()=>{
             handleClose();
-            props.refresh();
+            props.refresh(userName);
         })
 
 

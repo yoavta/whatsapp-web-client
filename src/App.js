@@ -9,29 +9,28 @@ import NavbarMain from './components/navbar.componet';
 import {useEffect, useState} from "react";
 import Home from "./pages/home";
 import ServiceServer from "./server-service";
+import {HubConnectionBuilder} from "@microsoft/signalr";
 
 
 function App() {
 
 
     const [currentUser, setUser] = useState(null);
-    // useEffect(  ()=>{
-    //     ServiceServer.getCurrentUser().then(data=>
-    //         {
-    //             ServiceServer.currentUser = data;
-    //             setUser(data)
-    //         }
-    //     )},[])
+
+
+
+
+
 
     return (<div className="App">
         <div className="App-header">
             <BrowserRouter>
-                <NavbarMain currentUser={currentUser} setUser={setUser}/>
+                <NavbarMain currentUser={currentUser} setUser={setUser} />
                 <Routes>
-                    <Route path="/signin" element={<SignIn currentUser={currentUser} setUser={setUser}/>}/>
-                    <Route path="/" element={<Home currentUser={currentUser} setUser={setUser}/>}/>
+                    <Route path="/signin" element={<SignIn currentUser={currentUser} setUser={setUser} />}/>
+                    <Route path="/" element={<Home currentUser={currentUser} setUser={setUser} />}/>
                     <Route path="/register" element={<Register currentUser={currentUser} setUser={setUser}/>}/>
-                    <Route path="/chat" element={<Chat currentUser={currentUser}/>}/>
+                    <Route path="/chat" element={<Chat currentUser={currentUser} /> }/>
                 </Routes>
             </BrowserRouter>
         </div>

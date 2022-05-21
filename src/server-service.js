@@ -6,7 +6,6 @@ export default class ServiceServer {
 
 
     static setCurrentUser(user){
-        debugger;
         ServiceServer.currentUser = user;
     }
     static async getUser(userName) {
@@ -18,7 +17,6 @@ export default class ServiceServer {
 
     static async getContacts() {
         let contacts = [];
-        debugger;
         await fetch(ServiceServer.baseUrl + "contacts/",{headers:{'connectedUser' : ServiceServer?.currentUser.userName}}).then(data => data.json()).then(data => contacts = data.reverse());
         return contacts;
     }
@@ -106,7 +104,6 @@ export default class ServiceServer {
         let contactData;
         await fetch(ServiceServer.baseUrl + 'contacts/' + chatWith, {headers: { 'connectedUser' : ServiceServer.currentUser?.userName}}).then(data => data.json()).then(json => contactData = json);
         const url = 'https://' + contactData.server + '/api/transfer/';
-        debugger;
         await fetch(url,
             {
                 method: 'POST',
