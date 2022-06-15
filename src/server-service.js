@@ -2,7 +2,7 @@ import users from './assets/hard-coded-users.js';
 
 export default class ServiceServer {
     static splitUrl = 'localhost:7093'
-    static baseUrl = 'https://'+ServiceServer.splitUrl+'/api/'
+    static baseUrl = 'http://'+ServiceServer.splitUrl+'/api/'
      static currentUser;
 
 
@@ -105,7 +105,7 @@ export default class ServiceServer {
 
         let contactData;
         await fetch(ServiceServer.baseUrl + 'contacts/' + chatWith, {headers: { 'connectedUser' : ServiceServer.currentUser?.userName}}).then(data => data.json()).then(json => contactData = json);
-        const url = 'https://' + contactData.server + '/api/transfer/';
+        const url = 'http://' + contactData.server + '/api/transfer/';
         await fetch(url,
             {
                 method: 'POST',
@@ -147,7 +147,7 @@ export default class ServiceServer {
             "to": userName,
             "server": ServiceServer.splitUrl
         }
-        const sendUrl = 'https://' + serverName + '/api/invitations/';
+        const sendUrl = 'http://' + serverName + '/api/invitations/';
 
         await fetch(sendUrl,
             {
@@ -175,148 +175,4 @@ export default class ServiceServer {
         return bool;
     }
 
-    // static getUserUrl(userName) {
-    //
-    //     let url = "https://cdn-icons-png.flaticon.com/512/149/149071.png?w=826&t=st=1650031400~exp=1650032000~hmac=c12c919506b5941e345f8213a45d0d57f85c73cf7dfcecf3c026471fcf04159e";
-    //     users.forEach(val => {
-    //         if (val.user_name === userName) {
-    //             if (val.picture_url != null) {
-    //                 url = val.picture_url;
-    //             }
-    //
-    //         }
-    //     })
-    //     return url;
-    // }
-
-    // static getUserNickname(userName) {
-    //     let nickname = userName
-    //
-    //     users.forEach(val => {
-    //         if (val.user_name === userName) {
-    //             nickname = val.nickname;
-    //
-    //         }
-    //     })
-    //     return nickname;
-    // }
-    //
-    // static getUsers(currentUser) {
-    //     let chats = [];
-    //     users.forEach(user => {
-    //         if (user.user_name === currentUser) {
-    //             chats = user.chats;
-    //         }
-    //     })
-    //     return chats;
-    // }
-
-    // static getUsersNames(currentUser) {
-    //     let chats = ServiceServer.getUsers(currentUser);
-    //     let keys = [];
-    //     for (let k in chats) keys.push(k);
-    //     return keys;
-    //
-    // }
-    //
-    // static toDate(str) {
-    //     return parseInt(str[0] + str[1] + str[3] + str[4]);
-    // }
-
-    // static getUsersNamesSortedByLastMassage(currentUser, lastMassageCount) {
-    //     let chats = ServiceServer.getUsers(currentUser);
-    //     let map = new Map();
-    //     for (let k in chats) {
-    //         map.set(k, chats[k][chats[k].length - 1]);
-    //     }
-    //
-    //     let result = [];
-    //
-    //     const mapSize = map.size;
-    //     for (let i = 0; i < mapSize; i++) {
-    //         let minDate = this.toDate('99:99');
-    //         let minUser = null;
-    //
-    //         for (const [key, value] of map.entries()) {
-    //
-    //             if (!value){
-    //                 minUser = key;
-    //                 continue;
-    //
-    //             }
-    //             if (this.toDate(value.date) <= minDate) {
-    //                 minUser = key;
-    //                 minDate = this.toDate(value.date);
-    //             }
-    //         }
-    //
-    //         result.push(minUser);
-    //         map.delete(minUser);
-    //     }
-    //     // let keys = [];
-    //     // for (let k in chats) keys.push(k);
-    //     // return keys;
-    //
-    //     return result.reverse();
-    //
-    // }
-
-    // static getChats(currentUser, chatWith) {
-    //     let chats = ServiceServer.getUsers(currentUser);
-    //     if (chatWith in chats) {
-    //         return chats[chatWith];
-    //     }
-    //     return []
-    // }
-
-    // static addMsg(msg, currentUser, chatWith) {
-    //
-    //
-    //     users.forEach(user => {
-    //         if (user.user_name === currentUser && chatWith in user.chats) {
-    //             user.chats[chatWith].push({
-    //                 is_it_me: msg.isItMe,
-    //                 text: msg.text,
-    //                 date: msg.date,
-    //                 media: msg.media,
-    //                 mediaType: msg.mediaType
-    //             });
-    //
-    //         }
-    //     })
-    //
-    // }
-
-
-    // static getLastMessage(currentUser, chatWith) {
-    //
-    //     const chats = ServiceServer.getChats(currentUser, chatWith);
-    //
-    //     if (chats) {
-    //         return chats.slice(-1)[0];
-    //     }
-    //
-    //     return null;
-    // }
-
-
-    // printUsers() {
-    //     users.forEach(val => {
-    //         console.log(val.nickname)
-    //     });
-    // }
-
-
-    // static async logOut() {
-    //     return await fetch(ServiceServer.baseUrl + "ConnectedUser", {method: "DELETE"});
-    // }
-    //
-    // static async signIn(userName) {
-    //     return await fetch(ServiceServer.baseUrl + "ConnectedUser?userName=" + userName, {method: "POST"});
-    // }
-
-    // static async getCurrentUser() {
-    //     return await fetch(ServiceServer.baseUrl + "ConnectedUser", {method: "GET"}).then(data => data.json());
-    //
-    // }
 }
